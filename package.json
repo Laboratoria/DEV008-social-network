@@ -18,6 +18,7 @@
     "test": "jest --coverage",
     "dev": "vite dev src",
     "start": "npm run dev",
+    "start2": "serve src/ -s",
     "build": "vite build",
     "preview": "vite preview"
   },
