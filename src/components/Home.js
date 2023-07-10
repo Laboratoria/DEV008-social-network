@@ -3,7 +3,6 @@ import { onNavigate } from "../main";
 export const home = () => {
   const homeDiv = document.createElement('div');
   const buttonRegister = document.createElement('button');
-  const buttonRegister = document.createElement('button');
 
   const buttonLogin = document.createElement('button');
 
