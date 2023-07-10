@@ -16,3 +16,5 @@ export const home = () => {
 
   return homeDiv;
 };
+
+  
