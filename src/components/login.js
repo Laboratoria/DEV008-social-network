@@ -1,6 +1,4 @@
-import { onNavigate } from '../main';
-
-export const login = () => {
+export const login = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.textContent = 'Bienvenidos a Login';
 
