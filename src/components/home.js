@@ -1,6 +1,4 @@
-import { onNavigate } from '../main';
-
-export const home = () => {
+export const home = (onNavigate) => {
   const homeDiv = document.createElement('div');
   const buttonRegister = document.createElement('button');
   const buttonLogin = document.createElement('button');
