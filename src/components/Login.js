@@ -1,10 +1,15 @@
-export const login = () => {
-    const homeDiv = document.createElement('div');
-    homeDiv.textContent = 'Hola de vuelta'
-    const buttonHome = document.createElement ('button');
-    buttonHome.textContent = 'Regresar al Home';
+const Login = (navigateTo) => {
+  const homeDiv = document.createElement('div');
+  homeDiv.textContent = 'Hola Soy el Login de vuelta';
+  const buttonHome = document.createElement('button');
+  buttonHome.textContent = 'Regresar al Home';
+  buttonHome.addEventListener('click', () => {
+    navigateTo('/');
+  });
 
-    homeDiv.appendChild(buttonHome);
+  homeDiv.appendChild(buttonHome);
 
-    return homeDiv;
+  return homeDiv;
 };
+
+export default Login;

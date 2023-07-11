@@ -1,4 +1,4 @@
-export const home = () => {
+const Home = () => {
   const homeDiv = document.createElement('div');
   const buttonRegis = document.createElement('button');
 
@@ -10,4 +10,5 @@ export const home = () => {
   homeDiv.appendChild(buttonLogin);
 
   return homeDiv;
-}
+};
+export default Home;

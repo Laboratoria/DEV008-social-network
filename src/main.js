@@ -1,14 +1,39 @@
-import { home } from "./components/Home.js";
-import { register } from "./components/Register.js";
-import { login } from "./components/Login.js";
+import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
+import error from './components/Error';
 
-const rootDiv = document.getElementById('root');
-const routes = {
-  '/': home,
-  '/register': register,
-  '/login': login,
+const routes = [
+  { path: '/', component: Home },
+  { path: '/login', component: Login },
+  { path: '/Register', component: Register },
+  { path: '/error', component: error },
+];
+
+const defaultRoute = '/';
+const root = document.getElementById('root');
+
+function navigateTo(hash) {
+  const route = routes.find((routeFound) => routeFound.path === hash);
+
+  if (route && route.component) {
+    window.history.pushState(
+      {},
+      route.path,
+      window.location.origin + route.path,
+    );
+
+    if (root.firstChild) {
+      root.removeChild(root.firstChild);
+    }
+    root.appendChild(route.component(navigateTo));
+  } else {
+    navigateTo('/error');
+  }
+}
+
+window.onpopstate = () => {
+  navigateTo(window.location.pathname);
 };
 
-const component = routes[window.location.pathname];
-
-rootDiv.appendChild(component());
+navigateTo(window.location.pathname || defaultRoute);
