@@ -1,0 +1,18 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  body {
+    text-align: center;
+    align-items: center;
+    background-color:rgba(255, 219, 228, 0.562);
+  } 
+
+  .contenedor{
+    background-color:rgba(187, 241, 171, 0.712);
+    text-align: center;
+    align-items: center;
+    image-rendering: auto;
+  }

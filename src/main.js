@@ -1,11 +1,11 @@
-import Home from './components/Home';
 import Login from './components/Login';
+import Home from './components/Home';
 import Register from './components/Register';
 import error from './components/Error';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/login', component: Login },
+  { path: '/', component: Login },
+  { path: '/Home', component: Home },
   { path: '/Register', component: Register },
   { path: '/error', component: error },
 ];

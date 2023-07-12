@@ -15,20 +15,13 @@ const Register = (onNavigate) => {
   password.setAttribute('placeholder', 'Contraseña');
 
   const buttonRegister = document.createElement('button');
-  buttonRegister.textContent = 'Registrate';
-
-  const buttonHome = document.createElement('button');
-  buttonHome.textContent = 'Regresar al Home';
-
-  buttonHome.addEventListener('click', () => onNavigate('/'));
-
-  homeDiv.textContent = 'Bienvenido a InstaPet';
-  buttonHome.textContent = 'Regresar al Home';
+  buttonRegister.textContent = 'Inicia Sesión';
+  buttonRegister.addEventListener('click', () => onNavigate('/Home'));
 
   homeDiv.appendChild(username);
   homeDiv.appendChild(email);
   homeDiv.appendChild(password);
-  homeDiv.appendChild(buttonHome);
+  homeDiv.appendChild(buttonRegister);
 
   return homeDiv;
 };

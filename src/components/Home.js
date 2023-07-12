@@ -1,20 +1,19 @@
 const Home = (onNavigate) => {
-  const homeDiv = document.createElement('div');
+    const homeDiv = document.createElement('div');
+    homeDiv.textContent = 'InstaPet';
 
-  const buttonLogin = document.createElement('button');
-  buttonLogin.textContent = 'Inicia sesión';
+  const postMessage = document.createElement('Texarea');
+  postMessage.setAttribute('type', 'text');
+  postMessage.setAttribute('placeholder', '¿Miau, Woahw, Pio?');
 
-  buttonLogin.addEventListener('click', () => onNavigate('/login'));
+  const buttonLogout = document.createElement('button');
+  buttonLogout.addEventListener('click', () => onNavigate('/'));
+  buttonLogout.textContent = 'Cerrar sesión';
 
-  const buttonRegister = document.createElement('button');
-  buttonRegister.textContent = 'Registrate';
+  homeDiv.appendChild(postMessage);
+homeDiv.appendChild(buttonLogout);
 
-  buttonRegister.addEventListener('click', () => onNavigate('/register'));
-
-  homeDiv.appendChild(buttonLogin);
-  homeDiv.appendChild(buttonRegister);
-
-  return homeDiv;
+return homeDiv;
 };
 
 export default Home;
