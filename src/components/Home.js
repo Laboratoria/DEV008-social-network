@@ -1,14 +1,22 @@
+
 const Home = () => {
+
   const homeDiv = document.createElement('div');
-  const buttonRegis = document.createElement('button');
 
   const buttonLogin = document.createElement('button');
-  buttonRegis.textContent = 'Registrate';
   buttonLogin.textContent = 'Inicia sesión';
+  
+  buttonLogin.addEventListener('click', () => onNavigate('/login'));
+  
+  const buttonRegister = document.createElement('button');
+  buttonRegister.textContent = 'Registrate';
+  
+  buttonRegister.addEventListener('click', () => onNavigate('/register'));
 
-  homeDiv.appendChild(buttonRegis);
   homeDiv.appendChild(buttonLogin);
+  homeDiv.appendChild(buttonRegister);
 
   return homeDiv;
 };
+
 export default Home;
