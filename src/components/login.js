@@ -11,11 +11,11 @@ export const login = (onNavigate) => {
   contenedorImagen.classList.add('contenedorImagen');
   homeDiv.appendChild(contenedorImagen);
 
-  const contenedorFormulario = document.createElement('form');
+  const contenedorFormulario = document.createElement('section');
   contenedorImagen.classList.add('contenedorFormulario');
   homeDiv.appendChild(contenedorFormulario);
 
-  const headerLogo = document.createElement('figure');
+  const headerLogo = document.createElement('img');
   contenedorFormulario.appendChild(headerLogo);
 
   const inputCorreo = document.createElement('input');
@@ -49,7 +49,6 @@ export const login = (onNavigate) => {
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
-
 
   homeDiv.appendChild(buttonHome);
 
