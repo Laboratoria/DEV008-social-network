@@ -1,11 +1,10 @@
-const Login = (navigateTo) => {
-  
+const Login = (onNavigate) => {
   const homeDiv = document.createElement('div');
-  homeDiv.textContent = 'Hola de vuelta'
+  homeDiv.textContent = 'Hola de vuelta';
 
   const email = document.createElement('INPUT');
   email.setAttribute('type', 'email');
-  email.setAttribute('placeholder', 'Correo electrónico')
+  email.setAttribute('placeholder', 'Correo electrónico');
 
   const password = document.createElement('INPUT');
   password.setAttribute('type', 'password');
@@ -15,7 +14,7 @@ const Login = (navigateTo) => {
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
   buttonHome.textContent = 'Regresar al Home';
-  
+
   homeDiv.appendChild(email);
   homeDiv.appendChild(password);
   homeDiv.appendChild(buttonHome);

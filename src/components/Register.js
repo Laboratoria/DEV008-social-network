@@ -1,14 +1,14 @@
-const register = () => {
+const Register = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.textContent = 'Registrate a InstaPet';
-    
+
   const username = document.createElement('INPUT');
   username.setAttribute('type', 'email');
   username.setAttribute('placeholder', 'Nombre de usuario');
 
   const email = document.createElement('INPUT');
   email.setAttribute('type', 'email');
-  email.setAttribute('placeholder', 'Correo electrónico')
+  email.setAttribute('placeholder', 'Correo electrónico');
 
   const password = document.createElement('INPUT');
   password.setAttribute('type', 'password');
@@ -18,8 +18,8 @@ const register = () => {
   buttonRegister.textContent = 'Registrate';
 
   const buttonHome = document.createElement('button');
-    buttonHome.textContent = 'Regresar al Home';
-  
+  buttonHome.textContent = 'Regresar al Home';
+
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
   homeDiv.textContent = 'Bienvenido a InstaPet';
@@ -33,4 +33,4 @@ const register = () => {
   return homeDiv;
 };
 
-export default register;
+export default Register;
