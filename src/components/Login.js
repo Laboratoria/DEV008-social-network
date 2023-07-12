@@ -1,6 +1,5 @@
-import { onNavigate } from "../main";
-
-export const login = () => {
+const Login = (navigateTo) => {
+  
   const homeDiv = document.createElement('div');
   homeDiv.textContent = 'Hola de vuelta'
 
@@ -23,3 +22,5 @@ export const login = () => {
 
   return homeDiv;
 };
+
+export default Login;

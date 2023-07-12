@@ -1,6 +1,6 @@
-import { onNavigate } from "../main";
 
-export const home = () => {
+const Home = () => {
+
   const homeDiv = document.createElement('div');
 
   const buttonLogin = document.createElement('button');
@@ -19,4 +19,4 @@ export const home = () => {
   return homeDiv;
 };
 
-  
+export default Home;

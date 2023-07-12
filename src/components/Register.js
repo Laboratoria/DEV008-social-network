@@ -1,6 +1,4 @@
-import { onNavigate } from '../main.js';
-
-export const register = () => {
+const register = () => {
   const homeDiv = document.createElement('div');
   homeDiv.textContent = 'Registrate a InstaPet';
     
@@ -34,3 +32,5 @@ export const register = () => {
 
   return homeDiv;
 };
+
+export default register;
