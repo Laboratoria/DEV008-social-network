@@ -4,6 +4,108 @@
     box-sizing: border-box;
   }
 
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #CCCCCC;
+    height: 100vh;
+  }
+  .loginDiv {
+    background-color: whitesmoke;
+    display: flex;
+    width: 50rem;
+    height: 30rem;
+    margin: 1.5rem;
+    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
+  }
+  .contenedorImagen {
+    width: 25rem;
+    height: 30rem;
+    background-color:#CCCCCC;
+  }
+  .contenedorFormulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; 
+    width: 25rem;
+    height: 30rem;
+    background-color: rgb(230, 230, 230);
+    padding: 3rem;  
+  }
+  .headerLogo {
+    width: 20rem;
+    height: 6rem;
+    margin: 1rem;
+  }
+  .input {
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    width: 18rem;
+    height: 2rem;
+    margin: 1%;
+    color: orange;
+  }
+  .input:hover {
+    transform: scale(1.1);
+  }
+  .button {
+    border-radius: 1rem;
+    padding: .5rem;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+  }
+  .button:hover {
+    transform: scale(1.1);
+  }
+
+  .buttonGoogle {
+    width: 2rem;
+    height: 2rem
+  }
+
+/*Estilo home*/
+
+  body {
+    background: #E5E5E5;
+    background-repeat: no-repeat;
+    margin: 20px;
+  }
+  .contenedorHome{
+    background-color: brown;
+    height: 50%;
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+  }
+  .logoPrincipal{
+    height: 200px;
+    margin: 50px;
+  }
+.sinopsis{
+  font-size: larger;
+  background-color: aqua;
+}
+.contenedorBotonesHome{
+  background-color: blueviolet;
+}
+.imagenIzquierdaH{
+  height: 50px;
+  margin: 50px;
+}
+.imagenDerechaH{
+  height: 50px;
+  margin: 50px;
+}
+.contenedorImagenesH{
+  background-color: chartreuse;
+}
+
   
 
   /*========== REGISTER ========== */
