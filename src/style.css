@@ -3,3 +3,42 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  
+
+  /*========== REGISTER ========== */
+
+  main.contenedor-register {
+    background-color: rgba(216, 195, 195, 0.7);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 7px 2px 9px 0px #8a8687;
+    position: center;
+    min-width: 260px;
+    max-width: 320px;
+    justify-content: space-around;
+    display:flex;
+    flex-flow: column nowrap;
+    row-gap: 10px;
+    text-align: center;
+  }
+
+  input.Input-registro{
+    margin:-3px 18px 9px 3px;
+    padding: 8px 2%;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(117, 95, 54);
+    display: block;
+    width: 97%;
+    color: rgb(50, 50, 50);
+    font-size: 0.9em;
+    height: 42px;
+    font-weight: 100;
+    cursor: pointer;
+  }
+
+
+
+/* ===== Pantallas desde 769 px de ancho ===== */
+@media screen and (min-width:769px){}
