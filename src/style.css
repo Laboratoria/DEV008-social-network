@@ -1,5 +1,35 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+  body {
+    background: #E5E5E5;
+    background-repeat: no-repeat;
+    margin: 20px;
   }
+  .contenedorHome{
+    background-color: brown;
+    height: 50%;
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+  }
+  .logoPrincipal{
+    height: 200px;
+    margin: 50px;
+  }
+.sinopsis{
+  font-size: larger;
+  background-color: aqua;
+}
+.contenedorBotonesHome{
+  background-color: blueviolet;
+}
+.imagenIzquierdaH{
+  height: 50px;
+  margin: 50px;
+}
+.imagenDerechaH{
+  height: 50px;
+  margin: 50px;
+}
+.contenedorImagenesH{
+  background-color: chartreuse;
+}
