@@ -1,6 +1,6 @@
 const Home = (onNavigate) => {
-    const homeDiv = document.createElement('div');
-    homeDiv.textContent = 'InstaPet';
+  const homeDiv = document.createElement('div');
+  homeDiv.textContent = 'InstaPet';
 
   const postMessage = document.createElement('Texarea');
   postMessage.setAttribute('type', 'text');
@@ -11,9 +11,9 @@ const Home = (onNavigate) => {
   buttonLogout.textContent = 'Cerrar sesión';
 
   homeDiv.appendChild(postMessage);
-homeDiv.appendChild(buttonLogout);
+  homeDiv.appendChild(buttonLogout);
 
-return homeDiv;
+  return homeDiv;
 };
 
 export default Home;

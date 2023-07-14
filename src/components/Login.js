@@ -1,31 +1,36 @@
 const Login = (onNavigate) => {
-  const homeDiv = document.createElement('div');
-  homeDiv.classList.add("contenedor");
+  const section = document.createElement('section');
+  section.classList.add('contenedor');
+  section.classList.add('flex');
 
-  const email = document.createElement('INPUT');
-  email.setAttribute('type', 'email');
-  email.setAttribute('placeholder', 'Correo electrónico');
+  const welcomeTitle = document.createElement('h2');
+  welcomeTitle.classList.add('welcome-title');
+  welcomeTitle.textContent = '¡Bienvenida/o!';
 
-  const password = document.createElement('INPUT');
-  password.setAttribute('type', 'password');
-  password.setAttribute('placeholder', 'Contraseña');
+  const loginForm = document.createElement('form');
+
+  const inputEmail = document.createElement('input');
+  inputEmail.setAttribute('type', 'email');
+  inputEmail.setAttribute('placeholder', 'Correo electrónico');
+
+  const inputPassword = document.createElement('input');
+  inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('placeholder', 'Contraseña');
 
   const buttonLogin = document.createElement('button');
   buttonLogin.textContent = 'Iniciar Sesión';
   buttonLogin.addEventListener('click', () => onNavigate('/Home'));
-
+  buttonLogin.classList.add('btn');
 
   const buttonRegister = document.createElement('button');
   buttonRegister.textContent = 'Registrate';
   buttonRegister.addEventListener('click', () => onNavigate('/Register'));
+  buttonRegister.classList.add('btn');
 
-  homeDiv.appendChild(email);
-  homeDiv.appendChild(password);
-  homeDiv.appendChild(buttonLogin);
-  homeDiv.appendChild(buttonRegister);
+  loginForm.append(inputEmail, inputPassword, buttonLogin, buttonRegister);
+  section.append(welcomeTitle, loginForm);
 
-  return homeDiv;
+  return section;
 };
 
 export default Login;
-
