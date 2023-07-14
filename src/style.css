@@ -1,0 +1,58 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  header {
+    text-align: center;
+    padding: 10px;
+    grid-column: 1 / 3;
+  }
+  
+  nav {
+    padding: 0px;
+  }
+  
+  nav img {
+    width: 125%;
+    height: 125%;
+  }
+  
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 80%;
+  }
+  
+  .login {
+    background-color: #dadada;
+    padding: 20px;
+  }
+  
+  .login h2 {
+    text-align: center;
+  }
+  
+  .login label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .login input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .login button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f45aee;
+    color: #fff;
+    border: none;
+  }
+  
