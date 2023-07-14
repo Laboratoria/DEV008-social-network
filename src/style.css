@@ -75,6 +75,10 @@
     background: #E5E5E5;
     background-repeat: no-repeat;
     margin: 20px;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  
   }
   .contenedorHome{
     background-color: brown;
@@ -124,6 +128,20 @@
     row-gap: 10px;
     text-align: center;
   }
+  .registerDiv 
+  {
+    background-color: whitesmoke;
+    display: flex;
+    width: 50rem;
+    height: 30rem;
+    margin: 1.5rem;
+    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .conteImagen {
+    width: 25rem;
+    height: 30rem;
+    background-color:#CCCCCC;}
 
   input.Input-registro{
     margin:-3px 18px 9px 3px;
@@ -135,12 +153,29 @@
     width: 97%;
     color: rgb(50, 50, 50);
     font-size: 0.9em;
-    height: 42px;
+    height: 50px;
     font-weight: 100;
     cursor: pointer;
   }
 
+  .contenedorInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; 
+    width: 25rem;
+    height: 30rem;
+    background-color: rgb(230, 230, 230);
+    padding: 3rem;  
+  }
 
-
+  footer{
+    
+    background-color: rgb(31, 26, 26);
+    color: #E5E5E5;
+    padding: 1em 0;
+    text-align: center;
+  
+  }
 /* ===== Pantallas desde 769 px de ancho ===== */
 @media screen and (min-width:769px){}
