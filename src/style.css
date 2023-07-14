@@ -75,6 +75,10 @@
     background: #E5E5E5;
     background-repeat: no-repeat;
     margin: 20px;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  
   }
   .contenedorHome{
     background-color: brown;
@@ -105,3 +109,73 @@
 .contenedorImagenesH{
   background-color: chartreuse;
 }
+
+  
+
+  /*========== REGISTER ========== */
+
+  main.contenedor-register {
+    background-color: rgba(216, 195, 195, 0.7);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 7px 2px 9px 0px #8a8687;
+    position: center;
+    min-width: 260px;
+    max-width: 320px;
+    justify-content: space-around;
+    display:flex;
+    flex-flow: column nowrap;
+    row-gap: 10px;
+    text-align: center;
+  }
+  .registerDiv 
+  {
+    background-color: whitesmoke;
+    display: flex;
+    width: 50rem;
+    height: 30rem;
+    margin: 1.5rem;
+    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .conteImagen {
+    width: 25rem;
+    height: 30rem;
+    background-color:#CCCCCC;}
+
+  input.Input-registro{
+    margin:-3px 18px 9px 3px;
+    padding: 8px 2%;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(117, 95, 54);
+    display: block;
+    width: 97%;
+    color: rgb(50, 50, 50);
+    font-size: 0.9em;
+    height: 50px;
+    font-weight: 100;
+    cursor: pointer;
+  }
+
+  .contenedorInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; 
+    width: 25rem;
+    height: 30rem;
+    background-color: rgb(230, 230, 230);
+    padding: 3rem;  
+  }
+
+  footer{
+    
+    background-color: rgb(31, 26, 26);
+    color: #E5E5E5;
+    padding: 1em 0;
+    text-align: center;
+  
+  }
+/* ===== Pantallas desde 769 px de ancho ===== */
+@media screen and (min-width:769px){}
