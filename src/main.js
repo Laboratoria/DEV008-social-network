@@ -1,5 +1,18 @@
-// Este es el punto de entrada de tu aplicacion
+import { signIn } from './components/signIn';
+import { signUp } from './components/signUp';
+import { wall } from './components/wall';
 
-import { myFunction } from './lib/index.js';
+const rootDiv = document.getElementById('root');
 
-myFunction();
+const routes = {
+  '/': signIn,
+  '/signup': signUp,
+  '/wall': wall,
+};
+export const onNavigate = (pathname) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname);
+  rootDiv.appendChild(routes[pathname()]);
+};
+
+const component = routes[window.location.pathname];
+rootDiv.appendChild(component());
