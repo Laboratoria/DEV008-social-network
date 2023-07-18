@@ -9,10 +9,12 @@ const routes = {
   '/signup': signUp,
   '/wall': wall,
 };
-export const onNavigate = (pathname) => {
+const onNavigate = (pathname) => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
-  rootDiv.appendChild(routes[pathname()]);
-};
 
+  rootDiv.appendChild(routes[pathname](onNavigate));
+
+};
+//
 const component = routes[window.location.pathname];
-rootDiv.appendChild(component());
+rootDiv.appendChild(component(onNavigate));

@@ -1,12 +1,16 @@
-export const signUp = () => {
+export const signUp = (onNavigate) => {
   const homeDiv = document.createElement('div');
-  const signUpButton = document.createElement('button');
-  const signInButton = document.createElement('button');
+  const cuentaButton = document.createElement('button');
+  const regresoInicioButton = document.createElement('button');
 
-  signUpButton.textContent = 'Registrate';
-  signInButton.textContent = 'Inicia Sesión';
+  cuentaButton.textContent = 'Crear Cuenta';
+  regresoInicioButton.textContent = 'Regresar al inicio';
 
-  homeDiv.appendChild(signUpButton);
-  homeDiv.appendChild(signInButton);
+  regresoInicioButton.addEventListener('click',() => {
+    onNavigate('/')
+  })
+
+  homeDiv.appendChild(cuentaButton);
+  homeDiv.appendChild(regresoInicioButton);
   return homeDiv;
 };
