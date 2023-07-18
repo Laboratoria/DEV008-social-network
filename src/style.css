@@ -31,7 +31,7 @@ body {
   font-weight: 400;
 }
 
-.contenedor{
+.form-container{
   width: 18rem;
   height: 20rem;
   background-color: var(--white);
@@ -54,6 +54,10 @@ input::placeholder {
   color: var(--dark-salmon);
 }
 
+.btn-container {
+  justify-content: space-between;
+}
+
 .btn {
   width: 6.4rem;
   height: 2rem;
@@ -62,4 +66,12 @@ input::placeholder {
   border: none;
   border-radius: 8px;
   margin: 0.4rem 0;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background: var(--white);
+  color: var(--salmon);
+  border: 1px solid var(--salmon);
+  transition: 0.5s;
 }

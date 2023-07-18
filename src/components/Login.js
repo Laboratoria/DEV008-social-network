@@ -1,6 +1,6 @@
 const Login = (onNavigate) => {
   const section = document.createElement('section');
-  section.classList.add('contenedor');
+  section.classList.add('form-container');
   section.classList.add('flex');
 
   const welcomeTitle = document.createElement('h2');
@@ -17,6 +17,10 @@ const Login = (onNavigate) => {
   inputPassword.setAttribute('type', 'password');
   inputPassword.setAttribute('placeholder', 'Contraseña');
 
+  const btnContainer = document.createElement('div');
+  btnContainer.classList.add('btn-container');
+  btnContainer.classList.add('flex');
+
   const buttonLogin = document.createElement('button');
   buttonLogin.textContent = 'Iniciar Sesión';
   buttonLogin.addEventListener('click', () => onNavigate('/Home'));
@@ -27,7 +31,8 @@ const Login = (onNavigate) => {
   buttonRegister.addEventListener('click', () => onNavigate('/Register'));
   buttonRegister.classList.add('btn');
 
-  loginForm.append(inputEmail, inputPassword, buttonLogin, buttonRegister);
+  btnContainer.append(buttonLogin, buttonRegister);
+  loginForm.append(inputEmail, inputPassword, btnContainer);
   section.append(welcomeTitle, loginForm);
 
   return section;
