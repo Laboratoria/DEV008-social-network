@@ -11,10 +11,12 @@ const routes = {
 };
 const onNavigate = (pathname) => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
+  //while (rootDiv.firstChild) {
+    rootDiv.removeChild(rootDiv.firstChild);
+  //}
 
   rootDiv.appendChild(routes[pathname](onNavigate));
-
 };
-//
+
 const component = routes[window.location.pathname];
 rootDiv.appendChild(component(onNavigate));
