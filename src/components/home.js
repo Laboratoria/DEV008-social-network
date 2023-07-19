@@ -8,38 +8,35 @@ export const home = (onNavigate) => {
   const logoPrincipal = document.createElement('img');
   logoPrincipal.className = "logoPrincipal"
   contenedorHome.appendChild(logoPrincipal);
-  logoPrincipal.src = "disneylogo.png";
+  logoPrincipal.src = "logo.png";
 
   const sinopsis = document.createElement('p');
   sinopsis.className="sinopsis";
-  sinopsis.textContent = 'sinopsis';
+  sinopsis.textContent = 'Se trata de una app en la que es posible compartir canciones y álbumes con los contactos, que podrán escuchar usando cualquier servicio de streaming que tengan contratado, desde Spotify a Apple Music, pasando por Deezer y otros.Jamselect permite descubrir nuevos ritmos y hablar sobre ellos, crear un hilo de comentarios sobre cada canción compartida, siendo este su principal punto de ventaja con respecto a otras soluciones semejantes (como compartir una lista a través de un enlace, por ejemplo).';
   contenedorHome.appendChild(sinopsis);
 
   const contenedorBotones = document.createElement('div');
   contenedorBotones.className="contenedorBotonesHome";
   contenedorHome.appendChild(contenedorBotones);
   
-  const buttonRegister = document.createElement('button');
-  buttonRegister.textContent = 'Registrate';
+  const buttonRegister = document.createElement('img');
+  buttonRegister.src = "btn registrarse.png";
+  buttonRegister.className = "btnRegister";
   contenedorBotones.appendChild(buttonRegister);
 
-  const buttonLogin = document.createElement('button');
-  buttonLogin.textContent = 'Iniciar sesion';
+  const buttonLogin = document.createElement('img');
+  buttonLogin.src = "login btn.png";
+  buttonLogin.className = "btnLogin";
   contenedorBotones.appendChild(buttonLogin);
 
   const contenedorImagenesH = document.createElement('div');
   contenedorImagenesH.className = "contenedorImagenesH";
   contenedorHome.appendChild(contenedorImagenesH);
 
-  const imagenIzquierdaH = document.createElement('img');
-  imagenIzquierdaH.className = "imagenIzquierdaH"
-  contenedorImagenesH.appendChild(imagenIzquierdaH);
-  imagenIzquierdaH.src = "disneylogo.png";
-
-  const imagenDerechaH = document.createElement('img');
-  imagenDerechaH.className = "imagenDerechaH"
-  contenedorImagenesH.appendChild(imagenDerechaH);
-  imagenDerechaH.src = "disneylogo.png";
+  const imagenAbajoH = document.createElement('img');
+  imagenAbajoH.className = "imagenAbajo"
+  contenedorImagenesH.appendChild(imagenAbajoH);
+  imagenAbajoH.src = "imageninicio.png";
 
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
   buttonLogin.addEventListener('click', () => onNavigate('/login'));

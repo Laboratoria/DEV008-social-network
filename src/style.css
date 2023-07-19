@@ -72,45 +72,66 @@
 /*Estilo home*/
 
   body {
-    background: #E5E5E5;
     background-repeat: no-repeat;
-    margin: 20px;
-    display: grid;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr auto;
-  
+    overflow-x: hidden;
+    background:#E5E5E5;
+    width: 100%;
+    height:auto;
   }
   .contenedorHome{
-    background-color: brown;
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
     justify-content: center;
     text-align: center;
   }
   .logoPrincipal{
-    height: 200px;
-    margin: 50px;
+    height: 120px;
+    margin: 30px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
   }
-.sinopsis{
+  @font-face {
+    font-family: CaviarDreams;
+    src: url(CaviarDreams.ttf);
+  }
+  .sinopsis{
   font-size: larger;
-  background-color: aqua;
+  background-color: #CCCCCC;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  font-family: CaviarDreams;
 }
 .contenedorBotonesHome{
-  background-color: blueviolet;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    position:relative;
+    display: flex;
+    margin: 20px;
 }
-.imagenIzquierdaH{
-  height: 50px;
-  margin: 50px;
+.btnRegister{
+width: 200px;
+height: auto;
+align-items: center; 
+align-items: center; 
+margin: 20px;
 }
-.imagenDerechaH{
-  height: 50px;
-  margin: 50px;
+.btnLogin{
+  width: 200px;
+height: auto;
+align-items: center; 
+align-items: center; 
+margin: 20px;
 }
-.contenedorImagenesH{
-  background-color: chartreuse;
+.imagenAbajo{
+  align-items: center;
+  width: 100%;
 }
-
-  
 
   /*========== REGISTER ========== */
 
