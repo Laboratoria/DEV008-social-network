@@ -13,7 +13,7 @@
   --dark-salmon: #C28B8B;
 }
 
-.flex {
+.flex, #google-btn {
   display: flex;
 }
 
@@ -55,17 +55,20 @@ input::placeholder {
 }
 
 .btn-container {
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .btn {
   width: 6.4rem;
+  min-width: fit-content;
   height: 2rem;
   background: var(--salmon);
   color: var(--white);
   border: none;
   border-radius: 8px;
   margin: 0.4rem 0;
+  padding: 0 0.4rem;
   transition: 0.5s;
 }
 
@@ -74,4 +77,13 @@ input::placeholder {
   color: var(--salmon);
   border: 1px solid var(--salmon);
   transition: 0.5s;
+}
+
+.icon {
+  height: 28px;
+  margin-left: 8px;
+}
+
+#google-btn {
+  align-items: center;
 }
