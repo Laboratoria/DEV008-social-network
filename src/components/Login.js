@@ -1,3 +1,5 @@
+import { googleLogin } from '../lib/firebase/firebaseconfig';
+
 const Login = (onNavigate) => {
   const section = document.createElement('section');
   section.classList.add('form-container');
@@ -31,9 +33,27 @@ const Login = (onNavigate) => {
   buttonRegister.addEventListener('click', () => onNavigate('/Register'));
   buttonRegister.classList.add('btn');
 
-  btnContainer.append(buttonLogin, buttonRegister);
+  const buttonGoogle = document.createElement('button');
+  buttonGoogle.textContent = 'Inicia sesión con';
+  buttonGoogle.classList.add('btn');
+  buttonGoogle.setAttribute('id', 'google-btn');
+
+  const googleIcon = document.createElement('img');
+  googleIcon.setAttribute('src', './img/google.svg');
+  googleIcon.classList.add('icon');
+
+  buttonGoogle.append(googleIcon);
+  btnContainer.append(buttonLogin, buttonRegister, buttonGoogle);
   loginForm.append(inputEmail, inputPassword, btnContainer);
   section.append(welcomeTitle, loginForm);
+
+  buttonGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const resultado = googleLogin();
+    resultado.then((response) => {
+      console.log(response);
+    });
+  });
 
   return section;
 };
