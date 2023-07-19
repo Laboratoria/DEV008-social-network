@@ -3,12 +3,15 @@ export const signUp = (onNavigate) => {
   const cuentaButton = document.createElement('button');
   const regresoInicioButton = document.createElement('button');
 
-  cuentaButton.textContent = 'Crear Cuenta';
-  regresoInicioButton.textContent = 'Regresar al inicio';
+  cuentaButton.textContent = 'Registrarse';
+  regresoInicioButton.textContent = 'Iniciar Sesión';
 
   regresoInicioButton.addEventListener('click',() => {
     onNavigate('/')
   })
+  cuentaButton.addEventListener('click', () => {
+    onNavigate('/wall');
+  });
 
   homeDiv.appendChild(cuentaButton);
   homeDiv.appendChild(regresoInicioButton);

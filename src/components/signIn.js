@@ -10,6 +10,10 @@ export const signIn = (onNavigate) => {
     onNavigate('/signup');
   });
 
+  signInButton.addEventListener('click', () => {
+    onNavigate('/wall');
+  });
+
   homeDiv.appendChild(signUpButton);
   homeDiv.appendChild(signInButton);
   return homeDiv;
