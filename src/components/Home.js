@@ -1,7 +1,7 @@
 const Home = (onNavigate) => {
   const homeSection = document.createElement('section');
   homeSection.classList.add('contenedorHome');
-  homeSection.classList.add('flex2');  
+  homeSection.classList.add('flex2');
 
   const headerSection = document.createElement('div');
 
@@ -9,9 +9,9 @@ const Home = (onNavigate) => {
   welcomeTitle.classList.add('welcome-title');
   welcomeTitle.textContent = 'Instapet';
 
- const postForm = document.createElement('form');
- postForm.classList.add('post-form');
- postForm.classList.add('flex');
+  const postForm = document.createElement('form');
+  postForm.classList.add('post-form');
+  postForm.classList.add('flex');
 
   const postMessage = document.createElement('input');
   postMessage.setAttribute('type', 'textarea');
@@ -20,9 +20,9 @@ const Home = (onNavigate) => {
   const buttonPublicar = document.createElement('button');
   buttonPublicar.textContent = 'Publicar';
   buttonPublicar.classList.add('btn');
-  // aqui debemos poner la funcion que guarde lo que se escribio y que se muestre en el texarea 
+  // aqui debemos poner la funcion que guarde lo que se escribio y que se muestre en el texarea
   // igualmente esta funcion debe hacer el boton cambie por el boton editar
-  
+
   const buttonEditar = document.createElement('button');
   buttonEditar.textContent = 'Editar';
   buttonEditar.classList.add('btn');
