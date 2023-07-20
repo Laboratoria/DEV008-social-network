@@ -6,47 +6,37 @@
 
   .container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #CCCCCC;
+    background-color: #eceaea;
+    width: 100%;
     height: 100vh;
   }
-  .loginDiv {
-    background-color: whitesmoke;
-    display: flex;
-    width: 50rem;
-    height: 30rem;
-    margin: 1.5rem;
-    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
-  }
   .contenedorImagen {
-    width: 25rem;
-    height: 30rem;
-    background-color:#CCCCCC;
+    width: 100vh;
+    height: 100vh;
+    background-color: #CCCCCC;
   }
   .contenedorFormulario {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center; 
-    width: 25rem;
-    height: 30rem;
-    background-color: rgb(230, 230, 230);
-    padding: 3rem;  
+    width: 100vh;
+    height: 100vh;
+    padding: 3rem; 
+    font-size: 1.5rem; 
   }
   .headerLogo {
-    width: 20rem;
-    height: 6rem;
+    width: 30rem;
+    height: 8rem;
     margin: 1rem;
   }
   .input {
     border-radius: 2rem;
     text-align: center;
-    font-size: 15px;
+    font-size: 1.5rem;
     padding: 5px;
-    width: 18rem;
-    height: 2rem;
+    width: 19rem;
+    height: 3rem;
     margin: 1%;
     color: orange;
   }
@@ -59,14 +49,18 @@
     color: white;
     background-color: black;
     cursor: pointer;
+    font-size: 1.2rem;
   }
   .button:hover {
     transform: scale(1.1);
   }
 
   .buttonGoogle {
-    width: 2rem;
-    height: 2rem
+    width: 3rem;
+    height: 3rem;
+  }
+  .buttonGoogle:hover {
+    transform: scale(1.1);
   }
 
 /*Estilo home*/
