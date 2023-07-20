@@ -19,4 +19,15 @@ const onNavigate = (pathname) => {
 };
 
 const component = routes[window.location.pathname];
+console.log(window.location.pathname)
+
+window.addEventListener('popstate', () =>{
+  const paginas = routes[window.location.pathname];
+  rootDiv.removeChild(rootDiv.firstChild);
+  rootDiv.appendChild(paginas(onNavigate));
+  console.log(window.location.pathname)
+})
+
 rootDiv.appendChild(component(onNavigate));
+
+
