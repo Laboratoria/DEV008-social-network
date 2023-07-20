@@ -1,8 +1,9 @@
 export const register = (onNavigate) => {
   const homeDiv = document.createElement('div');
-  homeDiv.textContent = 'Bienvenidos al registro';
+  homeDiv.classList.add('container');
+ 
 
-  const registerDiv = document.createElement('div');
+  const registerDiv = document.createElement('main');
   registerDiv.classList.add('registerDiv');
   homeDiv.appendChild(registerDiv);
 
@@ -51,14 +52,14 @@ export const register = (onNavigate) => {
   password2Input.required = true;
   password2Input.minLength = 8;
 
-  const aceptregister= document.createElement('button');
+  const aceptregister = document.createElement('button');
   aceptregister.classList.add('button');
   aceptregister.textContent = 'Registrar';
 
 
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('button');
-  buttonHome.textContent = 'Regresar';
+  buttonHome.textContent = 'Inicio';
 
   const links = document.createElement('section');
 
@@ -81,7 +82,7 @@ export const register = (onNavigate) => {
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
 
-  homeDiv.appendChild(buttonHome);
+
   contenedorInput.appendChild(userInput);
   contenedorInput.appendChild(emailInput);
   contenedorInput.appendChild(passwordInput);
@@ -90,8 +91,18 @@ export const register = (onNavigate) => {
   links.appendChild(parrafo1)
   contenedorInput.appendChild(links)
   contenedorInput.appendChild(buttonGoogle);
+  contenedorInput.appendChild(buttonHome);
   homeDiv.appendChild(socialNetBy)
 
 
   return homeDiv;
 };
+
+/*aceptregister.addEventListener('click', () => {
+  const name = document.getElementById(userInput).value;
+  if (name === ' '){
+    alert(' Completa nombre '); return;
+  }
+  
+}
+);*/
