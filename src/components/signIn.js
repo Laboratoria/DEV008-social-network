@@ -1,4 +1,5 @@
 export const signIn = (onNavigate) => {
+  // Aquí se crean los elementos del HTML y eliges que tipo de elementos son dentro de los ()
   const homeDiv = document.createElement('div');
   const signUpButton = document.createElement('button');
   const signInButton = document.createElement('button');
@@ -10,6 +11,7 @@ export const signIn = (onNavigate) => {
   const contrasena = document.createElement('input');
   const pregunta = document.createElement('p');
 
+  // Aquí se les agrega el texto que quieren que diga
   googleButton.textContent = 'Acceder con Google';
   pregunta.textContent = '¿No tienes una cuenta?';
   correoElectronico.placeholder = 'Correo Electrónico';
@@ -19,6 +21,7 @@ export const signIn = (onNavigate) => {
   signUpButton.textContent = 'Registrate';
   signInButton.textContent = 'Inicia Sesión';
 
+  // Los eventos de ir navegar entre páginas con click
   signUpButton.addEventListener('click', () => {
     onNavigate('/signup');
   });
@@ -27,6 +30,7 @@ export const signIn = (onNavigate) => {
     onNavigate('/wall');
   });
 
+  // Aquí se agregan hijos y se ordenan dependiendo de como quieras que se veans en tu página
   homeDiv.appendChild(infoPagina);
   homeDiv.appendChild(lema);
   homeDiv.appendChild(correoElectronico);
