@@ -1,35 +1,28 @@
-
+/* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { valid } from "semver";
-
+import { initializeApp } from 'firebase/app';
+import { GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyA3nkMmxJN-mrSa5VBxs62i1lpBv0wDOhA",
-  authDomain: "social-instapet.firebaseapp.com",
-  projectId: "social-instapet",
-  storageBucket: "social-instapet.appspot.com",
-  messagingSenderId: "1083258680295",
-  appId: "1:1083258680295:web:6ed3bd1f88ce0f51bb0342",
-  measurementId: "G-6H0S24JL2S"
+  apiKey: 'AIzaSyDvAiTov1h1P4refJwXUEuIuxAHwEiXJvU',
+  authDomain: 'instapet-rs9.firebaseapp.com',
+  projectId: 'instapet-rs9',
+  storageBucket: 'instapet-rs9.appspot.com',
+  messagingSenderId: '20626526101',
+  appId: '1:20626526101:web:f0f2fbdc4f69aa5164709c',
+  measurementId: 'G-NPGVFY50GP',
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig); 
-const analytics = getAnalytics(app);
+const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(firebaseApp);
+const auth = getAuth(app);
 
-onAuthStateChanged(auth, user =>{
-    if user = null{
-        console.log('logged in!')
-    } else {
-        console.log('No user');
-    }
-});
+export function googleLogin() {
+  const provider = new GoogleAuthProvider();
+  return signInWithPopup(auth, provider);
+}
