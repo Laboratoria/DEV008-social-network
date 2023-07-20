@@ -11,23 +11,20 @@ const routes = {
 };
 const onNavigate = (pathname) => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
-  //while (rootDiv.firstChild) {
-    rootDiv.removeChild(rootDiv.firstChild);
-  //}
+  // while (rootDiv.firstChild) {
+  rootDiv.removeChild(rootDiv.firstChild);
+  // }
 
   rootDiv.appendChild(routes[pathname](onNavigate));
 };
 
 const component = routes[window.location.pathname];
-console.log(window.location.pathname)
+console.log(window.location.pathname);
 
 window.addEventListener('popstate', () =>{
   const paginas = routes[window.location.pathname];
   rootDiv.removeChild(rootDiv.firstChild);
   rootDiv.appendChild(paginas(onNavigate));
-  console.log(window.location.pathname)
-})
+  console.log(window.location.pathname)});
 
 rootDiv.appendChild(component(onNavigate));
-
-
