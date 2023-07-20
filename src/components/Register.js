@@ -1,29 +1,34 @@
 const Register = (onNavigate) => {
-  const homeDiv = document.createElement('div');
-  homeDiv.textContent = 'Registrate a InstaPet';
+  const registerSection = document.createElement('section');
+  registerSection.classList.add('contenedor');
 
-  const username = document.createElement('INPUT');
-  username.setAttribute('type', 'email');
-  username.setAttribute('placeholder', 'Nombre de usuario');
+  const registerTitle = document.createElement('h2');
+  registerTitle.textContent = '¡Registrate!';
+  registerTitle.classList.add('welcome-title');
 
-  const email = document.createElement('INPUT');
+  const registerForm = document.createElement('form');
+
+  const username = document.createElement('input');
+  username.setAttribute('type', 'name');
+  username.setAttribute('placeholder', 'Nombre de mascota');
+
+  const email = document.createElement('input');
   email.setAttribute('type', 'email');
   email.setAttribute('placeholder', 'Correo electrónico');
 
-  const password = document.createElement('INPUT');
+  const password = document.createElement('input');
   password.setAttribute('type', 'password');
   password.setAttribute('placeholder', 'Contraseña');
 
   const buttonRegister = document.createElement('button');
   buttonRegister.textContent = 'Inicia Sesión';
   buttonRegister.addEventListener('click', () => onNavigate('/Home'));
+  buttonRegister.classList.add('btn');
 
-  homeDiv.appendChild(username);
-  homeDiv.appendChild(email);
-  homeDiv.appendChild(password);
-  homeDiv.appendChild(buttonRegister);
+  registerForm.append(username, email, password, buttonRegister);
+  registerSection.append(registerTitle, registerForm);
 
-  return homeDiv;
+  return registerSection;
 };
 
 export default Register;
