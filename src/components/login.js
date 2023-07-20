@@ -8,7 +8,7 @@ export const login = (onNavigate) => {
 
   const loginImg = document.createElement('img');
   loginImg.src = '../img_login.png';
-  loginImg.classList.add('contenedorImagen');
+  loginImg.classList.add('loginImagen');
   contenedorImagen.appendChild(loginImg);
 
   const contenedorFormulario = document.createElement('form');
@@ -55,7 +55,7 @@ export const login = (onNavigate) => {
 
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('button');
-  buttonHome.textContent = 'Regresar a home';
+  buttonHome.textContent = 'Inicio';
   contenedorFormulario.appendChild(buttonHome);
 
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
