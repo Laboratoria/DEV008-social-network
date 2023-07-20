@@ -50,8 +50,8 @@ const Login = (onNavigate) => {
   buttonGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     const resultado = googleLogin();
-    resultado.then((response) => {
-      console.log(response);
+    resultado.then(() => {
+      onNavigate('/Home');
     });
   });
 
