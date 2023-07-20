@@ -14,7 +14,7 @@ const Home = (onNavigate) => {
   postForm.classList.add('flex');
 
   const postMessage = document.createElement('input');
-  postMessage.setAttribute('type', 'textarea');
+  postMessage.setAttribute('type', 'text');
   postMessage.setAttribute('placeholder', '¿Miau, Woaw, Pio?');
 
   const buttonPublicar = document.createElement('button');
