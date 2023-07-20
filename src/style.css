@@ -1,0 +1,379 @@
+@font-face {
+  font-family: Sora;
+  src: url(./assets/fonts/Sora-Bold.ttf), url(./assets/fonts/Sora-ExtraBold.ttf),
+    url(./assets/fonts/Sora-ExtraLight.ttf), url(./assets/fonts/Sora-Light.ttf),
+    url(./assets/fonts/Sora-Medium.ttf),
+    url(./assets/fonts/Sora-Regular.ttf) url(./assets/fonts/Sora-SemiBold.ttf),
+    url(./assets/fonts/Sora-Thin.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Sora, sans-serif;
+}
+
+/*-------------Page LOGIN-------------------*/
+.container {
+  display: flex;
+}
+.sectionRight {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ebffff;
+  height: 100vh;
+}
+
+/*-------------Page REGISTER-------------------*/
+
+.container__r {
+  display: flex;
+}
+
+.sectionRightRegister {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ebffff;
+  height: 100vh;
+}
+
+.login,
+.register {
+  width: 250px;
+  height: auto;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+  padding: 16px 10px;
+}
+
+.loginLogo,
+.registerLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 120px;
+  justify-content: end;
+}
+
+.loginLogo__img,
+.registerLogo__img {
+  width: 54.521px;
+  height: 50px;
+}
+
+.loginLogo__title,
+.registerLogo__title {
+  color: #000;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.loginForm,
+.registerForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm__label,
+.registerForm__label {
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.loginForm__input,
+.registerForm__input {
+  height: 36px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 25px;
+  border: 1px solid #00b4b8;
+  padding: 4px 10px;
+}
+
+.loginForm__link,
+.register__link,
+.registerForm__link--blue {
+  cursor: pointer;
+}
+
+.loginForm__link--black,
+.register__link--black {
+  color: #000;
+  text-decoration-line: underline;
+}
+
+.loginForm__link--blue,
+.registerForm__link--blue {
+  color: #1464f6;
+}
+
+.loginButtons__o,
+.registerButtons__o {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__Account {
+  text-align: center;
+}
+
+/*buttons css*/
+.btn {
+  padding: 10px 5px;
+  font-size: small;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.btn--primary {
+  border-radius: 25px;
+  background: #8c4eca;
+  color: white;
+}
+
+.btn--primary:hover {
+  background: #7642ab;
+}
+
+.btn--google {
+  width: 100%;
+  border-radius: 5px;
+  border: thin solid #888;
+  padding: 12px 20px;
+  box-shadow: 1px 1px 1px grey;
+  /*icon*/
+  background: url("./assets/icons/Google.png") transparent 15px 50% no-repeat;
+  background-size: 24px 24px;
+}
+
+.btn--google:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.marginBottom_4 {
+  margin-bottom: 4px;
+}
+
+.marginBottom_8 {
+  margin-bottom: 8px;
+}
+
+.marginBottom_16 {
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 480px) {
+  /*Login*/
+  .sectionRight {
+    flex: 1;
+  }
+  .sectionLeft {
+    flex: 1;
+    background-color: #fff;
+    /*login image*/
+    background: url("./assets/images/gatito_login.png") transparent 15px 50%
+      no-repeat;
+    background-size: 492px 800px;
+    background-position: center;
+  }
+  /*Register*/
+  @media screen and (min-width: 480px) {
+    .container__r {
+      flex-direction: row-reverse;
+    }
+    .sectionRightRegister {
+      flex: 1;
+    }
+    .sectionLeftRegister {
+      flex: 1;
+      background-color: #fff;
+      /*login image*/
+      background: url("./assets/images/gatito_registro.png") transparent 15px
+        50% no-repeat;
+      background-size: 492px 600px;
+      background-position: center;
+    }
+  }
+}
+
+/*---------------Header-------------------*/
+.header {
+  background-color: #00b4b8;
+  padding: 0 4px;
+  height: 60px;
+  position: sticky;
+  top: 0px;
+}
+
+.header__logoHeader {
+  position: fixed;
+  z-index: 100;
+  top: 5px;
+  right: calc(50% - 25px);
+}
+.logoHeader__img {
+  margin: 0 auto;
+  width: 50.938px;
+  height: 50px;
+}
+
+.menuProfile,
+.menuTopics {
+  position: fixed;
+  transform: translateX(-100%);
+  transition: transform 0.2s;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: white;
+  list-style: none;
+  padding-top: 2rem;
+}
+
+.menu__line {
+  border: 1px solid #e5e5e5;
+}
+
+.menuItemProfile,
+.menuItemTopics {
+  display: block;
+  margin: 2rem;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 auto;
+  /*text*/
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.menuItemProfile a,
+.menuItemTopics a {
+  display: flex;
+  align-items: center;
+}
+
+.menuItemProfile:hover,
+.menuItemTopics:hover {
+  color: #00b4b8;
+}
+
+.menuProfile__img {
+  width: 50px;
+  height: 50px;
+}
+
+/*menu-icons*/
+.menuIconProfile {
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+}
+.menuIcon {
+  width: 29px;
+  height: 38px;
+  margin-right: 12px;
+}
+
+.hamburger {
+  position: fixed;
+  z-index: 100;
+  top: 2px;
+  right: 16px;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hamburgerTopic {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 16px;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.profileIcon {
+  width: 48px;
+  height: 48px;
+}
+
+.profileIconTopic {
+  width: 28px;
+  height: 28px;
+}
+
+.closeIcon,
+.closeIconTopic {
+  display: none;
+  position: relative;
+  top: 20px;
+}
+.showMenu,
+.showMenuTopic {
+  transform: translateY(0);
+}
+
+@media screen and (min-width: 480px) {
+  .header__menuTopics {
+    display: none;
+  }
+
+  .header__logoHeader {
+    left: 20px;
+  }
+  .header__logoHeader::after {
+    content: "CatsSociety";
+    font-size: 32px;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    top: -10px;
+  }
+
+  .closeIcon {
+    height: 20px;
+    left: 25px;
+  }
+  .menuProfile {
+    width: 250px;
+    height: 320px;
+    z-index: 4;
+    top: 60px;
+    left: calc(100vw + 150px);
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    background: #fff;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+  }
+  .showMenu {
+    transform: translate(-410px, 0px);
+  }
+  .menuItemProfile {
+    margin: 0.5rem;
+  }
+}
