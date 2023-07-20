@@ -2,29 +2,21 @@ export const login = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('container');
 
-  const buttonHome = document.createElement('button');
-  buttonHome.classList.add('button');
-  buttonHome.textContent = 'Regresar a home';
-
-  const loginDiv = document.createElement('div');
-  loginDiv.classList.add('loginDiv');
-  homeDiv.appendChild(loginDiv);
-
   const contenedorImagen = document.createElement('aside');
   contenedorImagen.classList.add('contenedorImagen');
-  loginDiv.appendChild(contenedorImagen);
+  homeDiv.appendChild(contenedorImagen);
 
   const loginImg = document.createElement('img');
-  loginImg.src = '../img_login.JPG';
-  loginImg.classList.add('contenedorImagen');
+  loginImg.src = '../img_login.png';
+  loginImg.classList.add('loginImagen');
   contenedorImagen.appendChild(loginImg);
 
   const contenedorFormulario = document.createElement('form');
   contenedorFormulario.classList.add('contenedorFormulario');
-  loginDiv.appendChild(contenedorFormulario);
+  homeDiv.appendChild(contenedorFormulario);
 
   const headerLogo = document.createElement('img');
-  headerLogo.src = '../musiClub -logo.JPG';
+  headerLogo.src = '../logo.png';
   headerLogo.classList.add('headerLogo');
   contenedorFormulario.appendChild(headerLogo);
 
@@ -61,11 +53,13 @@ export const login = (onNavigate) => {
   buttonRegister.textContent = 'Registrate';
   contenedorFormulario.appendChild(buttonRegister);
 
+  const buttonHome = document.createElement('button');
+  buttonHome.classList.add('button');
+  buttonHome.textContent = 'Inicio';
+  contenedorFormulario.appendChild(buttonHome);
+
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
-
-  homeDiv.appendChild(buttonHome);
-
   return homeDiv;
 };
