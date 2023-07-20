@@ -1,18 +1,89 @@
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-  }
+*, *::before, 
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
 
-  body {
-    text-align: center;
-    align-items: center;
-    background-color:rgba(255, 219, 228, 0.562);
-  } 
+:root {
+  --light-salmon: #FED4CD;
+  --white: #ffffff;
+  --salmon: #e47c7c;
+  --dark-salmon: #C28B8B;
+}
 
-  .contenedor{
-    background-color:rgba(187, 241, 171, 0.712);
-    text-align: center;
-    align-items: center;
-    image-rendering: auto;
-  }
+.flex, #google-btn {
+  display: flex;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--light-salmon);
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-title {
+  font-family: 'Patua One', cursive;
+  font-size: 1.6rem;
+  color: var(--dark-salmon);
+  font-weight: 400;
+}
+
+.form-container{
+  width: 18rem;
+  height: 20rem;
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  image-rendering: auto;
+  flex-flow: column;
+}
+
+input {
+  width: 14rem;
+  padding: 0.3rem 0.2rem;
+  margin: 0.4rem 0;
+}
+
+input::placeholder {
+  color: var(--dark-salmon);
+}
+
+.btn-container {
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.btn {
+  width: 6.4rem;
+  min-width: fit-content;
+  height: 2rem;
+  background: var(--salmon);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  margin: 0.4rem 0;
+  padding: 0 0.4rem;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background: var(--white);
+  color: var(--salmon);
+  border: 1px solid var(--salmon);
+  transition: 0.5s;
+}
+
+.icon {
+  height: 28px;
+  margin-left: 8px;
+}
+
+#google-btn {
+  align-items: center;
+}
