@@ -15,7 +15,7 @@
     display: flex;
     background-color: #eceaea;
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
   .contenedorImagen {
     display: flex;
@@ -26,8 +26,8 @@
     background-color: #CCCCCC;
   }
   .loginImagen {
-    width: 800px;
-    height: 800px;
+    width: 600px;
+    height: 600px;
   }
   .contenedorFormulario {
     display: flex;
@@ -41,8 +41,8 @@
     font-family: CaviarDreams;
   }
   .headerLogo {
-    width: 45rem;
-    height: 10rem;
+    width: 30rem;
+    height: 8rem;
     margin: 1rem 1rem 2rem 1rem;
   }
   .input {
@@ -88,10 +88,10 @@
   body {
     background: #E5E5E5;
     background-repeat: no-repeat;
-    margin: 20px;
-    display: grid;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr auto;
+    overflow-x: hidden;
+    background:#E5E5E5;
+    width: 100%;
+    height:auto;
   
   }
   .contenedorHome{
@@ -201,8 +201,10 @@ margin: 20px;
     
     background-color: rgb(31, 26, 26);
     color: #E5E5E5;
-    padding: 1em 0;
     text-align: center;
+    margin-top: 0px;
+    padding: 0px;
+    overflow: visible;
   
   }
 /* ===== Pantallas desde 769 px de ancho ===== */

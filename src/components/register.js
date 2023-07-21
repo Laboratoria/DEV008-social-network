@@ -21,7 +21,7 @@ export const register = (onNavigate) => {
   registerDiv.appendChild(contenedorInput);
 
   const headerLogo = document.createElement('img');
-  headerLogo.src = '../musiClub -logo.JPG';
+  headerLogo.src = '../logo.png';
   headerLogo.classList.add('headerLogo');
   contenedorInput.appendChild(headerLogo);
 
@@ -34,13 +34,13 @@ export const register = (onNavigate) => {
 
   const emailInput = document.createElement('input');
   emailInput.classList.add('Input-registro');
-  emailInput.id= 'email';
+  emailInput.id= 'E-mail';
   emailInput.placeholder = 'E-mail';
   emailInput.required = true;
 
   const passwordInput = document.createElement('input');
   passwordInput.classList.add('Input-registro');
-  passwordInput.id= 'Contraseña';
+  passwordInput.id= 'Contraseña1';
   passwordInput.placeholder = 'Escribe tu contraseña (al menos 8 caracteres)';
   passwordInput.required = true;
   passwordInput.minLength = 8;
@@ -67,7 +67,7 @@ export const register = (onNavigate) => {
   parrafo1.textContent = 'Ó registrate con tu cuenta';
 
   const linkGoogle = document.createElement('div');
-  links.appendChild(linkGoogle)
+  links.appendChild(linkGoogle);
 
   const buttonGoogle = document.createElement('img');
   buttonGoogle.src = 'https://cdn.pixabay.com/photo/2021/05/24/09/15/google-logo-6278331_1280.png';
@@ -77,6 +77,7 @@ export const register = (onNavigate) => {
 
   const socialNetBy = document.createElement ('footer');
   socialNetBy.textContent =' SOCIAL NETWORK BY G-K-M';
+ 
 
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
@@ -100,8 +101,11 @@ export const register = (onNavigate) => {
 
 /*aceptregister.addEventListener('click', () => {
   const name = document.getElementById(userInput).value;
-  if (name === ' '){
-    alert(' Completa nombre '); return;
+  const email = document.getElementById(E-mail).value;
+  const contraseña = document.getElementById(contraseña1).Value;
+  const contraseñaVerficada = document.getElementById(verificacion-contraseña);
+  if (name === ' ' || email === ' ' || contraseña === ' ' || contraseñaVerficada === ' '){
+    alert('Completa los campos'); return aceptregister;
   }
   
 }
