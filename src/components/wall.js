@@ -1,9 +1,9 @@
 export const wall = (onNavigate) => {
   const homeDiv = document.createElement('div');
   const signOutButton = document.createElement('button');
-  const publicarButton = document.createElement('button');
+  const postButton = document.createElement('button');
 
-  publicarButton.textContent = 'Publicar';
+  postButton.textContent = 'Publicar';
   signOutButton.textContent = 'Cerrar sesión';
   
 
@@ -11,7 +11,7 @@ export const wall = (onNavigate) => {
     onNavigate('/')
   });
 
-  homeDiv.appendChild(publicarButton);
+  homeDiv.appendChild(postButton);
   homeDiv.appendChild(signOutButton);
 
   return homeDiv;

@@ -1,4 +1,4 @@
-// aqui exportaras las funciones que necesites
+// aqui exportaras las funciones o metodos que interactuan y tienen un proposito
 
 export const myFunction = () => {
   // aqui tu codigo
