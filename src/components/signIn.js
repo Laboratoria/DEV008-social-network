@@ -1,27 +1,27 @@
 export const signIn = (onNavigate) => {
-  // Aquí se crean los elementos del HTML y eliges que tipo de elementos son dentro de los ()
+  // Aquí se crean los elementos de HTML
+ 
   const homeDiv = document.createElement('div');
   const signUpButton = document.createElement('button');
   const signInButton = document.createElement('button');
   const googleButton = document.createElement('button');
-  // <p>"Únete a nuestra red de apoyo y reduce el derroche alimentario."<p/>
-  const infoPagina = document.createElement('p');
-  const lema = document.createElement('h4');
-  const correoElectronico = document.createElement('input');
-  const contrasena = document.createElement('input');
-  const pregunta = document.createElement('p');
+ 
+  const description = document.createElement('p');
+  const email = document.createElement('input');
+  const password = document.createElement('input');
+  const dontYouHaveAnAccount = document.createElement('p');
 
-  // Aquí se les agrega el texto que quieren que diga
+  // Se inserta el nombre a los elementos creados
   googleButton.textContent = 'Acceder con Google';
-  pregunta.textContent = '¿No tienes una cuenta?';
-  correoElectronico.placeholder = 'Correo Electrónico';
-  contrasena.placeholder = 'Contraseña';
-  lema.textContent = '¡Donde come uno, comen dos!';
-  infoPagina.textContent = '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
-  signUpButton.textContent = 'Registrate';
-  signInButton.textContent = 'Inicia Sesión';
+  dontYouHaveAnAccount.textContent = '¿No tienes una cuenta?';
+  email.placeholder = 'Correo Electrónico';
+  password.placeholder = 'Contraseña';
 
-  // Los eventos de ir navegar entre páginas con click
+  description.textContent = '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
+  signUpButton.textContent = 'Registrate';
+  signInButton.textContent = 'Inicia sesión';
+
+  // Se crean los eventos que permitiran la navegación
   signUpButton.addEventListener('click', () => {
     onNavigate('/signup');
   });
@@ -30,15 +30,15 @@ export const signIn = (onNavigate) => {
     onNavigate('/wall');
   });
 
-  // Aquí se agregan hijos y se ordenan dependiendo de como quieras que se veans en tu página
-  homeDiv.appendChild(infoPagina);
-  homeDiv.appendChild(lema);
-  homeDiv.appendChild(correoElectronico);
-  homeDiv.appendChild(contrasena);
+  // Se insertan los hijos
+  homeDiv.appendChild(description);
+  homeDiv.appendChild(email);
+  homeDiv.appendChild(password);
   homeDiv.appendChild(signInButton);
   homeDiv.appendChild(googleButton);
-  homeDiv.appendChild(pregunta);
+  homeDiv.appendChild(dontYouHaveAnAccount);
   homeDiv.appendChild(signUpButton);
+  
 
   return homeDiv;
 };
