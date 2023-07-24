@@ -68,7 +68,6 @@
     font-family: AnotherAmerica;
     letter-spacing:.5rem;
     margin: 1rem;
-
   }
   .button:hover {
     transform: scale(1.1);
@@ -107,14 +106,15 @@
     width: 50%;
     height: auto;
   }
-
   .sinopsis{
   font-size: larger;
-  background-color: #CCCCCC;
+  color: aliceblue;
+  background-color: black;
   padding: 30px;
   justify-content: center;
   align-items: center;
   font-family: CaviarDreams;
+
 }
 .contenedorBotonesHome{
     justify-content: center;
@@ -124,20 +124,6 @@
     position:relative;
     display: flex;
     margin: 20px;
-}
-.btnRegister{
-width: 200px;
-height: auto;
-align-items: center; 
-align-items: center; 
-margin: 20px;
-}
-.btnLogin{
-  width: 200px;
-height: auto;
-align-items: center; 
-align-items: center; 
-margin: 20px;
 }
 .imagenAbajo{
   align-items: center;
