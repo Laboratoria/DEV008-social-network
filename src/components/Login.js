@@ -1,3 +1,4 @@
+import { loginUser } from '../lib/firebase/acount';
 import { googleLogin } from '../lib/firebase/firebaseconfig';
 
 const Login = (onNavigate) => {
@@ -25,7 +26,22 @@ const Login = (onNavigate) => {
 
   const buttonLogin = document.createElement('button');
   buttonLogin.textContent = 'Iniciar Sesión';
-  buttonLogin.addEventListener('click', () => onNavigate('/Home'));
+  buttonLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginUser(inputEmail.value, inputPassword.value)
+      .then((userCredential) => {
+        onNavigate('/Home');
+        // Signed in
+        const user = userCredential.user;
+        alert('Bienvenida  de regreso InstaPet');
+      // ...
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      // ..
+      });
+  });
   buttonLogin.classList.add('btn');
 
   const buttonRegister = document.createElement('button');
@@ -50,8 +66,8 @@ const Login = (onNavigate) => {
   buttonGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     const resultado = googleLogin();
-    resultado.then((response) => {
-      console.log(response);
+    resultado.then(() => {
+      onNavigate('/Home');
     });
   });
 

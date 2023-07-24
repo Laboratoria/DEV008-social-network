@@ -1,3 +1,5 @@
+import { addUser } from '../lib/firebase/acount';
+
 const Register = (onNavigate) => {
   const registerSection = document.createElement('section');
   registerSection.classList.add('contenedor');
@@ -21,8 +23,23 @@ const Register = (onNavigate) => {
   password.setAttribute('placeholder', 'Contraseña');
 
   const buttonRegister = document.createElement('button');
-  buttonRegister.textContent = 'Inicia Sesión';
-  buttonRegister.addEventListener('click', () => onNavigate('/Home'));
+  buttonRegister.textContent = 'Registrate';
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addUser(email.value, password.value)
+      .then((userCredential) => {
+        onNavigate('/Home');
+        // Signed in
+        const user = userCredential.user;
+        alert('Bienvenida  a InstaPet');
+      // ...
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      // ..
+      });
+  });
   buttonRegister.classList.add('btn');
 
   registerForm.append(username, email, password, buttonRegister);

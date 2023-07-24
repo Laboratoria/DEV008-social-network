@@ -21,7 +21,7 @@ body {
   height: 100vh;
   background-color: var(--light-salmon);
   justify-content: center;
-  align-items: center;
+  align-items: center;  
 }
 
 .welcome-title {
@@ -57,6 +57,7 @@ input::placeholder {
 .btn-container {
   justify-content: space-evenly;
   flex-wrap: wrap;
+  
 }
 
 .btn {
@@ -80,7 +81,7 @@ input::placeholder {
 }
 
 .icon {
-  height: 28px;
+  height: 22px;
   margin-left: 8px;
 }
 
@@ -88,11 +89,18 @@ input::placeholder {
   align-items: center;
 }
 .contenedorHome {
-  display: flow-root;
   justify-content:center;
 }
 
 .post-form {  
   background-color: #ffffff;
-  padding: 10%;
+  padding: 2rem;
+  flex-flow: column;
+
 } 
+
+textarea {
+  resize: none;
+  height: 8rem;
+  width: 36rem;
+}

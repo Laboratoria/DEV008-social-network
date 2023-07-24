@@ -1,7 +1,6 @@
 const Home = (onNavigate) => {
   const homeSection = document.createElement('section');
   homeSection.classList.add('contenedorHome');
-  homeSection.classList.add('flex2');
 
   const headerSection = document.createElement('div');
 
@@ -13,10 +12,10 @@ const Home = (onNavigate) => {
   postForm.classList.add('post-form');
   postForm.classList.add('flex');
 
-  const postMessage = document.createElement('input');
-  postMessage.setAttribute('type', 'text');
+  const postMessage = document.createElement('textarea');
   postMessage.setAttribute('placeholder', '¿Miau, Woaw, Pio?');
-
+  const btnContainerHome = document.createElement('div');
+  btnContainerHome.classList.add('btn-container', 'flex');
   const buttonPublicar = document.createElement('button');
   buttonPublicar.textContent = 'Publicar';
   buttonPublicar.classList.add('btn');
@@ -35,7 +34,8 @@ const Home = (onNavigate) => {
   homeSection.appendChild(headerSection);
   homeSection.appendChild(postForm);
   headerSection.append(welcomeTitle, buttonLogout);
-  postForm.append(postMessage, buttonPublicar, buttonEditar);
+  btnContainerHome.append(buttonPublicar, buttonEditar);
+  postForm.append(postMessage, btnContainerHome);
 
   return homeSection;
 };
