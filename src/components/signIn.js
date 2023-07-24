@@ -1,11 +1,11 @@
 export const signIn = (onNavigate) => {
   // Aquí se crean los elementos de HTML
- 
+
   const homeDiv = document.createElement('div');
   const signUpButton = document.createElement('button');
   const signInButton = document.createElement('button');
   const googleButton = document.createElement('button');
- 
+
   const description = document.createElement('p');
   const email = document.createElement('input');
   const password = document.createElement('input');
@@ -38,7 +38,6 @@ export const signIn = (onNavigate) => {
   homeDiv.appendChild(googleButton);
   homeDiv.appendChild(dontYouHaveAnAccount);
   homeDiv.appendChild(signUpButton);
-  
 
   return homeDiv;
 };
