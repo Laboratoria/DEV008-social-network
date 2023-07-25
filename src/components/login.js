@@ -29,6 +29,7 @@ export const login = (onNavigate) => {
   inputContraseña.placeholder = 'Constraseña';
   inputContraseña.classList.add('input');
   contenedorFormulario.appendChild(inputContraseña);
+  inputContraseña.type = ('password');
 
   const buttonEntrar = document.createElement('button');
   buttonEntrar.classList.add('button');

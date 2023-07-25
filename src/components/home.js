@@ -19,14 +19,14 @@ export const home = (onNavigate) => {
   contenedorBotones.className="contenedorBotonesHome";
   contenedorHome.appendChild(contenedorBotones);
   
-  const buttonRegister = document.createElement('img');
-  buttonRegister.src = "btn registrarse.png";
-  buttonRegister.className = "btnRegister";
+  const buttonRegister = document.createElement('button');
+  buttonRegister.innerText ='Registrarse';
+  buttonRegister.classList = "button";
   contenedorBotones.appendChild(buttonRegister);
 
-  const buttonLogin = document.createElement('img');
-  buttonLogin.src = "login btn.png";
-  buttonLogin.className = "btnLogin";
+  const buttonLogin = document.createElement('button');
+  buttonLogin.innerText = 'Entrar';
+  buttonLogin.classList = "button";
   contenedorBotones.appendChild(buttonLogin);
 
   const contenedorImagenesH = document.createElement('div');
@@ -34,9 +34,13 @@ export const home = (onNavigate) => {
   contenedorHome.appendChild(contenedorImagenesH);
 
   const imagenAbajoH = document.createElement('img');
-  imagenAbajoH.className = "imagenAbajo"
+  imagenAbajoH.className = "imagenAbajo";
   contenedorImagenesH.appendChild(imagenAbajoH);
   imagenAbajoH.src = "imageninicio.png";
+
+  const footer = document.createElement('footer');
+  footer.className = "footer";
+  homeDiv.appendChild(footer);
 
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
   buttonLogin.addEventListener('click', () => onNavigate('/login'));

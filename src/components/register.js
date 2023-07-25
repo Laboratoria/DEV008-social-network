@@ -1,12 +1,10 @@
-//import { crearUsuario } from "../lib/firebase/configuracionFirabase";
+import { crearUsuario } from "../lib/firebase/configuracionFirabase";
 //import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 //import { auth } from "../lib/firebase/configuracionFirabase";
-
 
 export const register = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('container');
- 
 
   const registerDiv = document.createElement('main');
   registerDiv.classList.add('registerDiv');
@@ -30,32 +28,25 @@ export const register = (onNavigate) => {
   headerLogo.classList.add('headerLogo');
   contenedorInput.appendChild(headerLogo);
 
-
   const userInput = document.createElement('input');
   userInput.classList.add('input');
-  userInput.id= 'Nombre';
+  userInput.id = 'nombre';
   userInput.placeholder = 'Nombre de usuario';
-  userInput.required = true;
+  userInput.required = false;
 
   const emailInput = document.createElement('input');
   emailInput.classList.add('input');
-  emailInput.id= 'E-mail';
-  emailInput.placeholder = 'E-mail';
+  emailInput.id = 'mail';
+  emailInput.placeholder = 'Correo electrónico';
   emailInput.required = true;
 
   const passwordInput = document.createElement('input');
   passwordInput.classList.add('input');
-  passwordInput.id= 'Contraseña1';
-  passwordInput.placeholder = 'Escribe tu contraseña (al menos 8 caracteres)';
+  passwordInput.id = 'contraseña1';
+  passwordInput.placeholder = 'Crear contraseña (al menos 8 caracteres)';
   passwordInput.required = true;
   passwordInput.minLength = 8;
-
-  /*const password2Input = document.createElement('input');
-  password2Input.classList.add('input');
-  password2Input.id= 'verificacion-contraseña';
-  password2Input.placeholder = 'Repite la contraseña';
-  password2Input.required = true;
-  password2Input.minLength = 8;*/
+  passwordInput.type = ('password');
 
   const aceptregister = document.createElement('button');
   aceptregister.classList.add('button');
@@ -78,41 +69,22 @@ export const register = (onNavigate) => {
   buttonGoogle.classList.add('buttonGoogle');
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
-
   contenedorInput.appendChild(userInput);
   contenedorInput.appendChild(emailInput);
   contenedorInput.appendChild(passwordInput);
   contenedorInput.appendChild(aceptregister);
-  links.appendChild(parrafo1)
-  contenedorInput.appendChild(links)
+  links.appendChild(parrafo1);
+  contenedorInput.appendChild(links);
   contenedorInput.appendChild(buttonGoogle);
   contenedorInput.appendChild(buttonHome);
-  homeDiv.appendChild(socialNetBy)
 
+  aceptregister.addEventListener('click', () => {
+    //const name = document.getElementById('nombre').value;
+    const email = document.getElementById('mail').value;
+    const password = document.getElementById('contraseña1').value;
+    alert("este es el correo:"+email+"este es el password:"+password);
+    crearUsuario(email,password);
 
+  });
   return homeDiv;
 };
-
-/*aceptarRegistro.addEventListener('click', (e) => {
-  const name = document.getElementById(userInput).value;
-  const email = document.getElementById(E-mail).value;
-  const password = document.getElementById(contraseña1).Value;
-  //const passwordV = document.getElementById(verificacion-contraseña).value;
- /* if (name === ' ' || email === ' ' || contraseña === ' ' || contraseñaVerficada === ' '){
-    alert('Completa los campos'); return;
-  createUserWithEmailAndPassword(name, auth, email, password,)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        // ...user.uid
-        alert('Registro exitoso');
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-        alert(errorMessage)
-      });
-      onNavigate('/login');
-
- }); */

@@ -11,6 +11,16 @@
   font-family: CaviarDreams;
   src: url(CaviarDreams.ttf);
 }
+
+@media (max-width:600px) {
+  .container {
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  } 
+}
   .container {
     display: flex;
     background-color: #eceaea;
@@ -21,10 +31,11 @@
     display: flex;
     justify-content: center;
     align-items: center; 
-    width: 100vh;
+    width: 100%;
     height: 100vh;
-    background-color: rgb(175, 24, 44);
+    background-color: black;
   }
+
   .loginImagen {
     width: 600px;
     height: 600px;
@@ -61,7 +72,6 @@
     color: rgb(219, 113, 13);
     font-weight: bold ;
 
-
   }
   .input:hover {
     transform: scale(1.1);
@@ -70,13 +80,12 @@
     border-radius: 1rem;
     padding: .3rem .8rem;
     color: white;
-    background-color: black;
+    background-color: rgb(151, 6, 6);
     cursor: pointer;
     font-size: 1.3rem;
     font-family: AnotherAmerica;
     letter-spacing:.5rem;
     margin: 1rem;
-
   }
   .button:hover {
     transform: scale(1.1);
@@ -97,10 +106,8 @@
     background: #E5E5E5;
     background-repeat: no-repeat;
     overflow-x: hidden;
-    background:#E5E5E5;
     width: 100%;
     height:auto;
-  
   }
   .contenedorHome{
     height: 100%;
@@ -117,10 +124,10 @@
     width: 50%;
     height: auto;
   }
-
   .sinopsis{
   font-size: larger;
-  background-color: #CCCCCC;
+  color: aliceblue;
+  background-color: black;
   padding: 30px;
   justify-content: center;
   align-items: center;
@@ -131,30 +138,19 @@
     align-items: center;
     padding: 20px;
     display: flex;
-    position:relative;
-    display: flex;
     margin: 20px;
-}
-.btnRegister{
-width: 200px;
-height: auto;
-align-items: center; 
-align-items: center; 
-margin: 20px;
-}
-.btnLogin{
-  width: 200px;
-height: auto;
-align-items: center; 
-align-items: center; 
-margin: 20px;
+    display: flex;
 }
 .imagenAbajo{
-  align-items: center;
   width: 100%;
+  position: bottom;
+  justify-content: center;
+  align-items: center;
+}
+.footer{
+  background-color: aqua;
 }
 
-  /*========== termina home ========== */
 
   /*========== REGISTER ========== */
 
@@ -187,7 +183,6 @@ margin: 20px;
     padding: 3rem;  
   }
 
-
   input.Input-registro{
     margin:-3px 18px 9px 3px;
     padding: 8px 2%;
@@ -216,4 +211,13 @@ margin: 20px;
   
   }
 /* ===== Pantallas desde 769 px de ancho ===== */
-@media screen and (min-width:769px){}
+
+@media screen and (min-width:769px){
+.imagenAbajo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+};
