@@ -1,3 +1,5 @@
+import { iniciarSesion } from "../lib/firebase/configuracionFirabase";
+
 export const login = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('container');
@@ -23,11 +25,13 @@ export const login = (onNavigate) => {
   const inputCorreo = document.createElement('input');
   inputCorreo.placeholder = 'Correo';
   inputCorreo.classList.add('input');
+  inputCorreo.id = 'correo';
   contenedorFormulario.appendChild(inputCorreo);
 
   const inputContraseña = document.createElement('input');
   inputContraseña.placeholder = 'Constraseña';
   inputContraseña.classList.add('input');
+  inputContraseña.id = 'contraseña';
   contenedorFormulario.appendChild(inputContraseña);
   inputContraseña.type = ('password');
 
@@ -62,5 +66,29 @@ export const login = (onNavigate) => {
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
+
+  buttonEntrar.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('correo').value;
+    const password = document.getElementById('contraseña').value;
+
+    iniciarSesion(email, password)
+      .then((respuesta) => {
+        // Signed in
+        const user = respuesta.user;
+        console.log(user);
+        // ...
+        alert('Bienvenido');
+        onNavigate('/feed');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        alert(error.message);
+      });
+  });
+
   return homeDiv;
 };
