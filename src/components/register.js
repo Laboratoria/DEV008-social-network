@@ -84,7 +84,6 @@ export const register = (onNavigate) => {
     const password = document.getElementById('contraseña1').value;
     alert("este es el correo:"+email+"este es el password:"+password);
     crearUsuario(email,password);
-
   });
   return homeDiv;
 };
