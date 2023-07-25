@@ -78,12 +78,29 @@ export const register = (onNavigate) => {
   contenedorInput.appendChild(buttonGoogle);
   contenedorInput.appendChild(buttonHome);
 
-  aceptregister.addEventListener('click', () => {
-    //const name = document.getElementById('nombre').value;
+  aceptregister.addEventListener('click', (e) => {
+    e.preventDefault();
     const email = document.getElementById('mail').value;
     const password = document.getElementById('contraseña1').value;
-    alert("este es el correo:"+email+"este es el password:"+password);
-    crearUsuario(email,password);
+    
+    crearUsuario(email, password)
+    .then((respuesta) => {
+      // Signed in
+      const user = respuesta.user;
+      console.log(user);
+      // ...
+      alert('Usuario registrado exitosamente');
+      onNavigate('/login');
+
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ..
+      alert(error.message);
+    });
 
   });
   return homeDiv;
