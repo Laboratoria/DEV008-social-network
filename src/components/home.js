@@ -34,9 +34,13 @@ export const home = (onNavigate) => {
   contenedorHome.appendChild(contenedorImagenesH);
 
   const imagenAbajoH = document.createElement('img');
-  imagenAbajoH.className = "imagenAbajo"
+  imagenAbajoH.className = "imagenAbajo";
   contenedorImagenesH.appendChild(imagenAbajoH);
   imagenAbajoH.src = "imageninicio.png";
+
+  const footer = document.createElement('footer');
+  footer.className = "footer";
+  homeDiv.appendChild(footer);
 
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
   buttonLogin.addEventListener('click', () => onNavigate('/login'));

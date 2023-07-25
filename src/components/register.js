@@ -69,7 +69,6 @@ export const register = (onNavigate) => {
   buttonGoogle.classList.add('buttonGoogle');
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
-
   contenedorInput.appendChild(userInput);
   contenedorInput.appendChild(emailInput);
   contenedorInput.appendChild(passwordInput);
@@ -79,13 +78,13 @@ export const register = (onNavigate) => {
   contenedorInput.appendChild(buttonGoogle);
   contenedorInput.appendChild(buttonHome);
 
-  aceptregister.addEventListener('click', (e) => {
+  aceptregister.addEventListener('click', () => {
     //const name = document.getElementById('nombre').value;
     const email = document.getElementById('mail').value;
     const password = document.getElementById('contraseña1').value;
+    alert("este es el correo:"+email+"este es el password:"+password);
+    crearUsuario(email,password);
 
-    crearUsuario(email, password);
   });
-
   return homeDiv;
 };
