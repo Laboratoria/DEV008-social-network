@@ -82,26 +82,24 @@ export const register = (onNavigate) => {
     e.preventDefault();
     const email = document.getElementById('mail').value;
     const password = document.getElementById('contraseña1').value;
-    
+
     crearUsuario(email, password)
-    .then((respuesta) => {
-      // Signed in
-      const user = respuesta.user;
-      console.log(user);
-      // ...
-      alert('Usuario registrado exitosamente');
-      onNavigate('/login');
-
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      // ..
-      alert(error.message);
-    });
-
+      .then((respuesta) => {
+        // Signed in
+        const user = respuesta.user;
+        console.log(user);
+        // ...
+        alert('Usuario registrado exitosamente');
+        onNavigate('/login');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        // ..
+        alert(error.message);
+      });
   });
   return homeDiv;
 };

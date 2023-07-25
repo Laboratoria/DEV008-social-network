@@ -1,3 +1,4 @@
+import { iniciarSesion } from "../lib/firebase/configuracionFirabase";
 
 export const login = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -66,15 +67,28 @@ export const login = (onNavigate) => {
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
-  /*buttonEntrar.addEventListener('click', () => {
+  buttonEntrar.addEventListener('click', (e) => {
+    e.preventDefault();
     const email = document.getElementById('correo').value;
     const password = document.getElementById('contraseña').value;
 
-    inicioSesion(email,password);
-    onNavigate('/feed');
-
-
-  });*/
+    iniciarSesion(email, password)
+      .then((respuesta) => {
+        // Signed in
+        const user = respuesta.user;
+        console.log(user);
+        // ...
+        alert('Bienvenido');
+        onNavigate('/feed');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        alert(error.message);
+      });
+  });
 
   return homeDiv;
 };

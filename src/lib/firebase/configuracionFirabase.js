@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,12 +21,12 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-
 console.log(app.name);
-
 
 export const crearUsuario = (email,password) => {
 return createUserWithEmailAndPassword(auth, email, password)
 };
 
-
+export const iniciarSesion = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password)
+};
