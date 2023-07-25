@@ -61,7 +61,6 @@ export const register = (onNavigate) => {
   aceptregister.classList.add('button');
   aceptregister.textContent = 'Registrar';
 
-
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('button');
   buttonHome.textContent = 'Inicio';
@@ -78,17 +77,7 @@ export const register = (onNavigate) => {
   buttonGoogle.src = 'https://cdn.pixabay.com/photo/2021/05/24/09/15/google-logo-6278331_1280.png';
   buttonGoogle.classList.add('buttonGoogle');
 
-
-
-  const socialNetBy = document.createElement ('footer');
-  socialNetBy.classList.add('footer')
-  socialNetBy.textContent =' SOCIAL NETWORK BY G-K-M';
- 
-
-
   buttonHome.addEventListener('click', () => onNavigate('/'));
-
-
 
   contenedorInput.appendChild(userInput);
   contenedorInput.appendChild(emailInput);
