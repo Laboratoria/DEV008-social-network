@@ -9,8 +9,7 @@ const Home = (onNavigate) => {
   welcomeTitle.textContent = 'Instapet';
 
   const postForm = document.createElement('form');
-  postForm.classList.add('post-form');
-  postForm.classList.add('flex');
+  postForm.classList.add('post-form', 'flex');
 
   const postMessage = document.createElement('textarea');
   postMessage.setAttribute('placeholder', '¿Miau, Woaw, Pio?');

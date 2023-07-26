@@ -9,6 +9,8 @@ const Register = (onNavigate) => {
   registerTitle.classList.add('welcome-title');
 
   const registerForm = document.createElement('form');
+  registerForm.classList.add('Registro');
+  registerForm.setAttribute('id', 'Registro'); // Esto es para el Firestore//
 
   const username = document.createElement('input');
   username.setAttribute('type', 'name');
@@ -28,7 +30,7 @@ const Register = (onNavigate) => {
     e.preventDefault();
     addUser(email.value, password.value)
       .then((userCredential) => {
-        onNavigate('/Home');
+        onNavigate('/');
         // Signed in
         const user = userCredential.user;
         alert('Bienvenida  a InstaPet');
