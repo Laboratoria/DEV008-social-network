@@ -25,5 +25,9 @@ export const wall = (onNavigate) => {
   wallDiv.appendChild(allPosts);
   wallDiv.appendChild(signOutButton);
 
+<<<<<<< HEAD
   return wallDiv;
+=======
+  return wallDiv; 
+>>>>>>> main
 };

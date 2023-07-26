@@ -1,3 +1,4 @@
+import { googleLogin } from './firebase';
 export const signIn = (onNavigate) => {
   // Se crean los elementos de HTML
 
@@ -9,7 +10,7 @@ export const signIn = (onNavigate) => {
   imageSignIn.classList.add('imageSignIn');
   imageSignIn.src = '../image/imagesignIn.jpg';
   // se crea un select para almacenar el formulario
-  const formSignIn = document.createElement('form');
+  const formSignIn = document.createElement('div');
   formSignIn.classList.add('formSignIn');
   const description = document.createElement('h1');
   description.classList.add('description');
@@ -38,6 +39,13 @@ export const signIn = (onNavigate) => {
 
   // Se crean los eventos que permitiran la navegación
   signInButton.addEventListener('click', () => {
+    onNavigate('/wall');
+  });
+
+
+  googleButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    googleLogin();
     onNavigate('/wall');
   });
   signUpButton.addEventListener('click', () => {
