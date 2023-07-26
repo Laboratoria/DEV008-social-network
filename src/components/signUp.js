@@ -1,5 +1,5 @@
 export const signUp = (onNavigate) => {
-  const homeDiv = document.createElement('div');
+  const singUpDiv = document.createElement('div');
   const signUpButton = document.createElement('button');
   const backToLogin = document.createElement('button');
   const signUpText = document.createElement('h3');
@@ -27,14 +27,14 @@ export const signUp = (onNavigate) => {
     onNavigate('/wall');
   });
 
-  homeDiv.appendChild(signUpText);
-  homeDiv.appendChild(usersName);
-  homeDiv.appendChild(usersEmail);
-  homeDiv.appendChild(usersPassword);
-  homeDiv.appendChild(termsCheckbox);
-  homeDiv.appendChild(termsText);
-  homeDiv.appendChild(signUpButton);
-  homeDiv.appendChild(doYouHaveAnAccount);
-  homeDiv.appendChild(backToLogin);
-  return homeDiv;
+  singUpDiv.appendChild(signUpText);
+  singUpDiv.appendChild(usersName);
+  singUpDiv.appendChild(usersEmail);
+  singUpDiv.appendChild(usersPassword);
+  singUpDiv.appendChild(termsCheckbox);
+  singUpDiv.appendChild(termsText);
+  singUpDiv.appendChild(signUpButton);
+  singUpDiv.appendChild(doYouHaveAnAccount);
+  singUpDiv.appendChild(backToLogin);
+  return singUpDiv;
 };

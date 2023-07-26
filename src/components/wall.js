@@ -1,5 +1,5 @@
 export const wall = (onNavigate) => {
-  const homeDiv = document.createElement('div');
+  const wallDiv = document.createElement('div');
   const signOutButton = document.createElement('button');
   const postButton = document.createElement('button');
 
@@ -11,8 +11,8 @@ export const wall = (onNavigate) => {
     onNavigate('/')
   });
 
-  homeDiv.appendChild(postButton);
-  homeDiv.appendChild(signOutButton);
+  wallDiv.appendChild(postButton);
+  wallDiv.appendChild(signOutButton);
 
-  return homeDiv;
+  return wallDiv;
 };
