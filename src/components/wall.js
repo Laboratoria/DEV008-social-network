@@ -1,7 +1,7 @@
 import { savePosts, getPosts} from './firebase.js';
 
 export const wall = (onNavigate) => {
-  const homeDiv = document.createElement('div');
+  const wallDiv = document.createElement('div');
   const allPosts = document.createElement('form')
   const signOutButton = document.createElement('button');
   const postButton = document.createElement('button');
@@ -22,8 +22,8 @@ export const wall = (onNavigate) => {
   });
 
   allPosts.append(post, postButton);
-  homeDiv.appendChild(allPosts);
-  homeDiv.appendChild(signOutButton);
+  wallDiv.appendChild(allPosts);
+  wallDiv.appendChild(signOutButton);
 
-  return homeDiv;
+  return wallDiv;
 };
