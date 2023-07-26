@@ -23,8 +23,9 @@ const onNavigate = (pathname) => {
   rootDiv.appendChild(routes[pathname](onNavigate));
 };
 // Selecciona pagina o componente para mostrarlo dependiendo URL
+// window.location = ubicacion donde esta el usuario y agrega el pathname o ruta 
 const component = routes[window.location.pathname];
-console.log(window.location.pathname);
+console.log(window.location);
 
 // Recuperar las paginas cuando selecciono hacia atras o hacia adelante del historial(las saca del historial)
 window.addEventListener('popstate', () => {
@@ -33,5 +34,5 @@ window.addEventListener('popstate', () => {
   rootDiv.appendChild(paginas(onNavigate));
   console.log(window.location.pathname);
 });
-// Agrega el componente a la pantalla
+// Agrega el contenido a la pantalla
 rootDiv.appendChild(component(onNavigate));
