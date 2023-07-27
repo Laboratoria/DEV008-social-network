@@ -1,4 +1,5 @@
 import { iniciarSesion, accesoGoogle } from "../lib/firebase/configuracionFirabase";
+import { iniciarSesion, accesoGoogle } from "../lib/firebase/configuracionFirabase";
 
 export const login = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -100,6 +101,27 @@ export const login = (onNavigate) => {
       onNavigate('/login');
     }).catch((error) => {
       // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // The email of the user's account used.
+      const email = error.customData.email;
+      console.log(email);
+      // ...
+      alert(error.message);
+    });
+  });
+  buttonGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    accesoGoogle().then((result) => {
+      const user = result.user;
+      console.log(user);
+      
+      alert('Bienvenido');
+      onNavigate('/feed');
+    }).catch((error) => {
+    
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
