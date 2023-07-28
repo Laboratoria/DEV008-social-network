@@ -1,3 +1,5 @@
+import { escribirDatosUsuarios } from '../lib/firebase/firebaseconfig';
+
 const Home = (onNavigate) => {
   const homeSection = document.createElement('section');
   homeSection.classList.add('contenedorHome');
@@ -8,7 +10,7 @@ const Home = (onNavigate) => {
   welcomeTitle.classList.add('welcome-title');
   welcomeTitle.textContent = 'Instapet';
 
-  const postForm = document.createElement('form');
+  const postForm = document.createElement('div');
   postForm.classList.add('post-form', 'flex');
 
   const postMessage = document.createElement('textarea');
@@ -20,7 +22,10 @@ const Home = (onNavigate) => {
   buttonPublicar.classList.add('btn');
   // aqui debemos poner la funcion que guarde lo que se escribio y que se muestre en el texarea
   // igualmente esta funcion debe hacer el boton cambie por el boton editar
-
+  buttonPublicar.addEventListener('click', () => {
+    console.log('Aquí debe de ir el click');
+    escribirDatosUsuarios();
+  });
   const buttonEditar = document.createElement('button');
   buttonEditar.textContent = 'Editar';
   buttonEditar.classList.add('btn');
