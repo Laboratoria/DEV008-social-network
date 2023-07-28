@@ -32,6 +32,7 @@ export const login = (onNavigate) => {
   inputContraseña.placeholder = 'Constraseña';
   inputContraseña.classList.add('input');
   inputContraseña.id = 'contraseña';
+  inputContraseña.required = true;
   contenedorFormulario.appendChild(inputContraseña);
   inputContraseña.type = ('password');
 
@@ -96,7 +97,7 @@ export const login = (onNavigate) => {
       console.log(user);
       // IdP data available using getAdditionalUserInfo(result)
       // ...
-      alert('Bienvenido a)');
+      alert('Bienvenido');
       onNavigate('/feed');
     }).catch((error) => {
       // Handle Errors here.
