@@ -221,3 +221,30 @@
     height: 100%;
   }
 };
+
+
+/* ===== Feed ===== */
+
+.contenedorLogoChico{
+  height: auto;
+  justify-content: center;
+  text-align: center;
+}
+.logoChico{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: auto; 
+    width: 20%;
+  justify-content: center;
+  text-align: center;
+}
+.contenedorPublicacion{
+display: flex;
+}
+#publicar{
+  width: 800px;
+  height: 100px;
+  display: flex;
+  align-self: center;
+}
