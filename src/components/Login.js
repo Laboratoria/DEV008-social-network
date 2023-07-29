@@ -1,4 +1,4 @@
-import { loginUser } from '../lib/firebase/acount';
+import { loginUser } from '../lib/firebase/account';
 import { googleLogin } from '../lib/firebase/firebaseconfig';
 
 const Login = (onNavigate) => {
