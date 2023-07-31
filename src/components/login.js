@@ -26,6 +26,7 @@ export const login = (onNavigate) => {
   inputCorreo.placeholder = 'Correo';
   inputCorreo.classList.add('input');
   inputCorreo.id = 'correo';
+  inputCorreo.required = true;
   contenedorFormulario.appendChild(inputCorreo);
 
   const inputContraseña = document.createElement('input');
