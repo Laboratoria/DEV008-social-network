@@ -110,8 +110,8 @@ export const register = (onNavigate) => {
       console.log(user);
       // IdP data available using getAdditionalUserInfo(result)
       // ...
-      alert('Usuario registrado exitosamente');
-      onNavigate('/login');
+      alert('Bienvenido(a)');
+      onNavigate('/feed');
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
