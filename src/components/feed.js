@@ -12,8 +12,8 @@ export const feed = (onNavigate) => {
   headerFeed.appendChild(headerLogo);
 
   const buttonCerrarSesion = document.createElement('button');
-  buttonCerrarSesion.classList.add('button');
-  buttonCerrarSesion.textContent = 'Cerrar';
+  buttonCerrarSesion.classList.add('buttonCerrarSesion');
+  buttonCerrarSesion.textContent = 'Salir';
   headerFeed.appendChild(buttonCerrarSesion);
 
   const feedDiv = document.createElement('div');
@@ -37,7 +37,7 @@ export const feed = (onNavigate) => {
   nombreUsuario.className = "nombreUsuario";
   nombreUsuario.textContent= 'Nombre de Usuario';
   textContainer.appendChild(nombreUsuario);
-    
+
   const publicar = document.createElement("textarea");
   publicar.classList.add("publicarInput");
   publicar.placeholder = 'Crear post';
@@ -46,7 +46,7 @@ export const feed = (onNavigate) => {
   const buttonPublicar = document.createElement('button');
   buttonPublicar.className = "buttonPublicar";
   buttonPublicar.textContent = 'Publicar';
-  textContainer.appendChild(buttonPublicar)
+  textContainer.appendChild(buttonPublicar);
 
   const postFeedContainer = document.createElement('div');
   postFeedContainer.classList.add('postFeedContainer');
@@ -65,13 +65,11 @@ export const feed = (onNavigate) => {
   nombreUsuariopost.className = "nombreUsuario";
   nombreUsuariopost.textContent= 'Nombre de Usuario';
   textContainerpost.appendChild(nombreUsuariopost);
-    
+
   const publicacion = document.createElement("textarea");
-  publicacion.classList.add("publicacion");
+  publicacion.classList.add("publicarInput");
   publicacion.placeholder = 'Crear post';
   textContainerpost.appendChild(publicacion);
-
-
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
