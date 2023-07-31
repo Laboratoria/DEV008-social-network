@@ -12,64 +12,68 @@ export const feed = (onNavigate) => {
   headerFeed.appendChild(headerLogo);
 
   const buttonCerrarSesion = document.createElement('button');
-  buttonCerrarSesion.classList.add('button');
-  buttonCerrarSesion.textContent = 'Cerrar';
+  buttonCerrarSesion.classList.add('buttonCerrarSesion');
+  buttonCerrarSesion.textContent = 'Cerrar sesion';
   headerFeed.appendChild(buttonCerrarSesion);
 
   const feedDiv = document.createElement('div');
   feedDiv.classList.add('feedContainer');
   homeDiv.appendChild(feedDiv);
 
-  const crearPostContainer = document.createElement('div');
-  crearPostContainer.classList.add('crearPostContainer');
-  feedDiv.appendChild(crearPostContainer);
+    //---------Elementos para publicar--------
 
-  const textContainer = document.createElement('div');
-  textContainer.classList.add('textContainer');
-  crearPostContainer.appendChild(textContainer);
+  const fondoContenedorPublicar = document.createElement('div');
+  fondoContenedorPublicar.classList.add('fondoContenedorPublicar');
+  feedDiv.appendChild(fondoContenedorPublicar);
 
-  const imagenUsuario = document.createElement('img');
-  imagenUsuario.className = "imagenUsuario";
-  textContainer.appendChild(imagenUsuario);
-  imagenUsuario.src = "usuario.png";
+  const contenedorPublicar = document.createElement('div');
+  contenedorPublicar.classList.add('contenedorPublicar');
+  fondoContenedorPublicar.appendChild(contenedorPublicar);
 
-  const nombreUsuario = document.createElement('p');
-  nombreUsuario.className = "nombreUsuario";
-  nombreUsuario.textContent= 'Nombre de Usuario';
-  textContainer.appendChild(nombreUsuario);
+  const imagenUsuarioPublicar = document.createElement('img');
+  imagenUsuarioPublicar.className = "imagenUsuarioPublicar";
+  contenedorPublicar.appendChild(imagenUsuarioPublicar);
+  imagenUsuarioPublicar.src = "usuario.png";
+
+  const nombreUsuarioPublicar = document.createElement('p');
+  nombreUsuarioPublicar.className = "nombreUsuarioPublicar";
+  nombreUsuarioPublicar.textContent= 'Nombre de usuario';
+  contenedorPublicar.appendChild(nombreUsuarioPublicar);
     
-  const publicar = document.createElement("textarea");
-  publicar.classList.add("publicarInput");
-  publicar.placeholder = 'Crear post';
-  textContainer.appendChild(publicar);
+  const textoPublicar = document.createElement("textarea");
+  textoPublicar.classList.add("textoPublicar");
+  textoPublicar.placeholder = 'Crear post';
+  contenedorPublicar.appendChild(textoPublicar);
 
   const buttonPublicar = document.createElement('button');
   buttonPublicar.className = "buttonPublicar";
   buttonPublicar.textContent = 'Publicar';
-  textContainer.appendChild(buttonPublicar)
+  contenedorPublicar.appendChild(buttonPublicar)
 
-  const postFeedContainer = document.createElement('div');
-  postFeedContainer.classList.add('postFeedContainer');
-  feedDiv.appendChild(postFeedContainer);
+  //---------Elementos de publicaciones--------
 
-  const textContainerpost = document.createElement('div');
-  textContainerpost.classList.add('textContainerpost');
-  postFeedContainer.appendChild(textContainerpost);
+  const fondoContenedorPublicacion = document.createElement('div');
+  fondoContenedorPublicacion.classList.add('fondoContenedorPublicacion');
+  feedDiv.appendChild(fondoContenedorPublicacion);
 
-  const imagenUsuariopost = document.createElement('img');
-  imagenUsuariopost.className = "imagenUsuario";
-  textContainerpost.appendChild(imagenUsuariopost);
-  imagenUsuariopost.src = "usuario.png";
+  const contenedorPublicacion = document.createElement('div');
+  contenedorPublicacion.classList.add('contenedorPublicacion');
+  fondoContenedorPublicacion.appendChild(contenedorPublicacion);
 
-  const nombreUsuariopost = document.createElement('p');
-  nombreUsuariopost.className = "nombreUsuario";
-  nombreUsuariopost.textContent= 'Nombre de Usuario';
-  textContainerpost.appendChild(nombreUsuariopost);
+  const imagenUsuarioPublicacion = document.createElement('img');
+  imagenUsuarioPublicacion.className = "imagenUsuarioPublicacion";
+  contenedorPublicacion.appendChild(imagenUsuarioPublicacion);
+  imagenUsuarioPublicacion.src = "usuario.png";
+
+  const nombreUsuarioPublicacion = document.createElement('p');
+  nombreUsuarioPublicacion.className = "nombreUsuarioPublicacion";
+  nombreUsuarioPublicacion.textContent= 'Nombre de usuario';
+  contenedorPublicacion.appendChild(nombreUsuarioPublicacion);
     
-  const publicacion = document.createElement("textarea");
-  publicacion.classList.add("publicacion");
-  publicacion.placeholder = 'Crear post';
-  textContainerpost.appendChild(publicacion);
+  const textoPublicacion = document.createElement("textarea");
+  textoPublicacion.classList.add("textoPublicacion");
+  textoPublicacion.placeholder = 'Crear post';
+  contenedorPublicacion.appendChild(textoPublicacion);
 
 
 
