@@ -1,6 +1,6 @@
-import { crearUsuario, accesoGoogle } from "../lib/firebase/configuracionFirabase";
-//import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-//import { auth } from "../lib/firebase/configuracionFirabase";
+import { crearUsuario, accesoGoogle } from '../lib/firebase/configuracionFirabase';
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../lib/firebase/configuracionFirabase";
 
 export const register = (onNavigate) => {
   const homeDiv = document.createElement('div');
