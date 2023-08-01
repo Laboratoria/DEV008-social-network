@@ -1,5 +1,4 @@
-import { async } from "regenerator-runtime";
-import { crearPost } from "../firestore/baseDeDatosFirestore";
+import { crearPost } from '../firestore/baseDeDatosFirestore.js';
 
 export const feed = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -32,23 +31,24 @@ export const feed = (onNavigate) => {
   crearPostContainer.appendChild(textContainer);
 
   const imagenUsuario = document.createElement('img');
-  imagenUsuario.className = "imagenUsuario";
+  imagenUsuario.className = 'imagenUsuario';
   textContainer.appendChild(imagenUsuario);
-  imagenUsuario.src = "usuario.png";
+  imagenUsuario.src = 'usuario.png';
 
   const nombreUsuario = document.createElement('p');
-  nombreUsuario.className = "nombreUsuario";
-  nombreUsuario.textContent= 'Nombre de Usuario';
+  nombreUsuario.className = 'nombreUsuario';
+  nombreUsuario.textContent = 'Nombre de Usuario';
   textContainer.appendChild(nombreUsuario);
 
-  const publicar = document.createElement("textarea");
-  publicar.classList.add("publicarInput");
-  publicar.id = 'publicarInput';
+  const publicar = document.createElement('textarea');
+  publicar.classList.add('publicarInput');
+  publicar.id = 'crearPost';
   publicar.placeholder = 'Crear post';
   textContainer.appendChild(publicar);
 
   const buttonPublicar = document.createElement('button');
-  buttonPublicar.className = "buttonPublicar";
+  buttonPublicar.className = 'buttonPublicar';
+  buttonPublicar.id = 'botonPublicar';
   buttonPublicar.textContent = 'Publicar';
   textContainer.appendChild(buttonPublicar);
 
@@ -61,37 +61,64 @@ export const feed = (onNavigate) => {
   postFeedContainer.appendChild(textContainerpost);
 
   const imagenUsuariopost = document.createElement('img');
-  imagenUsuariopost.className = "imagenUsuario";
+  imagenUsuariopost.className = 'imagenUsuario';
   textContainerpost.appendChild(imagenUsuariopost);
-  imagenUsuariopost.src = "usuario.png";
+  imagenUsuariopost.src = 'usuario.png';
 
   const nombreUsuariopost = document.createElement('p');
-  nombreUsuariopost.className = "nombreUsuario";
-  nombreUsuariopost.textContent= 'Nombre de Usuario';
+  nombreUsuariopost.className = 'nombreUsuario';
+  nombreUsuariopost.id = 'nombreDeUsuario';
+  nombreUsuariopost.textContent = 'Nombre de Usuario';
   textContainerpost.appendChild(nombreUsuariopost);
 
-  const publicacion = document.createElement("textarea");
-  publicacion.classList.add("publicarInput");
-  publicacion.placeholder = 'Crear post';
+  const publicacion = document.createElement('textarea');
+  publicacion.classList.add('publicarInput');
+  publicacion.id = 'post';
+  publicacion.placeholder = 'Post';
   textContainerpost.appendChild(publicacion);
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
-  buttonPublicar.addEventListener('click', async (e) => {
+  buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
-    const post=document.getElementById('publicarInput').value;
-    crearPost(post);
-    publicacion.value= ' ';
+
+    const userPost = 'Usuario';
+    console.log(userPost);
+    const contenidoPost = document.getElementById('crearPost').value;
+    console.log(contenidoPost);
+    const fecha = new Date();
+    const fechaPost = fecha.toLocaleDateString();
+    console.log(fechaPost);
+
+    crearPost(userPost, contenidoPost, fechaPost)
+      .then((respuesta) => {
+        // Signed in
+        const postCreado = respuesta;
+        console.log(postCreado);
+        // ...
+        alert('Haz creado un post');
+        window.location.reload(); // Para recargar la pantalla//
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        alert(error.message);
+        window.location.reload(); // Para recargar la pantalla//
+      });
   });
 
   return homeDiv;
 };
 
 
+// esto debe vivir en feed: 
+
 // .....addEventListener("click", () => {
     // ... 
-    //crearPost(user.id, text.value, Date.now()).then(() => { //refrescar la vista  })
-//})
+    // crearPost(user.id, text.value, Date.now()).then(() => { //refrescar la vista  })
+// })
 
 
 // mostrarpost().then((posts)=> { ..... for...})

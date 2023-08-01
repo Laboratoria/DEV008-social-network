@@ -1,4 +1,4 @@
-import { iniciarSesion, accesoGoogle } from "../lib/firebase/configuracionFirabase";
+import { iniciarSesion, accesoGoogle } from '../lib/firebase/configuracionFirabase';
 
 export const login = (onNavigate) => {
   const homeDiv = document.createElement('div');
