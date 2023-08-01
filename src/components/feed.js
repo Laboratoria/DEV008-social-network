@@ -1,3 +1,5 @@
+import { crearPost } from '../firestore/baseDeDatosFirestore.js';
+
 export const feed = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('feedDiv');
@@ -40,11 +42,13 @@ export const feed = (onNavigate) => {
 
   const publicar = document.createElement("textarea");
   publicar.classList.add("publicarInput");
+  publicar.id = 'crearPost';
   publicar.placeholder = 'Crear post';
   textContainer.appendChild(publicar);
 
   const buttonPublicar = document.createElement('button');
   buttonPublicar.className = "buttonPublicar";
+  buttonPublicar.id = 'botonPublicar';
   buttonPublicar.textContent = 'Publicar';
   textContainer.appendChild(buttonPublicar);
 
@@ -63,15 +67,59 @@ export const feed = (onNavigate) => {
 
   const nombreUsuariopost = document.createElement('p');
   nombreUsuariopost.className = "nombreUsuario";
+  nombreUsuariopost.id = 'nombreDeUsuario';
   nombreUsuariopost.textContent= 'Nombre de Usuario';
   textContainerpost.appendChild(nombreUsuariopost);
 
   const publicacion = document.createElement("textarea");
   publicacion.classList.add("publicarInput");
-  publicacion.placeholder = 'Crear post';
+  publicacion.id = 'post';
+  publicacion.placeholder = 'Post';
   textContainerpost.appendChild(publicacion);
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
+  buttonPublicar.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const userPost = 'Usuario';
+    const contenidoPost = document.getElementById('crearPost').value;
+    console.log(contenidoPost);
+    const fechaPost = Date.now();
+    console.log(fechaPost);
+
+    crearPost(userPost, contenidoPost, fechaPost)
+      .then((respuesta) => {
+        // Signed in
+        const user = respuesta.user;
+        console.log(user);
+        // ...
+        alert('Haz creado un post');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        alert(error.message);
+      });
+  });
+
   return homeDiv;
 };
+
+
+// esto debe vivir en feed: 
+
+// .....addEventListener("click", () => {
+    // ... 
+    //crearPost(user.id, text.value, Date.now()).then(() => { //refrescar la vista  })
+//})
+
+
+// mostrarpost().then((posts)=> { ..... for...})
+
+//siguiente: mostrar post
+// miFuncion() {
+// return getDocs(referenciaColleccion)
+//}
