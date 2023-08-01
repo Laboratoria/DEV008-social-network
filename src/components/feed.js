@@ -1,3 +1,6 @@
+import { async } from "regenerator-runtime";
+import { crearPost } from "../firestore/baseDeDatosFirestore";
+
 export const feed = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('feedDiv');
@@ -40,6 +43,7 @@ export const feed = (onNavigate) => {
 
   const publicar = document.createElement("textarea");
   publicar.classList.add("publicarInput");
+  publicar.id = 'publicarInput';
   publicar.placeholder = 'Crear post';
   textContainer.appendChild(publicar);
 
@@ -73,5 +77,26 @@ export const feed = (onNavigate) => {
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
+  buttonPublicar.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const post=document.getElementById('publicarInput').value;
+    crearPost(post);
+    publicacion.value= ' ';
+  });
+
   return homeDiv;
 };
+
+
+// .....addEventListener("click", () => {
+    // ... 
+    //crearPost(user.id, text.value, Date.now()).then(() => { //refrescar la vista  })
+//})
+
+
+// mostrarpost().then((posts)=> { ..... for...})
+
+//siguiente: mostrar post
+// miFuncion() {
+// return getDocs(referenciaColleccion)
+//}
