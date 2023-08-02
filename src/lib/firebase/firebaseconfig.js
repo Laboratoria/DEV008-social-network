@@ -5,7 +5,9 @@ import {
   GoogleAuthProvider, getAuth, signInWithPopup,
 } from 'firebase/auth';
 // Required for side-effects
-import { getFirestore, setDoc } from 'firebase/firestore';
+import {
+  getFirestore, addDoc, collection, onSnapshot, query, orderBy,
+} from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -33,19 +35,32 @@ export function googleLogin() {
 
 const firestore = getFirestore(app);
 
-export const escribirDatosUsuarios = () => {
+export const escribirDatosUsuarios = async ({ texto }) => {
   // Add a new document in collection "cities"
-  firestore.collection('publicaciones').doc().set({
-    texto: 'Mi mascota se llama Terry',
-    correo: 'danielakastrejon@gmail.com',
-  })
-    .then(() => {
-      console.log('Document successfully written!');
-    })
-    .catch((error) => {
-      console.error('Error writing document: ', error);
+  try {
+  // const docRef =
+    await addDoc(collection(firestore, 'publicaciones'), {
+      texto,
+      createdAt: Date.now(),
+      author: localStorage.getItem('username'), // Le asignamos el autor al post
+      likes: [],
     });
+    console.log('Document successfully written!');
+  } catch (error) {
+    console.error('Error writing document: ', error);
+  }
 };
 
-// Initialize Cloud Firestore and get a reference to the service
-// const db = firebase.firestore();
+// Crear cada post//
+
+export const subscribeToDataChanges = (actualizarFeed) => (query(collection(firestore, 'publicaciones'), orderBy('createdAt', 'asc')), (snapshot) => {
+  const data = [];
+  snapshot.forEach((doc) => {
+    data.push({
+      id: doc.id,
+      ...doc.data(),
+    });
+  });
+  actualizarFeed(data);
+});
+console.log(subscribeToDataChanges(), 'Aquí se crea el post');
