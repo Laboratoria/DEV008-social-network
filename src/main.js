@@ -2,6 +2,8 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Register from './components/Register';
 import error from './components/Error';
+import { escribirDatosUsuarios } from './lib/firebase/firebaseconfig';
+import { async } from 'regenerator-runtime';
 
 const routes = [
   { path: '/', component: Login },
@@ -37,3 +39,12 @@ window.onpopstate = () => {
 };
 
 navigateTo(window.location.pathname || defaultRoute);
+
+document.getElementById('publishValue').addEventListener('click', async () => {
+  const textValue = document.getElementById('inputValue').value;
+  if (textValue.length !== 0) {
+    await escribirDatosUsuarios({ texto: textValue });
+  }
+});
+
+
