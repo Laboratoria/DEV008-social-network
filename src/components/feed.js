@@ -1,4 +1,4 @@
-import { crearPost } from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost} from '../firestore/baseDeDatosFirestore.js';
 
 export const feed = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -77,6 +77,14 @@ export const feed = (onNavigate) => {
   publicacion.placeholder = 'Post';
   textContainerpost.appendChild(publicacion);
 
+  mostrarpost().then((respuesta) => {
+    respuesta.forEach((post) => {
+      console.log(post.data());
+          //aqui ya se pintan los post
+    //para acceder a la info de post es con post.data.contenido o fecha o autor
+    })
+  });
+  
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
   buttonPublicar.addEventListener('click', (e) => {
