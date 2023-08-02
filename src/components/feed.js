@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import { crearPost, mostrarpost } from '../firestore/baseDeDatosFirestore.js';
-=======
 import { crearPost, mostrarpost} from '../firestore/baseDeDatosFirestore.js';
->>>>>>> 8443c8fd37c3fb80479d89783417ee5df0e50fbe
 
 export const feed = (onNavigate) => {
- console.log(mostrarpost());
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('feedDiv');
 
