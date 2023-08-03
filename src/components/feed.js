@@ -1,4 +1,5 @@
-import { crearPost, mostrarpost} from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost } from '../firestore/baseDeDatosFirestore.js';
+import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
 
 export const feed = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -59,40 +60,54 @@ export const feed = (onNavigate) => {
   };
 
   //funcion que crea el contenedor de cada post----------------------------
-  function contenedorPost (){
+  function contenedorPost(post) {
+    const postFeedContainer = document.createElement('div');
+    postFeedContainer.classList.add('postFeedContainer');
+    feedDiv.appendChild(postFeedContainer);
 
-  const postFeedContainer = document.createElement('div');
-  postFeedContainer.classList.add('postFeedContainer');
-  feedDiv.appendChild(postFeedContainer);
+    const textContainerpost = document.createElement('div');
+    textContainerpost.classList.add('textContainerpost');
+    postFeedContainer.appendChild(textContainerpost);
+    textContainerpost.id = 'textContainerpost';
 
-  const textContainerpost = document.createElement('div');
-  textContainerpost.classList.add('textContainerpost');
-  postFeedContainer.appendChild(textContainerpost);
-  textContainerpost.id = "textContainerpost";
+    const likeFuego = document.createElement('img');
+    likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
+    likeFuego.classList.add('likeFuego');
+    textContainerpost.appendChild(likeFuego);
 
-  const imagenUsuariopost = document.createElement('img');
-  imagenUsuariopost.className = 'imagenUsuario';
-  textContainerpost.appendChild(imagenUsuariopost);
-  imagenUsuariopost.src = 'usuario.png';
+    const eliminarPost = document.createElement('img');
+    eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
+    eliminarPost.classList.add('eliminarPost');
+    textContainerpost.appendChild(eliminarPost);
 
-  const nombreUsuariopost = document.createElement('p');
-  nombreUsuariopost.className = 'nombreUsuario';
-  nombreUsuariopost.id = 'nombreDeUsuario';
-  nombreUsuariopost.textContent = 'Nombre de Usuario';
-  textContainerpost.appendChild(nombreUsuariopost);
+    const editarPost = document.createElement('img');
+    editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
+    editarPost.classList.add('editarPost');
+    textContainerpost.appendChild(editarPost);
 
-  const publicacion = document.createElement('textarea');
-  publicacion.classList.add('publicarInput');
-  publicacion.id = 'post';
-  publicacion.placeholder = 'Post';
-  textContainerpost.appendChild(publicacion);
+    const imagenUsuariopost = document.createElement('img');
+    imagenUsuariopost.className = 'imagenUsuario';
+    textContainerpost.appendChild(imagenUsuariopost);
+    imagenUsuariopost.src = 'usuario.png';
 
-  };
+    const nombreUsuariopost = document.createElement('p');
+    nombreUsuariopost.className = 'nombreUsuario';
+    nombreUsuariopost.innerText = post.data().autor;
+    nombreUsuariopost.id = 'nombreDeUsuario';
+    textContainerpost.appendChild(nombreUsuariopost);
+
+    const publicacion = document.createElement('textarea');
+    publicacion.classList.add('publicarInput');
+    publicacion.innerText = post.data().contenido;
+    publicacion.id = 'post';
+    publicacion.placeholder = 'Post';
+    textContainerpost.appendChild(publicacion);
+  }
 
   //funcion mostrarPost hace un recorrido de cada post y en cada uno se manda a llamar la funcion contenedorPost----------
   mostrarpost().then((respuesta) => {
     respuesta.forEach((post) => {
-      contenedorPost(post)
+      contenedorPost(post);
       console.log(post.data().contenido);
     //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
     })
@@ -107,7 +122,7 @@ export const feed = (onNavigate) => {
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const userPost = 'Usuario';
+    const userPost = `${usuarioActual}`;
     console.log(userPost);
     const contenidoPost = document.getElementById('crearPost').value;
     console.log(contenidoPost);
