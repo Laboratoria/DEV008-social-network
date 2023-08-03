@@ -92,6 +92,7 @@
     width: 3rem;
     height: 3rem;
     margin: .5rem;
+    cursor: pointer;
   }
   .buttonGoogle:hover {
     transform: scale(1.1);
@@ -319,6 +320,7 @@
   height: 50px;
   align-self: flex-end;
   margin-left: 1.2% ;
+  cursor: pointer;
 }
 .eliminarPost {
   position: absolute;
@@ -326,6 +328,7 @@
   height: 30px;
   align-self: flex-end;
   margin-left: 38% ;
+  cursor: pointer;
 }
 .editarPost {
   position: absolute;
@@ -333,4 +336,5 @@
   height: 30px;
   align-self: flex-end;
   margin-left: 40% ;
+  cursor: pointer;
 }

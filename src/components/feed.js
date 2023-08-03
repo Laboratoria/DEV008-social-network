@@ -79,10 +79,21 @@ export const feed = (onNavigate) => {
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
     eliminarPost.classList.add('eliminarPost');
     textContainerpost.appendChild(eliminarPost);
-    eliminarPost.onclick = function () {
-      borrarPost(post.id);
-      console.log(post.id)
-    };
+    eliminarPost.addEventListener('click', () => {
+      borrarPost(post.id)
+        .then((respuesta) => {
+          console.log(respuesta);
+          console.log('Borraste un post');
+          window.location.reload();
+        }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert(error.message);
+        });
+    });
+    //console.log(post.id);
 
     const editarPost = document.createElement('img');
     editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
@@ -117,21 +128,6 @@ export const feed = (onNavigate) => {
     });
   });
 
-  /*borrarPost().then((respuesta) => {
-    respuesta.forEach((post) => {
-      contenedorPost(id);
-      console.log('Borraste un post');
-    //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      alert(error.message);
-    });
-  });*/
-
-
 //-----------------------------------------------------------------------------------------------------------
 
 
@@ -140,7 +136,7 @@ export const feed = (onNavigate) => {
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const userPost = `${usuarioActual}`;
+    const userPost = 'Usuario';
     console.log(userPost);
     const contenidoPost = document.getElementById('crearPost').value;
     console.log(contenidoPost);
