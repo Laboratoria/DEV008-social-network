@@ -1,4 +1,4 @@
-import { crearPost, mostrarpost } from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost, borrarPost } from '../firestore/baseDeDatosFirestore.js';
 import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
 
 export const feed = (onNavigate) => {
@@ -79,6 +79,10 @@ export const feed = (onNavigate) => {
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
     eliminarPost.classList.add('eliminarPost');
     textContainerpost.appendChild(eliminarPost);
+    eliminarPost.onclick = function () {
+      borrarPost(post.id);
+      console.log(post.id)
+    };
 
     const editarPost = document.createElement('img');
     editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
@@ -110,8 +114,22 @@ export const feed = (onNavigate) => {
       contenedorPost(post);
       console.log(post.data().contenido);
     //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
-    })
+    });
   });
+
+  /*borrarPost().then((respuesta) => {
+    respuesta.forEach((post) => {
+      contenedorPost(id);
+      console.log('Borraste un post');
+    //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      alert(error.message);
+    });
+  });*/
 
 
 //-----------------------------------------------------------------------------------------------------------
@@ -148,6 +166,7 @@ export const feed = (onNavigate) => {
         window.location.reload(); // Para recargar la pantalla//
       });
   });
+
 
   return homeDiv;
 };
