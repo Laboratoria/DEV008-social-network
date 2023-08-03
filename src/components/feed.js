@@ -84,7 +84,7 @@ export const feed = (onNavigate) => {
     //para acceder a la info de post es con post.data.contenido o fecha o autor
     })
   });
-  
+
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
   buttonPublicar.addEventListener('click', (e) => {
