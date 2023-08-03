@@ -17,8 +17,7 @@ const onNavigate = (pathname) => {
   // while se utiliza si tengo que remover mas de un hijo
   // while (rootDiv.firstChild) {
   rootDiv.removeChild(rootDiv.firstChild);
-  // Limpiar la página 
-  // }
+  // Limpiar la página
   // Agrega contenido del nuevo url (pathname)
   rootDiv.appendChild(routes[pathname](onNavigate));
 };

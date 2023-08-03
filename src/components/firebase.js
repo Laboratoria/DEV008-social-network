@@ -1,14 +1,20 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+} from 'firebase/firestore';
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 
-// Import the functions you need from the SDKs you need
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyDhmNVMP2orY3iOmOT6DdaVABzLyzydVLY',
   authDomain: 'redis-ccc00.firebaseapp.com',
@@ -25,32 +31,17 @@ const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
+export const createCountEmailPassword = (email, password) =>
+  createUserWithEmailAndPassword(auth, email, password);
+
 export const googleLogin = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-      console.log(user);
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-      console.log(errorMessage);
-      console.log(errorCode);
-    });
+  signInWithPopup(auth, provider);
 };
-export const savePosts = (post) => {
-  addDoc(collection(db, 'posts'), { post });
-};
-export const getPosts = () => console.log('Get Posts');
+export const savePosts = (post, correo) =>
+  addDoc(collection(db, 'posts'), { post, correo });
+export const getPosts = () => getDocs(collection(db, 'posts'));
+export const getCurrentUser = () => auth.currentUser;
+export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
+
+export const singInEmailPass = (email, password) =>
+signInWithEmailAndPassword(auth, email, password);
