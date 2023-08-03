@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,6 +20,24 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+export const usuarioActual = onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+
+    const displayName = user.displayName;
+    console.log(displayName);
+    // ...
+  } else {
+    // User is signed out
+    // ...
+    console.log('No hay usuario');
+  }
+});
+
+/*const user = auth.currentUser;
+console.log(user);*/
 
 console.log(app.name);
 
