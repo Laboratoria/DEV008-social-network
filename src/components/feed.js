@@ -51,6 +51,15 @@ export const feed = (onNavigate) => {
   buttonPublicar.id = 'botonPublicar';
   buttonPublicar.textContent = 'Publicar';
   textContainer.appendChild(buttonPublicar);
+  //se da una evento onclick al buttonPublicar para que mande a llamar la funcion postPublicado---------------
+  buttonPublicar.onclick = function () {
+    postPublicado(post);
+    //imprime en consola los post publicados----------------
+    console.log(postPublicado)
+  };
+
+  //funcion que crea el contenedor de cada post----------------------------
+  function contenedorPost (){
 
   const postFeedContainer = document.createElement('div');
   postFeedContainer.classList.add('postFeedContainer');
@@ -59,6 +68,7 @@ export const feed = (onNavigate) => {
   const textContainerpost = document.createElement('div');
   textContainerpost.classList.add('textContainerpost');
   postFeedContainer.appendChild(textContainerpost);
+  textContainerpost.id = "textContainerpost";
 
   const imagenUsuariopost = document.createElement('img');
   imagenUsuariopost.className = 'imagenUsuario';
@@ -77,14 +87,21 @@ export const feed = (onNavigate) => {
   publicacion.placeholder = 'Post';
   textContainerpost.appendChild(publicacion);
 
+  };
+
+  //funcion mostrarPost hace un recorrido de cada post y en cada uno se manda a llamar la funcion contenedorPost----------
   mostrarpost().then((respuesta) => {
     respuesta.forEach((post) => {
-      console.log(post.data());
-          //aqui ya se pintan los post
-    //para acceder a la info de post es con post.data.contenido o fecha o autor
+      contenedorPost(post)
+      console.log(post.data().contenido);
+    //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
     })
   });
-  
+
+
+//-----------------------------------------------------------------------------------------------------------
+
+
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
   buttonPublicar.addEventListener('click', (e) => {
