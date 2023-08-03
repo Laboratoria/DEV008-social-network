@@ -78,7 +78,7 @@ export const feed = (onNavigate) => {
   const nombreUsuariopost = document.createElement('p');
   nombreUsuariopost.className = 'nombreUsuario';
   nombreUsuariopost.id = 'nombreDeUsuario';
-  nombreUsuariopost.textContent = 'Nombre de Usuario';
+  nombreUsuariopost.textContent = '${post.data()autor}';
   textContainerpost.appendChild(nombreUsuariopost);
 
   const publicacion = document.createElement('textarea');
