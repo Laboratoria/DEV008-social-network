@@ -45,15 +45,19 @@ export const feed = (onNavigate) => {
   textContainer.classList.add('textContainer');
   crearPostContainer.appendChild(textContainer);
 
+  const usuarioInfo = document.createElement('section');
+  usuarioInfo.className = 'usuarioInfo';
+  textContainer.appendChild(usuarioInfo);
+
   const imagenUsuario = document.createElement('img');
   imagenUsuario.className = 'imagenUsuario';
-  textContainer.appendChild(imagenUsuario);
   imagenUsuario.src = 'usuario.png';
+  usuarioInfo.appendChild(imagenUsuario);
 
   const nombreUsuario = document.createElement('p');
   nombreUsuario.className = 'nombreUsuario';
-  nombreUsuario.textContent = 'Nombre de Usuario';
-  textContainer.appendChild(nombreUsuario);
+  nombreUsuario.innerText = usuarioActual(); // Sale undefined//REVISAR//
+  usuarioInfo.appendChild(nombreUsuario);
 
   const publicar = document.createElement('textarea');
   publicar.classList.add('publicarInput');
@@ -84,15 +88,41 @@ export const feed = (onNavigate) => {
     postFeedContainer.appendChild(textContainerpost);
     textContainerpost.id = 'textContainerpost';
 
+    const usuarioInfoPost = document.createElement('section');
+    usuarioInfoPost.className = 'usuarioInfo';
+    textContainerpost.appendChild(usuarioInfoPost);
+
+    const imagenUsuariopost = document.createElement('img');
+    imagenUsuariopost.className = 'imagenUsuario';
+    imagenUsuariopost.src = 'usuario.png';
+    usuarioInfoPost.appendChild(imagenUsuariopost);
+
+    const nombreUsuariopost = document.createElement('p');
+    nombreUsuariopost.className = 'nombreUsuario';
+    nombreUsuariopost.innerText = post.data().autor;
+    nombreUsuariopost.id = 'nombreDeUsuario';
+    usuarioInfoPost.appendChild(nombreUsuariopost);
+
+    const publicacion = document.createElement('textarea');
+    publicacion.classList.add('publicarInput');
+    publicacion.innerText = post.data().contenido;
+    publicacion.id = 'post';
+    publicacion.placeholder = 'Post';
+    textContainerpost.appendChild(publicacion);
+
+    const opcionesPostContenedor = document.createElement('section');
+    opcionesPostContenedor.className = 'opcionesPostContenedor';
+    textContainerpost.appendChild(opcionesPostContenedor);
+
     const likeFuego = document.createElement('img');
     likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
     likeFuego.classList.add('likeFuego');
-    textContainerpost.appendChild(likeFuego);
+    opcionesPostContenedor.appendChild(likeFuego);
 
     const eliminarPost = document.createElement('img');
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
     eliminarPost.classList.add('eliminarPost');
-    textContainerpost.appendChild(eliminarPost);
+    opcionesPostContenedor.appendChild(eliminarPost);
     eliminarPost.addEventListener('click', () => {
       borrarPost(post.id)
         .then((respuesta) => {
@@ -106,25 +136,7 @@ export const feed = (onNavigate) => {
     const editarPost = document.createElement('img');
     editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
     editarPost.classList.add('editarPost');
-    textContainerpost.appendChild(editarPost);
-
-    const imagenUsuariopost = document.createElement('img');
-    imagenUsuariopost.className = 'imagenUsuario';
-    textContainerpost.appendChild(imagenUsuariopost);
-    imagenUsuariopost.src = 'usuario.png';
-
-    const nombreUsuariopost = document.createElement('p');
-    nombreUsuariopost.className = 'nombreUsuario';
-    nombreUsuariopost.innerText = post.data().autor;
-    nombreUsuariopost.id = 'nombreDeUsuario';
-    textContainerpost.appendChild(nombreUsuariopost);
-
-    const publicacion = document.createElement('textarea');
-    publicacion.classList.add('publicarInput');
-    publicacion.innerText = post.data().contenido;
-    publicacion.id = 'post';
-    publicacion.placeholder = 'Post';
-    textContainerpost.appendChild(publicacion);
+    opcionesPostContenedor.appendChild(editarPost);
   }
 
   //funcion mostrarPost hace un recorrido de cada post y en cada uno se manda a llamar la funcion contenedorPost----------
