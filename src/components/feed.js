@@ -79,7 +79,9 @@ export const feed = (onNavigate) => {
     containerPost.classList.add('containerPost');
     containerPost.id = 'containerPost';
     textContainerpost.appendChild(containerPost);
-  
+    containerPost.onclick = function () {
+      play();
+    };
     const likeFuego = document.createElement('img');
     likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
     likeFuego.classList.add('likeFuego');
@@ -130,12 +132,14 @@ export const feed = (onNavigate) => {
     })
   });
 
+
 //-----------------------------------------------------------------------------------------------------------
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
+
 
     const userPost = `${usuarioActual}`;
     console.log(userPost);
