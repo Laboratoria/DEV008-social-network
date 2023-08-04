@@ -61,6 +61,7 @@ export const feed = (onNavigate) => {
 
   //funcion que crea el contenedor de cada post----------------------------
   function contenedorPost(post) {
+
     const postFeedContainer = document.createElement('div');
     postFeedContainer.classList.add('postFeedContainer');
     feedDiv.appendChild(postFeedContainer);
@@ -70,10 +71,26 @@ export const feed = (onNavigate) => {
     postFeedContainer.appendChild(textContainerpost);
     textContainerpost.id = 'textContainerpost';
 
+    const containerUsuarioEimagen = document.createElement('div');
+    containerUsuarioEimagen.classList.add('containerUsuarioEimagen');
+    textContainerpost.appendChild(containerUsuarioEimagen);
+
+    const containerPost = document.createElement('button');
+    containerPost.classList.add('containerPost');
+    containerPost.id = 'containerPost';
+    textContainerpost.appendChild(containerPost);
+  
     const likeFuego = document.createElement('img');
     likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
     likeFuego.classList.add('likeFuego');
-    textContainerpost.appendChild(likeFuego);
+    containerPost.appendChild(likeFuego);
+
+    const contadorLikes = document.createElement('number');
+    contadorLikes.className = 'contadorLikes';
+    contadorLikes.innerHTML = post.data().likes;
+    contadorLikes.id = 'contadorLikes';
+    contadorLikes.textContent = '0';
+    containerPost.appendChild(contadorLikes);
 
     const eliminarPost = document.createElement('img');
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
@@ -87,14 +104,14 @@ export const feed = (onNavigate) => {
 
     const imagenUsuariopost = document.createElement('img');
     imagenUsuariopost.className = 'imagenUsuario';
-    textContainerpost.appendChild(imagenUsuariopost);
+    containerUsuarioEimagen.appendChild(imagenUsuariopost);
     imagenUsuariopost.src = 'usuario.png';
 
     const nombreUsuariopost = document.createElement('p');
     nombreUsuariopost.className = 'nombreUsuario';
     nombreUsuariopost.innerText = post.data().autor;
     nombreUsuariopost.id = 'nombreDeUsuario';
-    textContainerpost.appendChild(nombreUsuariopost);
+    containerUsuarioEimagen.appendChild(nombreUsuariopost);
 
     const publicacion = document.createElement('textarea');
     publicacion.classList.add('publicarInput');
@@ -113,9 +130,7 @@ export const feed = (onNavigate) => {
     })
   });
 
-
 //-----------------------------------------------------------------------------------------------------------
-
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
