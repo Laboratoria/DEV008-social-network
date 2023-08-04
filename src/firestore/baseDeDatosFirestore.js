@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { app } from '../lib/firebase/configuracionFirabase';
 
 const db = getFirestore(app);
@@ -20,3 +20,9 @@ export function mostrarpost() {
   const referenciaColeccion = collection(db, 'Posts');
   return getDocs(referenciaColeccion);
 }
+
+export function borrarPost(id) {
+  return deleteDoc(doc(db, 'Posts', id));
+}
+
+//export interface UserInfo 

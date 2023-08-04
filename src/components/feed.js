@@ -1,5 +1,5 @@
-import { crearPost, mostrarpost } from '../firestore/baseDeDatosFirestore.js';
-import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
+import { crearPost, mostrarpost, borrarPost } from '../firestore/baseDeDatosFirestore.js';
+import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';//
 
 export const feed = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -13,6 +13,20 @@ export const feed = (onNavigate) => {
   headerLogo.src = '../logo.png';
   headerLogo.classList.add('headerLogoFeed');
   headerFeed.appendChild(headerLogo);
+
+  const usuarioInfoHeader = document.createElement('div');
+  usuarioInfoHeader.classList.add('usuarioInfoHeader');
+  headerFeed.appendChild(usuarioInfoHeader);
+
+  const imagenUsuarioHeader = document.createElement('img');
+  imagenUsuarioHeader.className = 'imagenUsuarioHeader';
+  usuarioInfoHeader.appendChild(imagenUsuarioHeader);
+  imagenUsuarioHeader.src = 'usuario.png';
+
+  const nombreUsuarioHeader = document.createElement('h2');
+  nombreUsuarioHeader.className = 'nombreUsuarioHeader';
+  nombreUsuarioHeader.innerText = usuarioActual(); //Sale undefined//REVISAR//
+  usuarioInfoHeader.appendChild(nombreUsuarioHeader);
 
   const buttonCerrarSesion = document.createElement('button');
   buttonCerrarSesion.classList.add('buttonCerrarSesion');
@@ -79,6 +93,15 @@ export const feed = (onNavigate) => {
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
     eliminarPost.classList.add('eliminarPost');
     textContainerpost.appendChild(eliminarPost);
+    eliminarPost.addEventListener('click', () => {
+      borrarPost(post.id)
+        .then((respuesta) => {
+          console.log(respuesta);
+          console.log('Borraste un post');
+          window.location.reload();
+        });
+    });
+    //console.log(post.id);
 
     const editarPost = document.createElement('img');
     editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
@@ -110,19 +133,15 @@ export const feed = (onNavigate) => {
       contenedorPost(post);
       console.log(post.data().contenido);
     //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
-    })
+    });
   });
-
-
-//-----------------------------------------------------------------------------------------------------------
-
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const userPost = `${usuarioActual}`;
+    const userPost = 'Usuario';
     console.log(userPost);
     const contenidoPost = document.getElementById('crearPost').value;
     console.log(contenidoPost);
