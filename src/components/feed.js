@@ -1,4 +1,4 @@
-import { crearPost, mostrarpost } from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost,editPost } from '../firestore/baseDeDatosFirestore.js';
 import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
 
 export const feed = (onNavigate) => {
@@ -84,6 +84,23 @@ export const feed = (onNavigate) => {
     editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
     editarPost.classList.add('editarPost');
     textContainerpost.appendChild(editarPost);
+    editarPost.addEventListener(click, () => {
+      const postEditado = respuesta;
+          console.log(postEditado);
+      editPost(post.contenido)
+      .then((respuesta)=>{
+        alert('Has editado un post');
+        window.location.reload();
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert(error.message);
+          window.location.reload();
+      })
+    });
 
     const imagenUsuariopost = document.createElement('img');
     imagenUsuariopost.className = 'imagenUsuario';
@@ -115,7 +132,7 @@ export const feed = (onNavigate) => {
 
 
 //-----------------------------------------------------------------------------------------------------------
-
+ 
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
