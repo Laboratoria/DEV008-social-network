@@ -21,18 +21,9 @@ export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export const usuarioActual = onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-
-    const displayName = user.displayName;
-    console.log(displayName);
-    // ...
-  } else {
-    // User is signed out
-    // ...
-    console.log('No hay usuario');
-  }
+  const displayName = user.displayName;
+  console.log(displayName);
+  return displayName;
 });
 
 /*const user = auth.currentUser;
