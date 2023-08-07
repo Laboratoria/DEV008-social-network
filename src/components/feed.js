@@ -1,4 +1,4 @@
-import { crearPost, mostrarpost } from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost,agregarLike, quitarLike, obtenerDocumento } from '../firestore/baseDeDatosFirestore.js';
 import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
 
 export const feed = (onNavigate) => {
@@ -82,6 +82,7 @@ export const feed = (onNavigate) => {
     containerPost.onclick = function () {
       play();
     };
+
     const likeFuego = document.createElement('img');
     likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
     likeFuego.classList.add('likeFuego');
