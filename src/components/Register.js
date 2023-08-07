@@ -21,9 +21,12 @@ const Register = (onNavigate) => {
   password.setAttribute('placeholder', 'Contraseña');
 
   const buttonRegister = document.createElement('button');
-  buttonRegister.textContent = 'Inicia Sesión';
-  buttonRegister.addEventListener('click', () => onNavigate('/Home'));
+  buttonRegister.textContent = 'REGISTRARSE';
+  buttonRegister.addEventListener('click', () => {
+    addUser.then(email.value, password.value)
+  });
   buttonRegister.classList.add('btn');
+//.catch para las excepciones
 
   registerForm.append(username, email, password, buttonRegister);
   registerSection.append(registerTitle, registerForm);
