@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>¡LabsConnect!</title>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>LabsConnect</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-   <!-- Barra de navegación -->
-   <nav class="navbar">
+/* eslint-disable semi */
+export default () => {
+  const viewHome = `
+  <!-- Barra de navegación -->
+  <nav class="navbar">
     <div class="navbar-brand">
       <a href="/">LabsConnect</a>
     </div>
@@ -54,7 +45,8 @@
         <button type="submit" class="btn-submit">Register</button>
       </form>
     </div>
-  </div>
-  <script type="module" src="./main.js"></script>
-</body>
-</html>
+  </div>`;
+  const divElem = document.createElement('div');
+  divElem.innerHTML = viewHome;
+  return divElem;
+}
