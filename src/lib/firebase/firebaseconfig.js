@@ -63,4 +63,3 @@ export const subscribeToDataChanges = (actualizarFeed) => (query(collection(fire
   });
   actualizarFeed(data);
 });
-console.log(subscribeToDataChanges(), 'Aquí se crea el post');

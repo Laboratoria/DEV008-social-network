@@ -7,10 +7,12 @@
 }
 
 :root {
-  --light-salmon: #FED4CD;
   --white: #ffffff;
   --salmon: #e47c7c;
+  --light-salmon: #FED4CD;
+  --light-pink: #FFF1F1;
   --dark-salmon: #C28B8B;
+  --dark-salmon-transparency: #c28b8bb5;
 }
 
 .flex, #google-btn {
@@ -24,16 +26,31 @@ body {
   align-items: center;
 }
 
+#login-content {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+.logo {
+  height: 10rem;
+}
+
 .welcome-title {
   font-family: 'Patua One', cursive;
-  font-size: 1.6rem;
+  font-size: 2rem;
+  text-align: center;
   color: var(--dark-salmon);
   font-weight: 400;
 }
 
 .form-container{
   width: 18rem;
-  height: 20rem;
+  height: 24rem;
   background-color: var(--white);
   border-radius: 20px;
   padding: 2rem;
@@ -42,35 +59,43 @@ body {
   justify-content: center;
   image-rendering: auto;
   flex-flow: column;
-  background-image: url(https://files.slack.com/files-pri/T0NNB6T0R-F05JDPTCA3X/instapet.png);
+  box-shadow: 0 0 15px var(--dark-salmon-transparency);
+}
 
+.form-title {
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.input-container {
+  flex-flow: column;
+  margin-bottom: 0.6rem;
 }
 
 input {
   width: 14rem;
-  padding: 0.3rem 0.2rem;
+  height: 2rem;
+  padding: 0.3rem 0.4rem;
   margin: 0.4rem 0;
+  border: none;
+  background-color: var(--light-pink);
 }
 
 input::placeholder {
   color: var(--dark-salmon);
 }
 
-.btn-container {
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
 .btn {
   width: 6.4rem;
   min-width: fit-content;
-  height: 2rem;
+  height: 2.4rem;
   background: var(--salmon);
   color: var(--white);
+  font-weight: 600;
   border: none;
   border-radius: 8px;
   margin: 0.4rem 0;
-  padding: 0 0.4rem;
+  padding: 0 0.8rem;
   transition: 0.5s;
 }
 
@@ -81,13 +106,18 @@ input::placeholder {
   transition: 0.5s;
 }
 
-.icon {
-  height: 22px;
-  margin-left: 8px;
+p {
+  font-size: 0.9rem;
 }
 
-#google-btn {
+#login {
+  margin-bottom: 1rem;
+}
+
+#google-logo {
+  height: 40px;
   align-items: center;
+  margin: 0.8rem 0;
 }
 .contenedorHome {
   display: flow-root;
@@ -99,11 +129,10 @@ input::placeholder {
   padding: 10%;
   padding: 2rem;
   flex-flow: column;
-  }
-
+}
   
-  textarea {
-    resize: none;
-    height: 8rem;
-    width: 36rem;
-  }
+textarea {
+  resize: none;
+  height: 8rem;
+  width: 36rem;
+}

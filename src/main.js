@@ -3,7 +3,7 @@ import Home from './components/Home';
 import Register from './components/Register';
 import error from './components/Error';
 import { escribirDatosUsuarios } from './lib/firebase/firebaseconfig';
-import { async } from 'regenerator-runtime';
+// import { async } from 'regenerator-runtime';
 
 const routes = [
   { path: '/', component: Login },
@@ -46,5 +46,3 @@ document.getElementById('publishValue').addEventListener('click', async () => {
     await escribirDatosUsuarios({ texto: textValue });
   }
 });
-
-

@@ -1,4 +1,4 @@
-import { addUser } from '../lib/firebase/acount';
+import { addUser } from '../lib/firebase/account';
 
 const Register = (onNavigate) => {
   const registerSection = document.createElement('section');
