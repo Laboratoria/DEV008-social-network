@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc } from 'firebase/firestore';
 import { app } from '../lib/firebase/configuracionFirabase';
 
 const db = getFirestore(app);
@@ -20,3 +20,6 @@ export function mostrarpost() {
   const referenciaColeccion = collection(db, 'Posts');
   return getDocs(referenciaColeccion);
 }
+
+//editar post
+export const editPost = (contenido) => getDoc(doc(db, 'Post', contenido));
