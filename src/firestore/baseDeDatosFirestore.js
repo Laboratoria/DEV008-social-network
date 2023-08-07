@@ -24,5 +24,3 @@ export function mostrarpost() {
 export function borrarPost(id) {
   return deleteDoc(doc(db, 'Posts', id));
 }
-
-//export interface UserInfo 

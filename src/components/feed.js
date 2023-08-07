@@ -3,7 +3,7 @@ import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';//
 
 export const feed = (onNavigate) => {
   const homeDiv = document.createElement('div');
-  homeDiv.classList.add('feedDiv');
+  homeDiv.classList.add('homeDiv');
 
   const headerFeed = document.createElement('header');
   headerFeed.classList.add('headerFeed');
@@ -124,12 +124,25 @@ export const feed = (onNavigate) => {
     eliminarPost.classList.add('eliminarPost');
     opcionesPostContenedor.appendChild(eliminarPost);
     eliminarPost.addEventListener('click', () => {
-      borrarPost(post.id)
-        .then((respuesta) => {
-          console.log(respuesta);
-          console.log('Borraste un post');
+      const alertConfimar = confirm('¿Eliminar post?'); // Confirmación para eliminar post// NO FUNCIONA / LO BORRA DE TODOS MODOS//
+      alert(alertConfimar);
+      if (alertConfimar === true) {
+        borrarPost(post.id)
+          .then((respuesta) => {
+            console.log(respuesta);
+            console.log('Borraste un post');
+            window.location.reload();
+          });
+      } else {
+        borrarPost(post.id).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert(error.message);
           window.location.reload();
         });
+      }
     });
     //console.log(post.id);
 
@@ -144,7 +157,7 @@ export const feed = (onNavigate) => {
     respuesta.forEach((post) => {
       contenedorPost(post);
       console.log(post.data().contenido);
-    //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
+      //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
     });
   });
 
@@ -184,11 +197,11 @@ export const feed = (onNavigate) => {
 };
 
 
-// esto debe vivir en feed: 
+// esto debe vivir en feed:
 
 // .....addEventListener("click", () => {
-    // ... 
-    // crearPost(user.id, text.value, Date.now()).then(() => { //refrescar la vista  })
+// ...
+// crearPost(user.id, text.value, Date.now()).then(() => { //refrescar la vista  })
 // })
 
 

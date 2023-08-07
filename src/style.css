@@ -191,10 +191,17 @@
 
 /* Feed */
 
+.homeDiv{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
 .feedDiv {
   display: flex;
   width: 100%;
   height: 100%;
+  background-color: #000000;
 }
 .headerFeed {
   display: flex;
