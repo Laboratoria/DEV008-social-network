@@ -1,10 +1,11 @@
 import { escribirDatosUsuarios, subscribeToDataChanges } from '../lib/firebase/firebaseconfig';
 
-const Home = (onNavigate) => {
+const Home = (navigateTo) => {
   const homeSection = document.createElement('section');
-  homeSection.classList.add('contenedorHome');
+  homeSection.classList.add('home-container', 'flex');
 
-  const headerSection = document.createElement('div');
+  const headerSection = document.createElement('header');
+  headerSection.id = 'home';
 
   const welcomeTitle = document.createElement('h2');
   welcomeTitle.classList.add('welcome-title');
@@ -12,6 +13,7 @@ const Home = (onNavigate) => {
 
   const postForm = document.createElement('div');
   postForm.classList.add('post-form', 'flex');
+  postForm.id = 'post-container';
 
   const postMessage = document.createElement('textarea');
   postMessage.id = 'inputValue';
@@ -22,7 +24,7 @@ const Home = (onNavigate) => {
   buttonPublicar.textContent = 'Publicar';
   buttonPublicar.id = 'publishValue';
   buttonPublicar.classList.add('btn');
-  const containerNewPost = document.createElement('div');
+  const containerNewPost = document.createElement('section');
   containerNewPost.id = 'feedScrollContent';
 
   // aqui debemos poner la funcion que guarde lo que se escribio y que se muestre en el texarea
@@ -64,15 +66,14 @@ const Home = (onNavigate) => {
 
   const buttonLogout = document.createElement('button');
   buttonLogout.classList.add('btn');
-  buttonLogout.addEventListener('click', () => onNavigate('/'));
+  buttonLogout.addEventListener('click', () => navigateTo('/'));
   buttonLogout.textContent = 'Cerrar sesión';
 
-  homeSection.appendChild(headerSection);
-  homeSection.appendChild(postForm);
+  homeSection.append(headerSection);
+  homeSection.append(postForm);
   headerSection.append(welcomeTitle, buttonLogout);
   btnContainerHome.append(buttonPublicar, buttonCancelar);
-  postForm.append(postMessage, btnContainerHome);
-  postForm.append(containerNewPost);
+  postForm.append(containerNewPost, postMessage, btnContainerHome);
 
   return homeSection;
 };

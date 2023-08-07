@@ -1,9 +1,9 @@
 import { loginUser } from '../lib/firebase/account';
 import { googleLogin } from '../lib/firebase/firebaseconfig';
 
-const Login = (onNavigate) => {
+const Login = (navigateTo) => {
   // Selección del body
-  const loginContent = document.querySelector('div');
+  const loginContent = document.createElement('div');
   loginContent.classList.add('flex');
   loginContent.id = 'login-content';
 
@@ -28,6 +28,7 @@ const Login = (onNavigate) => {
   loginTitle.textContent = 'Inicia sesión';
 
   const loginForm = document.createElement('form');
+  loginForm.id = 'login-form';
 
   const inputContainer = document.createElement('div');
   inputContainer.classList.add('input-container', 'flex');
@@ -48,7 +49,7 @@ const Login = (onNavigate) => {
     e.preventDefault();
     loginUser(inputEmail.value, inputPassword.value)
       .then((userCredential) => {
-        onNavigate('/Home');
+        navigateTo('/Home');
         // Signed in
         const user = userCredential.user;
         console.log(user);
@@ -74,7 +75,7 @@ const Login = (onNavigate) => {
     e.preventDefault();
     const resultado = googleLogin();
     resultado.then(() => {
-      onNavigate('/Home');
+      navigateTo('/Home');
     });
   });
 
