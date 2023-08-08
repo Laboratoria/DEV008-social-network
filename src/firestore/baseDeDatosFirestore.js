@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, getDocs, doc, arrayUnion, updateDoc, arrayRemove, getDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { app } from '../lib/firebase/configuracionFirabase';
 
 const db = getFirestore(app);
@@ -21,6 +21,10 @@ export function mostrarpost() {
   return getDocs(referenciaColeccion);
 }
 
+export function borrarPost(id) {
+  return deleteDoc(doc(db, 'Posts', id));
+}
+
 export function agregarLike(userId,postId){
   const referenciaDocumento = doc(db, 'Posts', postId);
   return updateDoc(referenciaDocumento, {likes: arrayUnion(userId)})
@@ -38,4 +42,3 @@ export function obtenerDocumento (id){
 
 //hacer el listener para el agregar y quitar like
 //luego el usuario en localstorage
-
