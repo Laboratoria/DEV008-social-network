@@ -1,4 +1,4 @@
-import { crearPost, mostrarpost, borrarPost, incrementarLike , obtenerDocumento, decrementarLike} from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost, borrarPost, incrementarLike , obtenerDocumento, decrementarLike, editPost} from '../firestore/baseDeDatosFirestore.js';
 //import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
 import { obtenerUsuarioActual } from '../lib/localStorage.js';
 
@@ -97,28 +97,6 @@ export const feed = (onNavigate) => {
     usuarioInfoPost.className = 'usuarioInfo';
     textContainerpost.appendChild(usuarioInfoPost);
 
-    const editarPost = document.createElement('img');
-    editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
-    editarPost.classList.add('editarPost');
-    textContainerpost.appendChild(editarPost);
-    editarPost.addEventListener("click", () => {
-      alert('Edita tu post');
-      const abrirEditor = new publicacion.disabled(true);
-      //console.log(abrirEditor);
-      abrirEditor
-          });
-
-    const guardarPost = document.createElement('img');
-    guardarPost.src = 'https://cdn.icon-icons.com/icons2/1244/PNG/512/1492790860-8check_84164.png';
-    guardarPost.classList.add('guardarPost');
-    textContainerpost.appendChild(guardarPost);
-    guardarPost.addEventListener("click", () => {
-      alert('Editaste tu post');
-      const cerrarPost = new publicacion.disabled(false);
-      cerrarPost
-
-    });
-
     const imagenUsuariopost = document.createElement('img');
     imagenUsuariopost.className = 'imagenUsuario';
     imagenUsuariopost.src = 'usuario.png';
@@ -133,10 +111,8 @@ export const feed = (onNavigate) => {
     const publicacion = document.createElement('textarea');
     publicacion.classList.add('publicarInput');
     publicacion.innerText = post.data().contenido;
-    publicacion.disabled = 'false';
+    publicacion.disabled = true;
     publicacion.id = 'post';
-    publicacion.disabled = false;
-
     publicacion.placeholder = 'Post';
     textContainerpost.appendChild(publicacion);
 
@@ -167,7 +143,7 @@ export const feed = (onNavigate) => {
       .catch((error)=>{
         console.log(error)
       })
-       /* incrementarLike(post.id, usuarioActual.uid).then((respuesta) => {
+      /* incrementarLike(post.id, usuarioActual.uid).then((respuesta) => {
         console.log(respuesta);
         console.log('Diste un like');
         console.log(post.uid);
@@ -200,10 +176,42 @@ export const feed = (onNavigate) => {
     containerLike.appendChild(contadorLikes);
     //aqui sustituir el valor de 0 por la longitud del arreglo de likes post.likes.lenght
 
-    const eliminarPost = document.createElement('img');
+    if (usuarioActual.email === post.data().autor){
+      const containerPostMenu = document.createElement('div');
+      containerPostMenu.classList = ('containerPostMenu');
+      textContainerpost.appendChild(containerPostMenu);
+      
+      const editarPost = document.createElement('img');
+      editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
+      editarPost.classList.add('editarPost');
+      containerPostMenu.appendChild(editarPost);
+      editarPost.addEventListener("click", () => {
+        alert('Edita tu post');
+        publicacion.disabled = false;
+        
+            });
+      
+      const guardarPost = document.createElement('img');
+      guardarPost.src = 'https://cdn.icon-icons.com/icons2/1244/PNG/512/1492790860-8check_84164.png';
+      guardarPost.classList.add('guardarPost');
+      containerPostMenu.appendChild(guardarPost);
+      guardarPost.addEventListener("click", () => {
+        alert('Editaste tu post');
+        const nuevoContenido = publicacion.value;
+        console.log(nuevoContenido);
+        editPost(post.id, nuevoContenido)
+        .then((respuesta) => {
+          publicacion.disabled= true;
+          console.log(respuesta);
+        })
+        .catch((error)=>{
+          console.log(error)})
+      });
+
+      const eliminarPost = document.createElement('img');
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
     eliminarPost.classList.add('eliminarPost');
-    opcionesPostContenedor.appendChild(eliminarPost);
+    containerPostMenu.appendChild(eliminarPost);
     eliminarPost.addEventListener('click', () => {
       const alertConfimar = confirm('¿Eliminar post?'); // Confirmación para eliminar post// NO FUNCIONA / LO BORRA DE TODOS MODOS//
       alert(alertConfimar);
@@ -225,7 +233,8 @@ export const feed = (onNavigate) => {
       }
     });
     //console.log(post.id);
-  }
+    };  
+  };
 
   //funcion mostrarPost hace un recorrido de cada post y en cada uno se manda a llamar la funcion contenedorPost----------
   mostrarpost().then((respuesta) => {
@@ -271,19 +280,3 @@ export const feed = (onNavigate) => {
 
   return homeDiv;
 };
-
-
-// esto debe vivir en feed:
-
-// .....addEventListener("click", () => {
-// ...
-// crearPost(user.id, text.value, Date.now()).then(() => { //refrescar la vista  })
-// })
-
-
-// mostrarpost().then((posts)=> { ..... for...})
-
-//siguiente: mostrar post
-// miFuncion() {
-// return getDocs(referenciaColleccion)
-//}
