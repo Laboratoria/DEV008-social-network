@@ -79,7 +79,7 @@ export const login = (onNavigate) => {
       .then((respuesta) => {
         // Signed in
         const user = respuesta.user;
-        console.log(user.email);
+        console.log(user);
         guardarUsuarioActual(user);
         // ...
         alert('Bienvenido');
@@ -98,7 +98,7 @@ export const login = (onNavigate) => {
     accesoGoogle().then((result) => {
       const user = result.user;
       console.log(user.email);
-      localStorage.setItem('usuarioActual', JSON.stringify(user));
+      guardarUsuarioActual(user);
       // IdP data available using getAdditionalUserInfo(result)
       // ...
       alert('Bienvenido');

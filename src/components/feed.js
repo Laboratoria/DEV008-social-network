@@ -4,7 +4,7 @@ import { obtenerUsuarioActual } from '../lib/localStorage.js';
 
 export const feed = (onNavigate) => {
   const usuarioActual = obtenerUsuarioActual();
-  //const usuarioAutor = post.data().autor;
+  console.log(usuarioActual);
 
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('homeDiv');
@@ -29,7 +29,7 @@ export const feed = (onNavigate) => {
 
   const nombreUsuarioHeader = document.createElement('h2');
   nombreUsuarioHeader.className = 'nombreUsuarioHeader';
-  nombreUsuarioHeader.innerText = usuarioActual.email; // Sale undefined//REVISAR//
+  nombreUsuarioHeader.innerText = usuarioActual.email;
   usuarioInfoHeader.appendChild(nombreUsuarioHeader);
 
   const buttonCerrarSesion = document.createElement('button');
@@ -161,7 +161,7 @@ export const feed = (onNavigate) => {
   mostrarpost().then((respuesta) => {
     respuesta.forEach((post) => {
       contenedorPost(post);
-      console.log(post.data().contenido);
+      //console.log(post.data().contenido);
       //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
     });
   });
