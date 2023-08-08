@@ -6,6 +6,8 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  getDoc,
+  // signOut,
 } from 'firebase/firestore';
 import {
   getAuth,
@@ -34,14 +36,13 @@ const auth = getAuth(app);
 export const createCountEmailPassword = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password);
 
-export const googleLogin = () => {
-  signInWithPopup(auth, provider);
-};
-export const savePosts = (post, correo) =>
-  addDoc(collection(db, 'posts'), { post, correo });
+export const googleLogin = () => signInWithPopup(auth, provider);
+export const savePosts = (post, correo) => addDoc(collection(db, 'posts'), { post, correo });
 export const getPosts = () => getDocs(collection(db, 'posts'));
 export const getCurrentUser = () => auth.currentUser;
 export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
 
 export const singInEmailPass = (email, password) =>
-signInWithEmailAndPassword(auth, email, password);
+  signInWithEmailAndPassword(auth, email, password);
+
+export const getPost = (id) => getDoc(doc(db, 'posts', id));

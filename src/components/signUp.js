@@ -21,6 +21,9 @@ export const signUp = (onNavigate) => {
   termsText.classList.add('termsText');
   const doYouHaveAnAccount = document.createElement('p');
   doYouHaveAnAccount.classList.add('doYouHaveAnAccount');
+  const imageSignUp = document.createElement('img');
+  imageSignUp.classList.add('imageSignUp');
+  imageSignUp.src = ('../image/imageninicio.jpg');
 
   doYouHaveAnAccount.textContent = '¿Ya tienes una cuenta?';
   termsText.textContent =
@@ -57,13 +60,14 @@ export const signUp = (onNavigate) => {
         }
       });
   });
-
+  singUpDiv.appendChild(imageSignUp);
   singUpDiv.appendChild(signUpText);
   singUpDiv.appendChild(usersName);
   singUpDiv.appendChild(usersEmail);
   singUpDiv.appendChild(usersPassword);
-  singUpDiv.appendChild(termsCheckbox);
   singUpDiv.appendChild(termsText);
+  termsText.appendChild(termsCheckbox);
+  
   singUpDiv.appendChild(signUpButton);
   singUpDiv.appendChild(doYouHaveAnAccount);
   singUpDiv.appendChild(backToLogin);

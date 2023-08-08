@@ -1,11 +1,18 @@
-import { savePosts, getPosts, getCurrentUser, deletePost } from './firebase.js';
+import {
+  savePosts,
+  getPosts,
+  getCurrentUser,
+  deletePost,
+  getPost,
+} from './firebase.js';
 
 export const wall = (onNavigate) => {
   const wallDiv = document.createElement('div');
-  const allPosts = document.createElement('div');
+  const allPosts = document.createElement('form');
   const containerPosts = document.createElement('div');
   containerPosts.classList.add('containerPosts');
   const signOutButton = document.createElement('button');
+  signOutButton.classList.add('signOutButton');
   const postButton = document.createElement('button');
   postButton.classList.add('postButton');
   const post = document.createElement('textarea');
@@ -13,8 +20,11 @@ export const wall = (onNavigate) => {
   allPosts.classList.add('allPosts');
   const header = document.createElement('header');
   header.classList.add('header');
+  const logo = document.createElement('img');
+  logo.classList.add('logo');
+  logo.src = '../image/unnamed.png';
 
-  post.placeholder = 'Escribe tu publicación';
+  post.placeholder = '¿Qué vas hay de comer hoy?';
   post.rows = '4';
   postButton.textContent = 'Publicar';
   signOutButton.textContent = 'Cerrar sesión';
@@ -35,25 +45,28 @@ export const wall = (onNavigate) => {
 
       if (data.correo === user.email) {
         containerPosts.innerHTML += `
-        <div class = 'card1'> </div>
+        <div class = 'card1'>
+        ${data.correo}   </div>
+       
         <div class = 'card'>
-
         <p>${data.post}<p>
         <button class = 'btn-delete' data-id='${doc.id}'> Eliminar </button>
-
+      
         </div>
         `;
       } else {
         containerPosts.innerHTML += `
-        <div class = 'card1'> </div>
+        <div class = 'card1'>
+        ${data.correo} </div>
+        
         <div class = 'card'>
         <p>${data.post}<p>
         </div>
-
         `;
+        console.log(user.email);
       }
+
       const btnsDelete = containerPosts.querySelectorAll('.btn-delete');
-     
 
       btnsDelete.forEach((btn) => {
         btn.addEventListener('click', ({ target: { dataset } }) => {
@@ -62,7 +75,16 @@ export const wall = (onNavigate) => {
           });
         });
       });
-      console.log(btnsDelete);
+      const btnEdit = containerPosts.querySelectorAll('.btn-edit');
+      btnEdit.forEach((btn) => {
+        btn.addEventListener('click', ({ target: { dataset } }) => {
+          getPost(dataset.id).then(() => {
+            post.value = data.post;
+            console.log(data);
+          });
+        });
+      });
+      // console.log(btnsDelete);
       // console.log(data);
     });
     // console.log(posts);
@@ -71,6 +93,8 @@ export const wall = (onNavigate) => {
   signOutButton.addEventListener('click', () => {
     onNavigate('/');
   });
+
+  header.appendChild(logo);
   wallDiv.appendChild(header);
 
   allPosts.append(post, postButton);

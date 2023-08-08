@@ -12,7 +12,7 @@ export const signIn = (onNavigate) => {
   imageSignIn.src = '../image/imagesignIn.jpg';
   const imageGoogle = document.createElement('img');
   imageGoogle.classList.add('imageGoogle');
-  imageGoogle.src = ('../image/btn-jpeg.jpg');
+  imageGoogle.src = '../image/btn-jpeg.jpg';
 
   // se crea un select para almacenar el formulario
   const formSignIn = document.createElement('form');
@@ -34,9 +34,7 @@ export const signIn = (onNavigate) => {
   const dontYouHaveAnAccount = document.createElement('p');
   dontYouHaveAnAccount.classList.add('dontYouHaveAnAccount');
   const signUpButton = document.createElement('button');
-  signUpButton.classList.add('signUpButton');
-
-
+  signUpButton.classList.add('signUpButtonInicio');
 
   // Se inserta el nombre a los elementos creados
   description.textContent =
@@ -46,7 +44,7 @@ export const signIn = (onNavigate) => {
   email.placeholder = 'Correo Electrónico';
   password.placeholder = 'Contraseña';
   signInButton.textContent = 'Inicia sesión';
-  googleButton.textContent = 'Acceder con Google';
+  googleButton.textContent = 'Google';
   dontYouHaveAnAccount.textContent = '¿No tienes una cuenta?';
   signUpButton.textContent = 'Registrate';
 
@@ -55,10 +53,20 @@ export const signIn = (onNavigate) => {
   });
 
   signInButton.addEventListener('click', () => {
-    singInEmailPass(email.value, password.value).then(() => {
-      onNavigate('/wall');
-      console.log(singInEmailPass);
-    });
+    singInEmailPass(email.value, password.value)
+      .then(() => {
+        onNavigate('/wall');
+        console.log(singInEmailPass);
+      })
+      .catch((error) => {
+        if (error.code === 'auth/wrong-password') {
+          alert('La contraseña es invalida');
+        } else if (error.code === 'auth/user-not-found') {
+          alert('El usario es invalido');
+        } else {
+          alert(error.message);
+        }
+      });
   });
 
   googleButton.addEventListener('click', (e) => {
