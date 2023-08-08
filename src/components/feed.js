@@ -1,4 +1,4 @@
-import { crearPost, mostrarpost, borrarPost } from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost, borrarPost, incrementarLike} from '../firestore/baseDeDatosFirestore.js';
 import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
 
 export const feed = (onNavigate) => {
@@ -119,9 +119,28 @@ export const feed = (onNavigate) => {
     containerLike.classList.add('containerLike');
     containerLike.id = ' containerLike';
     opcionesPostContenedor.appendChild(containerLike);
-    /*containerLike.onclick = function () {
+
+    containerLike.addEventListener("click", function () {
+        incrementarLike(post.id, post.uid).then((respuesta) => {
+        console.log(respuesta);
+        console.log('Diste un like');
+        console.log(post.uid);
+        alert("funciona el boton")
+        window.location.reload()
+      })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert(error.message);
+          window.location.reload(); // Para recargar la pantalla//
+        });
+      });
+    
+    containerLike.onclick = function () {
       play();
-    };*/
+    };
 
     const likeFuego = document.createElement('img');
     likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
@@ -179,6 +198,7 @@ export const feed = (onNavigate) => {
 //-----------------------------------------------------------------------------------------------------------
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
+
 
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
