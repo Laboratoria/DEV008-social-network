@@ -46,3 +46,8 @@ export function obtenerDocumento (id){
 
 //hacer el listener para el agregar y quitar like
 //luego el usuario en localstorage
+
+export function editPost (id, contenidoEditado) {
+  const referenciaDocumento = doc(db, 'Posts', id);
+  return updateDoc (referenciaDocumento, {contenido: (contenidoEditado)})
+}
