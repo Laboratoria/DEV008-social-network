@@ -1,7 +1,11 @@
-import { crearPost, mostrarpost, borrarPost, incrementarLike} from '../firestore/baseDeDatosFirestore.js';
-import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
+import { crearPost, mostrarpost, borrarPost, incrementarLike , obtenerDocumento, decrementarLike} from '../firestore/baseDeDatosFirestore.js';
+//import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
+import { obtenerUsuarioActual } from '../lib/localStorage.js';
 
 export const feed = (onNavigate) => {
+  const usuarioActual = obtenerUsuarioActual();
+  console.log(usuarioActual);
+
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('homeDiv');
 
@@ -25,7 +29,7 @@ export const feed = (onNavigate) => {
 
   const nombreUsuarioHeader = document.createElement('h2');
   nombreUsuarioHeader.className = 'nombreUsuarioHeader';
-  nombreUsuarioHeader.innerText = usuarioActual(); // Sale undefined//REVISAR//
+  nombreUsuarioHeader.innerText = usuarioActual.email;
   usuarioInfoHeader.appendChild(nombreUsuarioHeader);
 
   const buttonCerrarSesion = document.createElement('button');
@@ -56,7 +60,7 @@ export const feed = (onNavigate) => {
 
   const nombreUsuario = document.createElement('p');
   nombreUsuario.className = 'nombreUsuario';
-  nombreUsuario.innerText = usuarioActual(); // Sale undefined//REVISAR//
+  nombreUsuario.innerText = usuarioActual.email;
   usuarioInfo.appendChild(nombreUsuario);
 
   const publicar = document.createElement('textarea');
@@ -108,6 +112,8 @@ export const feed = (onNavigate) => {
     publicacion.classList.add('publicarInput');
     publicacion.innerText = post.data().contenido;
     publicacion.id = 'post';
+    publicacion.disabled = false;
+
     publicacion.placeholder = 'Post';
     textContainerpost.appendChild(publicacion);
 
@@ -121,12 +127,28 @@ export const feed = (onNavigate) => {
     opcionesPostContenedor.appendChild(containerLike);
 
     containerLike.addEventListener("click", function () {
-        incrementarLike(post.id, post.uid).then((respuesta) => {
+      obtenerDocumento(post.id)
+      .then( (documento)=> {
+        const yaDioLike = documento.data().likes.includes(usuarioActual.uid)
+        if (yaDioLike){
+          decrementarLike(usuarioActual.uid, post.id).then(()=>{
+            window.location.reload()
+          })
+        }
+        else{
+          incrementarLike(post.id, usuarioActual.uid).then(()=>{
+            window.location.reload();
+          })
+        }
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+       /* incrementarLike(post.id, usuarioActual.uid).then((respuesta) => {
         console.log(respuesta);
         console.log('Diste un like');
         console.log(post.uid);
         alert("funciona el boton")
-        window.location.reload()
       })
         .catch((error) => {
           const errorCode = error.code;
@@ -135,7 +157,7 @@ export const feed = (onNavigate) => {
           console.log(errorMessage);
           alert(error.message);
           window.location.reload(); // Para recargar la pantalla//
-        });
+        });*/
       });
     
     containerLike.onclick = function () {
@@ -150,8 +172,10 @@ export const feed = (onNavigate) => {
     const contadorLikes = document.createElement('number');
     contadorLikes.className = 'contadorLikes';
     contadorLikes.id = 'contadorLikes';
-    contadorLikes.textContent = '0';
+    contadorLikes.textContent = post.data().likes.length;
+    console.log(post);
     containerLike.appendChild(contadorLikes);
+    //aqui sustituir el valor de 0 por la longitud del arreglo de likes post.likes.lenght
 
     const eliminarPost = document.createElement('img');
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
@@ -166,16 +190,15 @@ export const feed = (onNavigate) => {
             console.log(respuesta);
             console.log('Borraste un post');
             window.location.reload();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+            alert(error.message);
+            window.location.reload();
           });
-      } else {
-        borrarPost(post.id).catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          alert(error.message);
-          window.location.reload();
-        });
       }
     });
     //console.log(post.id);
@@ -190,12 +213,10 @@ export const feed = (onNavigate) => {
   mostrarpost().then((respuesta) => {
     respuesta.forEach((post) => {
       contenedorPost(post);
-      console.log(post.data().contenido);
-    //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
+      //console.log(post.data().contenido);
+      //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
     });
   });
-
-//-----------------------------------------------------------------------------------------------------------
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
@@ -203,7 +224,7 @@ export const feed = (onNavigate) => {
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const userPost = 'Usuario';
+    const userPost = usuarioActual.email;
     console.log(userPost);
     const contenidoPost = document.getElementById('crearPost').value;
     console.log(contenidoPost);
@@ -217,7 +238,7 @@ export const feed = (onNavigate) => {
         const postCreado = respuesta;
         console.log(postCreado);
         // ...
-        alert('Haz creado un post');
+        console.log('Haz creado un post');
         window.location.reload(); // Para recargar la pantalla//
       })
       .catch((error) => {
