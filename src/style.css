@@ -232,6 +232,8 @@
 }
 .nombreUsuarioHeader{
  font-family: CaviarDreams;
+ height: 30%;
+ width: 30%;
 }
 .feedContainer {
   display: flex;
@@ -348,6 +350,7 @@
   position: absolute;
   align-self: flex-end;
   margin-left: 1%;
+
   margin-bottom: -5px;
   width: 60px;
   height: 30px;
@@ -383,6 +386,23 @@
 .editarPost {
   width: 25px;
   height: 25px;
-  margin-left: 2% ;
+  margin-left: 78%;
   cursor: pointer;
+}
+.guardarPost {
+  width: 25px;
+  height: 25px;
+  margin-left: 78% ;
+  cursor: pointer;
+}
+
+.containerPostMenu {
+  align-self: center;
+  margin-left: 3px;
+  margin-bottom: -5px;
+  width: 10%;
+  height: 10%;
+  display: inline-flex;
+  border-radius: 100px;
+  align-items: center;
 }
