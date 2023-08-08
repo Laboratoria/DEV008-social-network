@@ -22,5 +22,6 @@ export function mostrarpost() {
 }
 
 export function borrarPost(id) {
-  return deleteDoc(doc(db, 'Posts', id));
+  const referenciaDocumento = doc(db, 'Posts', id);
+  return deleteDoc(referenciaDocumento);
 }

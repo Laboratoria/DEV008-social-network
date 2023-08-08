@@ -1,7 +1,11 @@
 import { crearPost, mostrarpost, borrarPost } from '../firestore/baseDeDatosFirestore.js';
-import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
+//import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
+import { obtenerUsuarioActual } from '../lib/localStorage.js';
 
 export const feed = (onNavigate) => {
+  const usuarioActual = obtenerUsuarioActual();
+  console.log(usuarioActual);
+
   const homeDiv = document.createElement('div');
   homeDiv.classList.add('homeDiv');
 
@@ -25,7 +29,7 @@ export const feed = (onNavigate) => {
 
   const nombreUsuarioHeader = document.createElement('h2');
   nombreUsuarioHeader.className = 'nombreUsuarioHeader';
-  nombreUsuarioHeader.innerText = usuarioActual(); // Sale undefined//REVISAR//
+  nombreUsuarioHeader.innerText = usuarioActual.email;
   usuarioInfoHeader.appendChild(nombreUsuarioHeader);
 
   const buttonCerrarSesion = document.createElement('button');
@@ -56,7 +60,7 @@ export const feed = (onNavigate) => {
 
   const nombreUsuario = document.createElement('p');
   nombreUsuario.className = 'nombreUsuario';
-  nombreUsuario.innerText = usuarioActual(); // Sale undefined//REVISAR//
+  nombreUsuario.innerText = usuarioActual.email;
   usuarioInfo.appendChild(nombreUsuario);
 
   const publicar = document.createElement('textarea');
@@ -124,6 +128,8 @@ export const feed = (onNavigate) => {
     publicacion.innerText = post.data().contenido;
     publicacion.disabled = 'false';
     publicacion.id = 'post';
+    publicacion.disabled = false;
+
     publicacion.placeholder = 'Post';
     textContainerpost.appendChild(publicacion);
 
@@ -149,16 +155,15 @@ export const feed = (onNavigate) => {
             console.log(respuesta);
             console.log('Borraste un post');
             window.location.reload();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+            alert(error.message);
+            window.location.reload();
           });
-      } else {
-        borrarPost(post.id).catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          alert(error.message);
-          window.location.reload();
-        });
       }
     });
     //console.log(post.id);
@@ -168,19 +173,17 @@ export const feed = (onNavigate) => {
   mostrarpost().then((respuesta) => {
     respuesta.forEach((post) => {
       contenedorPost(post);
-      console.log(post.data().contenido);
-    //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
+      //console.log(post.data().contenido);
+      //para acceder a la info de post es con post.data.contenido o fecha o autor----------------
     });
   });
-
-//-----------------------------------------------------------------------------------------------------------
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
 
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const userPost = 'Usuario';
+    const userPost = usuarioActual.email;
     console.log(userPost);
     const contenidoPost = document.getElementById('crearPost').value;
     console.log(contenidoPost);
@@ -194,7 +197,7 @@ export const feed = (onNavigate) => {
         const postCreado = respuesta;
         console.log(postCreado);
         // ...
-        alert('Haz creado un post');
+        console.log('Haz creado un post');
         window.location.reload(); // Para recargar la pantalla//
       })
       .catch((error) => {
