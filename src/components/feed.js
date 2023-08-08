@@ -91,37 +91,22 @@ export const feed = (onNavigate) => {
     const usuarioInfoPost = document.createElement('section');
     usuarioInfoPost.className = 'usuarioInfo';
     textContainerpost.appendChild(usuarioInfoPost);
-    const likeFuego = document.createElement('img');
-    likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
-    likeFuego.classList.add('likeFuego');
-    textContainerpost.appendChild(likeFuego);
-
-    const eliminarPost = document.createElement('img');
-    eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
-    eliminarPost.classList.add('eliminarPost');
-    textContainerpost.appendChild(eliminarPost);
 
     const editarPost = document.createElement('img');
     editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
     editarPost.classList.add('editarPost');
     textContainerpost.appendChild(editarPost);
-    editarPost.addEventListener(click, () => {
-      const postEditado = respuesta;
-          console.log(postEditado);
-      editPost(post.contenido)
-      .then((respuesta)=>{
-        alert('Has editado un post');
-        window.location.reload();
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          alert(error.message);
-          window.location.reload();
-      })
-    });
+    editarPost.addEventListener("click", () => {
+      alert('Edita tu post');
+      const abrirEditor = new publicacion.disabled(true);
+      //console.log(abrirEditor);
+      abrirEditor
+          });
+
+    const guardarPost = document.createElement('img');
+    guardarPost.src = 'https://cdn.icon-icons.com/icons2/1244/PNG/512/1492790860-8check_84164.png';
+    guardarPost.classList.add('guardarPost');
+    textContainerpost.appendChild(guardarPost);
 
     const imagenUsuariopost = document.createElement('img');
     imagenUsuariopost.className = 'imagenUsuario';
@@ -137,6 +122,7 @@ export const feed = (onNavigate) => {
     const publicacion = document.createElement('textarea');
     publicacion.classList.add('publicarInput');
     publicacion.innerText = post.data().contenido;
+    publicacion.disabled = 'false';
     publicacion.id = 'post';
     publicacion.placeholder = 'Post';
     textContainerpost.appendChild(publicacion);
@@ -176,11 +162,6 @@ export const feed = (onNavigate) => {
       }
     });
     //console.log(post.id);
-
-    const editarPost = document.createElement('img');
-    editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
-    editarPost.classList.add('editarPost');
-    opcionesPostContenedor.appendChild(editarPost);
   }
 
   //funcion mostrarPost hace un recorrido de cada post y en cada uno se manda a llamar la funcion contenedorPost----------

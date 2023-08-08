@@ -357,6 +357,12 @@
 .editarPost {
   width: 25px;
   height: 25px;
-  margin-left: 2% ;
+  margin-left: 85%;
+  cursor: pointer;
+}
+.guardarPost {
+  width: 25px;
+  height: 25px;
+  margin-left: 85% ;
   cursor: pointer;
 }
