@@ -22,7 +22,9 @@ const auth = getAuth(app);
 
 export const usuarioActual = onAuthStateChanged(auth, (user) => {
   const displayName = user.displayName;
-  console.log(displayName);
+  // console.log(displayName);
+  // console.log(user.email);
+  // console.log(user);
   return displayName;
 });
 
