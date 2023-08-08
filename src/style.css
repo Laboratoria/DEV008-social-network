@@ -13,6 +13,7 @@
   --light-pink: #FFF1F1;
   --dark-salmon: #C28B8B;
   --dark-salmon-transparency: #c28b8bb5;
+  --orange: #F69F1C;
 }
 
 .flex, #google-btn {
@@ -26,7 +27,13 @@ body {
   align-items: center;
 }
 
-#login-content {
+a {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+#login-content,
+#register-content {
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -50,7 +57,7 @@ header {
 
 .form-container{
   width: 18rem;
-  height: 24rem;
+  height: 26rem;
   background-color: var(--white);
   border-radius: 20px;
   padding: 2rem;
@@ -104,13 +111,14 @@ input::placeholder {
   color: var(--salmon);
   border: 1px solid var(--salmon);
   transition: 0.5s;
+  cursor: pointer;
 }
 
 p {
   font-size: 0.9rem;
 }
 
-#login {
+#login, #register {
   margin-bottom: 1rem;
 }
 
@@ -118,6 +126,10 @@ p {
   height: 40px;
   align-items: center;
   margin: 0.8rem 0;
+}
+
+#google-logo:hover {
+  cursor: pointer;
 }
 
 .home-container {

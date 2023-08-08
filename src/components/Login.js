@@ -2,7 +2,7 @@ import { loginUser } from '../lib/firebase/account';
 import { googleLogin } from '../lib/firebase/firebaseconfig';
 
 const Login = (navigateTo) => {
-  // Selección del body
+  // Creación de div contenedor
   const loginContent = document.createElement('div');
   loginContent.classList.add('flex');
   loginContent.id = 'login-content';
