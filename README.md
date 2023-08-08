@@ -16,9 +16,9 @@ En esta red social, el usuario podrá registrarse con su usuario y contraseña o
 
 A continuación se dejan ejemplos de la red 
  
-![Página Principal](/image/pantalla-inicio.png)
+![Página Principal](/src/image/pantalla-inicio.png)
 
-![Página Principal](/image/pantalla-registro.png)
+![Página Principal](/src/image/pantalla-registro.png)
 
-![Página Principal](/image/pantalla-muro.png)
+![Página Principal](/src/image/pantalla-muro.png)
 
