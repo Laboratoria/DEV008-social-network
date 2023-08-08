@@ -111,6 +111,12 @@ export const feed = (onNavigate) => {
     guardarPost.src = 'https://cdn.icon-icons.com/icons2/1244/PNG/512/1492790860-8check_84164.png';
     guardarPost.classList.add('guardarPost');
     textContainerpost.appendChild(guardarPost);
+    guardarPost.addEventListener("click", () => {
+      alert('Editaste tu post');
+      const cerrarPost = new publicacion.disabled(false);
+      cerrarPost
+
+    });
 
     const imagenUsuariopost = document.createElement('img');
     imagenUsuariopost.className = 'imagenUsuario';
