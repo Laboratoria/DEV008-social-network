@@ -1,4 +1,5 @@
 import { iniciarSesion, accesoGoogle } from '../lib/firebase/configuracionFirabase';
+import { guardarUsuarioActual } from '../lib/localStorage';
 
 export const login = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -78,7 +79,8 @@ export const login = (onNavigate) => {
       .then((respuesta) => {
         // Signed in
         const user = respuesta.user;
-        console.log(user);
+        console.log(user.email);
+        guardarUsuarioActual(user);
         // ...
         alert('Bienvenido');
         onNavigate('/feed');
@@ -95,7 +97,8 @@ export const login = (onNavigate) => {
     e.preventDefault();
     accesoGoogle().then((result) => {
       const user = result.user;
-      console.log(user);
+      console.log(user.email);
+      localStorage.setItem('usuarioActual', JSON.stringify(user));
       // IdP data available using getAdditionalUserInfo(result)
       // ...
       alert('Bienvenido');
