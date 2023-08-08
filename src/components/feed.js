@@ -1,4 +1,4 @@
-import { crearPost, mostrarpost, borrarPost } from '../firestore/baseDeDatosFirestore.js';
+import { crearPost, mostrarpost, borrarPost, incrementarLike , obtenerDocumento, decrementarLike} from '../firestore/baseDeDatosFirestore.js';
 //import { usuarioActual } from '../lib/firebase/configuracionFirabase.js';
 import { obtenerUsuarioActual } from '../lib/localStorage.js';
 
@@ -83,6 +83,7 @@ export const feed = (onNavigate) => {
 
   // funcion que crea el contenedor de cada post----------------------------
   function contenedorPost(post) {
+
     const postFeedContainer = document.createElement('div');
     postFeedContainer.classList.add('postFeedContainer');
     feedDiv.appendChild(postFeedContainer);
@@ -143,10 +144,61 @@ export const feed = (onNavigate) => {
     opcionesPostContenedor.className = 'opcionesPostContenedor';
     textContainerpost.appendChild(opcionesPostContenedor);
 
+    const containerLike = document.createElement('button');
+    containerLike.classList.add('containerLike');
+    containerLike.id = ' containerLike';
+    opcionesPostContenedor.appendChild(containerLike);
+
+    containerLike.addEventListener("click", function () {
+      obtenerDocumento(post.id)
+      .then( (documento)=> {
+        const yaDioLike = documento.data().likes.includes(usuarioActual.uid)
+        if (yaDioLike){
+          decrementarLike(usuarioActual.uid, post.id).then(()=>{
+            window.location.reload()
+          })
+        }
+        else{
+          incrementarLike(post.id, usuarioActual.uid).then(()=>{
+            window.location.reload();
+          })
+        }
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+       /* incrementarLike(post.id, usuarioActual.uid).then((respuesta) => {
+        console.log(respuesta);
+        console.log('Diste un like');
+        console.log(post.uid);
+        alert("funciona el boton")
+      })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert(error.message);
+          window.location.reload(); // Para recargar la pantalla//
+        });*/
+      });
+    
+    containerLike.onclick = function () {
+      play();
+    };
+
     const likeFuego = document.createElement('img');
     likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
     likeFuego.classList.add('likeFuego');
-    opcionesPostContenedor.appendChild(likeFuego);
+    containerLike.appendChild(likeFuego);
+
+    const contadorLikes = document.createElement('number');
+    contadorLikes.className = 'contadorLikes';
+    contadorLikes.id = 'contadorLikes';
+    contadorLikes.textContent = post.data().likes.length;
+    console.log(post);
+    containerLike.appendChild(contadorLikes);
+    //aqui sustituir el valor de 0 por la longitud del arreglo de likes post.likes.lenght
 
     const eliminarPost = document.createElement('img');
     eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
@@ -185,6 +237,7 @@ export const feed = (onNavigate) => {
   });
 
   buttonCerrarSesion.addEventListener('click', () => onNavigate('/'));
+
 
   buttonPublicar.addEventListener('click', (e) => {
     e.preventDefault();

@@ -242,6 +242,8 @@
   width: 100%;
   height: 100%;
   padding: 2% 20%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 /*crear solo un estilo para los containers de post que se acoplen al texto*/
 
@@ -267,8 +269,8 @@
   border-width:2%;
 }
 .postFeedContainer{
+  position:relative;
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #282828;
   width: 115%;
@@ -276,6 +278,8 @@
   border-radius: 1rem;
   padding: 5px;
   margin-top: 20px;
+  justify-content: space-around;
+  
 }
 .textContainer{
   display: flex;
@@ -340,14 +344,36 @@
   align-items: center;
   margin-top: 1%;
 }
-.likeFuego {
-  width: 35px;
-  height: 35px;
-  margin-left: 25px ;
-  cursor: pointer;
-  background-color: #383838;
-  border-radius: 50%;
+.containerLike{
+  position: absolute;
+  align-self: flex-end;
+  margin-left: 1%;
+  margin-bottom: -5px;
+  width: 60px;
+  height: 30px;
+  display: inline-flex;
+  background-color: black;
+  border-radius: 100px;
+  align-items: center;
 }
+.containerLike:hover{
+    transform: scale(1.1);
+}
+.likeFuego {
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  margin-left: 10px;
+}
+.contadorLikes{
+ background-position: right;
+ font-size:large;
+ font-family: CaviarDreams;
+ margin-top: 5px;
+ color: #EB6C36;
+ align-items: center;
+}
+
 .eliminarPost {
   width: 25px;
   height: 25px;
