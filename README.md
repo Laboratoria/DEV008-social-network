@@ -77,10 +77,10 @@ de nuestros bloqueos para poder solicitar ayuda en momentos de bloqueos.
 Los prototipos de baja fidelidad de hicieron basados en las historias de usuario anteriores para así después trabajar con los prototipos de alta fidelidad y poder trabajar en su diseño una vez terminada la funcionabilidad de la página. 
 
 
-(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipobaja.jpg)
-(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipo%20baja.png)
-(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipo2alta.jpg)
-(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipoalta.jpg)
+![prototipohandmade](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipobaja.jpg)
+![prototipobaja](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipo%20baja.png)
+![prototipo_registro](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipo2alta.jpg)
+![prototipo_login](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipoalta.jpg)
 
 ### Los objetivos generales de este proyecto fueron los siguientes
 
