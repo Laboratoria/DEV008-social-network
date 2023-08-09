@@ -28,7 +28,7 @@ más comentado.
 
 En este proyecto construimos una Red Social, siendo la música el tema principal 
 
-![../logo.png](../logo.png)
+![../logo.png](https://github.com/Mitzymora/DEV008-social-network/blob/main/src/logo.png)
 
 Esta Red Social permite a cualquier usuario crear una cuenta de acceso
 y loguearse con ella; crear, editar, borrar y _"likear"_ publicacciones.
@@ -51,11 +51,17 @@ puedes ingresar desde tu cuenta de google.
 
 Feed: Permite visualizar y realizar los post, mismo que puedes editar las veces que quieras y/o eliminar en el momento que te sea necesario. 
 
+![home](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/HomeImg.jpeg)
+![login](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/Login.jpeg)
+![register](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/register.jpeg)
+![feed](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/feed.jpeg)
 
 ## 3.Historias de Usuario
 
 Los principales usuarios del producto son personas de entre 20-35 años con acceso a internet que les interesa compartir sus canciones, bandas y conciertos favoritos y así poder encontrar otras personas que compartan sus mismos gustos. Para crear las [historias de usuario](https://docs.google.com/forms/d/1PxapQzWZxcf1TQtAI2VN7oFJomCufePqrjAG6rpTPq0/edit?usp=forms_home&ths=true) realizamos un formulario donde nos compartieron las facilidades accesibilidad y de diseño. 
 
+![formulario](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/formulario.jpeg)
+![HU](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/HU.jpg)
 
 
 ## 5.Organización
@@ -64,11 +70,17 @@ Para planificar nuestros horarios y avances, utilizamos Trello como herramienta.
 Haciendo columnas para ubicar los faltantes y avances de las historias de usuarios, así como
 de nuestros bloqueos para poder solicitar ayuda en momentos de bloqueos. 
 
+![Trello](https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/trello.jpeg)
 
 
 ## 6.Prototipos
 Los prototipos de baja fidelidad de hicieron basados en las historias de usuario anteriores para así después trabajar con los prototipos de alta fidelidad y poder trabajar en su diseño una vez terminada la funcionabilidad de la página. 
 
+
+(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipobaja.jpg)
+(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipo%20baja.png)
+(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipo2alta.jpg)
+(https://github.com/Mitzymora/DEV008-social-network/blob/main/readme%20imagenes/prototipoalta.jpg)
 
 ### Los objetivos generales de este proyecto fueron los siguientes
 
@@ -309,21 +321,4 @@ herramientas o habilidades técnicas:
   * [Reglas de seguridad de Firestore - Documentación oficial](https://firebase.google.com/docs/rules?hl=es)
   * [Obtén actualizaciones en tiempo real con Cloud Firestore - Documentación oficial](https://firebase.google.com/docs/firestore/query-data/listen?hl=es)
 </p></details>
-
-
-## 7. Entrega
-
-El proyecto será _entregado_ subiendo tu código a GitHub (`commit`/`push`) y la
-interfaz será desplegada usando GitHub pages u otro servicio de hosting
-(Firebase, Netlify, Vercel, etc) que puedas haber encontrado en el camino.
-Revisa la [documentación de Vite](https://vitejs.dev/guide/static-deploy.html)
-para guiarte con eso.
-
-***
-
-## 8. Pistas, tips y Lecturas complementarias
-
-Súmate al canal de Slack
-[#project-social-network](https://claseslaboratoria.slack.com/archives/C03SE63GFJQ)
-para conversar y pedir ayuda del proyecto.
 
