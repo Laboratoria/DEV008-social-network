@@ -35,7 +35,7 @@ export const feed = (onNavigate) => {
   const buttonCerrarSesion = document.createElement('button');
   buttonCerrarSesion.classList.add('buttonCerrarSesion');
   buttonCerrarSesion.textContent = 'Salir';
-  headerFeed.appendChild(buttonCerrarSesion);
+  usuarioInfoHeader.appendChild(buttonCerrarSesion);
 
   const feedDiv = document.createElement('div');
   feedDiv.classList.add('feedContainer');

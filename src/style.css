@@ -206,10 +206,8 @@
 }
 .headerFeed {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0px;
+  justify-content: center;
   width: 100%;
   height: 5rem;
   background-color:#A5A5A5;
@@ -220,20 +218,23 @@
   height: 50px;
 }
 .usuarioInfoHeader{
+  display:inline-flex;
+  background-color: #bb2525;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 60%;
+  margin-left: 400px;
 }
 .imagenUsuarioHeader{
   width: 50px;
   height: 50px;
-  margin: 5%;
+  margin: 2%;
 }
 .nombreUsuarioHeader{
  font-family: CaviarDreams;
- height: 30%;
- width: 30%;
+ font-size: large;
+ height: 10%;
+ width: 10%;
 }
 .feedContainer {
   display: flex;
@@ -244,22 +245,23 @@
   width: 100%;
   height: 100%;
   padding: 2% 20%;
-  overflow-y: scroll;
   overflow-x: hidden;
 }
 /*crear solo un estilo para los containers de post que se acoplen al texto*/
 
 .buttonCerrarSesion{
   border-radius: 1rem;
-  padding: .3rem .8rem;
+  padding: .2rem .8rem;
   color: white;
   background-color:black;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: AnotherAmerica;
   letter-spacing:.3rem;
+  margin-left: 200px;
 }
 .crearPostContainer{
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
