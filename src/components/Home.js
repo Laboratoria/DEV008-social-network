@@ -1,5 +1,5 @@
 import { escribirDatosUsuarios, subscribeToDataChanges, getPost } from '../lib/firebase/firebaseconfig';
-import error from './Error';
+// import error from './Error';
 
 console.log(escribirDatosUsuarios);
 
@@ -62,10 +62,7 @@ const Home = (navigateTo) => {
 
   const actualizarFeed = (data) => {
     const feedContainer = document.getElementById('feedScrollContent');
-    feedContainer.innerHTML = 
-
-    
-    data.forEach((item) => {
+    feedContainer.innerHTML = data.forEach((item) => {
       const postElement = renderNewPost({ publicacion: item, id: item.id });
       // Verificar si el post tiene un "Me gusta" en el localStorage
       if (localStorage.getItem(`like_${item.id}`) === 'true') {
@@ -75,14 +72,14 @@ const Home = (navigateTo) => {
   };
   subscribeToDataChanges(actualizarFeed);
   getPost()
-  .then((result)=>{ 
-    result.forEach((item) => {
-      console.log(item.texto)
+    .then((result) => {
+      result.forEach((item) => {
+        console.log(item.texto);
+      });
     })
-  })
-  .catch (error => {
-    console.log(error)
-  })
+    .catch((error) => {
+      console.log(error);
+    });
 
   const buttonCancel = document.createElement('button');
   buttonCancel.textContent = 'Cancelar';

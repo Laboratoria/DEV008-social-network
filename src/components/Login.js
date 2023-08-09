@@ -1,7 +1,7 @@
 import { loginUser } from '../lib/firebase/account';
 import { googleLogin } from '../lib/firebase/firebaseconfig';
 
-const Login = (onNavigate) => {
+const Login = (navigateTo) => {
   // Selección del body
   const loginContent = document.querySelector('div');
   loginContent.classList.add('flex');
