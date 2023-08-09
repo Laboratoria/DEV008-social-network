@@ -47,12 +47,16 @@ header {
   height: 10rem;
 }
 
-.welcome-title {
+.welcome-title,
+.header-title {
   font-family: 'Patua One', cursive;
   font-size: 2rem;
-  text-align: center;
   color: var(--dark-salmon);
   font-weight: 400;
+}
+
+.welcome-title {
+  text-align: center;
 }
 
 .form-container{
@@ -94,7 +98,7 @@ input::placeholder {
 
 .btn {
   width: 6.4rem;
-  min-width: fit-content;
+  max-width: fit-content;
   height: 2.4rem;
   background: var(--salmon);
   color: var(--white);
@@ -132,20 +136,42 @@ p {
   cursor: pointer;
 }
 
-.home-container {
-  display: flow-root;
-  justify-content:center;
+.home-header {
+  justify-content: space-between;
 }
 
-.post-form {  
+.textarea-container {
+  /* display: flow-root; */
+  justify-content:center;
   background-color: #ffffff;
-  padding: 10%;
-  padding: 2rem;
+  padding: 1.5rem;
   flex-flow: column;
+  border-radius: 20px;
 }
   
-textarea {
+.post-input {
   resize: none;
   height: 8rem;
   width: 36rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--light-salmon);
+  background-color: var(--light-pink);
+}
+
+.post-input::placeholder {
+  font-style: italic;
+}
+
+.btn-container {
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 720px) {
+  .input-container {
+    padding: 1rem;
+  }
+
+  .post-input {
+    width: max-content;
+  }
 }
