@@ -13,10 +13,14 @@ export const feed = (onNavigate) => {
   headerFeed.classList.add('headerFeed');
   homeDiv.appendChild(headerFeed);
 
+  const containerLogo = document.createElement('div');
+  containerLogo.classList.add('containerLogo');
+  headerFeed.appendChild(containerLogo);
+
   const headerLogo = document.createElement('img');
   headerLogo.src = '../logo.png';
   headerLogo.classList.add('headerLogoFeed');
-  headerFeed.appendChild(headerLogo);
+  containerLogo.appendChild(headerLogo);
 
   const usuarioInfoHeader = document.createElement('div');
   usuarioInfoHeader.classList.add('usuarioInfoHeader');
@@ -25,7 +29,7 @@ export const feed = (onNavigate) => {
   const imagenUsuarioHeader = document.createElement('img');
   imagenUsuarioHeader.className = 'imagenUsuarioHeader';
   usuarioInfoHeader.appendChild(imagenUsuarioHeader);
-  imagenUsuarioHeader.src = 'usuario.png';
+  imagenUsuarioHeader.src = 'gatogif.gif';
 
   const nombreUsuarioHeader = document.createElement('h2');
   nombreUsuarioHeader.className = 'nombreUsuarioHeader';
@@ -35,7 +39,7 @@ export const feed = (onNavigate) => {
   const buttonCerrarSesion = document.createElement('button');
   buttonCerrarSesion.classList.add('buttonCerrarSesion');
   buttonCerrarSesion.textContent = 'Salir';
-  headerFeed.appendChild(buttonCerrarSesion);
+  usuarioInfoHeader.appendChild(buttonCerrarSesion);
 
   const feedDiv = document.createElement('div');
   feedDiv.classList.add('feedContainer');
@@ -55,7 +59,7 @@ export const feed = (onNavigate) => {
 
   const imagenUsuario = document.createElement('img');
   imagenUsuario.className = 'imagenUsuario';
-  imagenUsuario.src = 'usuario.png';
+  imagenUsuario.src = 'giphy (1).gif';
   usuarioInfo.appendChild(imagenUsuario);
 
   const nombreUsuario = document.createElement('p');
@@ -99,7 +103,7 @@ export const feed = (onNavigate) => {
 
     const imagenUsuariopost = document.createElement('img');
     imagenUsuariopost.className = 'imagenUsuario';
-    imagenUsuariopost.src = 'usuario.png';
+    imagenUsuariopost.src = 'giphy.gif';
     usuarioInfoPost.appendChild(imagenUsuariopost);
 
     const nombreUsuariopost = document.createElement('p');
@@ -116,7 +120,7 @@ export const feed = (onNavigate) => {
     publicacion.placeholder = 'Post';
     textContainerpost.appendChild(publicacion);
 
-    const opcionesPostContenedor = document.createElement('section');
+    const opcionesPostContenedor = document.createElement('div');
     opcionesPostContenedor.className = 'opcionesPostContenedor';
     textContainerpost.appendChild(opcionesPostContenedor);
 
@@ -124,6 +128,7 @@ export const feed = (onNavigate) => {
     containerLike.classList.add('containerLike');
     containerLike.id = ' containerLike';
     opcionesPostContenedor.appendChild(containerLike);
+  
 
     containerLike.addEventListener("click", function () {
       obtenerDocumento(post.id)
@@ -135,6 +140,7 @@ export const feed = (onNavigate) => {
           })
         }
         else{
+          play(),
           incrementarLike(post.id, usuarioActual.uid).then(()=>{
             window.location.reload();
           })
@@ -159,9 +165,6 @@ export const feed = (onNavigate) => {
         });*/
       });
     
-    containerLike.onclick = function () {
-      play();
-    };
 
     const likeFuego = document.createElement('img');
     likeFuego.src = 'https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f525.gif';
@@ -174,15 +177,14 @@ export const feed = (onNavigate) => {
     contadorLikes.textContent = post.data().likes.length;
     console.log(post);
     containerLike.appendChild(contadorLikes);
-    //aqui sustituir el valor de 0 por la longitud del arreglo de likes post.likes.lenght
 
     if (usuarioActual.email === post.data().autor){
       const containerPostMenu = document.createElement('div');
       containerPostMenu.classList = ('containerPostMenu');
-      textContainerpost.appendChild(containerPostMenu);
+      opcionesPostContenedor.appendChild(containerPostMenu);
       
       const editarPost = document.createElement('img');
-      editarPost.src = 'https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png';
+      editarPost.src = 'EDITAR.png';
       editarPost.classList.add('editarPost');
       containerPostMenu.appendChild(editarPost);
       editarPost.addEventListener("click", () => {
@@ -192,7 +194,7 @@ export const feed = (onNavigate) => {
             });
       
       const guardarPost = document.createElement('img');
-      guardarPost.src = 'https://cdn.icon-icons.com/icons2/1244/PNG/512/1492790860-8check_84164.png';
+      guardarPost.src = 'guardar.png';
       guardarPost.classList.add('guardarPost');
       containerPostMenu.appendChild(guardarPost);
       guardarPost.addEventListener("click", () => {
@@ -209,12 +211,11 @@ export const feed = (onNavigate) => {
       });
 
       const eliminarPost = document.createElement('img');
-    eliminarPost.src = 'https://cdn-icons-png.flaticon.com/512/1017/1017479.png';
+    eliminarPost.src = 'borrar.png';
     eliminarPost.classList.add('eliminarPost');
     containerPostMenu.appendChild(eliminarPost);
     eliminarPost.addEventListener('click', () => {
       const alertConfimar = confirm('¿Eliminar post?'); // Confirmación para eliminar post// NO FUNCIONA / LO BORRA DE TODOS MODOS//
-      alert(alertConfimar);
       if (alertConfimar === true) {
         borrarPost(post.id)
           .then((respuesta) => {
