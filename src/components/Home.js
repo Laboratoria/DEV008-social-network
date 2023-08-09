@@ -1,35 +1,48 @@
-import { escribirDatosUsuarios, subscribeToDataChanges } from '../lib/firebase/firebaseconfig';
+import { escribirDatosUsuarios, subscribeToDataChanges, getPost } from '../lib/firebase/firebaseconfig';
+// import error from './Error';
+
+console.log(escribirDatosUsuarios);
 
 const Home = (navigateTo) => {
-  const homeSection = document.createElement('section');
-  homeSection.classList.add('home-container', 'flex');
+  // Creación del div contenedor
+  const homeContent = document.createElement('div');
+  homeContent.id = 'home-content';
 
-  const headerSection = document.createElement('header');
-  headerSection.id = 'home';
+  // Contenido del header (logo y bienvenida) -START-
+  const header = document.createElement('header');
+  header.classList.add('home-header', 'flex');
 
   const welcomeTitle = document.createElement('h2');
-  welcomeTitle.classList.add('welcome-title');
+  welcomeTitle.classList.add('header-title');
   welcomeTitle.textContent = 'Instapet';
 
-  const postForm = document.createElement('div');
-  postForm.classList.add('post-form', 'flex');
-  postForm.id = 'post-container';
+  const buttonLogout = document.createElement('button');
+  buttonLogout.classList.add('btn');
+  buttonLogout.addEventListener('click', () => navigateTo('/'));
+  buttonLogout.textContent = 'Cerrar sesión';
+  // Contenido del header (logo y bienvenida) -END-
 
-  const postMessage = document.createElement('textarea');
-  postMessage.id = 'inputValue';
-  postMessage.setAttribute('placeholder', '¿Miau, Woaw, Pio?');
-  const btnContainerHome = document.createElement('div');
-  btnContainerHome.classList.add('btn-container', 'flex');
-  const buttonPublicar = document.createElement('button');
-  buttonPublicar.textContent = 'Publicar';
-  buttonPublicar.id = 'publishValue';
-  buttonPublicar.classList.add('btn');
+  // Contenido de la publicación -START-
+  const postSection = document.createElement('section');
+  postSection.classList.add('textarea-container', 'flex');
+
+  const postInputMessage = document.createElement('textarea');
+  postInputMessage.classList.add('post-input');
+  postInputMessage.id = 'inputValue';
+  postInputMessage.setAttribute('placeholder', '¿Miau, Woaw, Pio? (Escribe aquí los pensamientos de tu mascota)');
+
+  const btnContainer = document.createElement('div');
+  btnContainer.classList.add('btn-container', 'flex');
+  const buttonPublish = document.createElement('button');
+  buttonPublish.textContent = 'Publicar';
+  buttonPublish.id = 'publishValue';
+  buttonPublish.classList.add('btn');
   const containerNewPost = document.createElement('section');
   containerNewPost.id = 'feedScrollContent';
 
   // aqui debemos poner la funcion que guarde lo que se escribio y que se muestre en el texarea
   // igualmente esta funcion debe hacer el boton cambie por el boton editar
-  // buttonPublicar.addEventListener('click', () => {
+  // buttonPublish.addEventListener('click', () => {
   // console.log('Aquí debe de ir el click');
   // escribirDatosUsuarios();
   // });
@@ -40,7 +53,7 @@ const Home = (navigateTo) => {
     // const boxPost = document.createAttribute('textarea');
     const newDiv = document.createElement('div');
     newDiv.id = 'newPostFeed';
-    const newTextPostArea = postMessage.value;
+    const newTextPostArea = postInputMessage.value;
     newTextPostArea.textContent = data;
     console.log(newTextPostArea);
     newTextPostArea.id = `ta${data.id}`;
@@ -49,8 +62,7 @@ const Home = (navigateTo) => {
 
   const actualizarFeed = (data) => {
     const feedContainer = document.getElementById('feedScrollContent');
-    feedContainer.innerHTML = '';
-    data.forEach((item) => {
+    feedContainer.innerHTML = data.forEach((item) => {
       const postElement = renderNewPost({ publicacion: item, id: item.id });
       // Verificar si el post tiene un "Me gusta" en el localStorage
       if (localStorage.getItem(`like_${item.id}`) === 'true') {
@@ -59,23 +71,29 @@ const Home = (navigateTo) => {
     });
   };
   subscribeToDataChanges(actualizarFeed);
+  getPost()
+    .then((result) => {
+      result.forEach((item) => {
+        console.log(item.texto);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
-  const buttonCancelar = document.createElement('button');
-  buttonCancelar.textContent = 'Cancelar';
-  buttonCancelar.classList.add('btn');
+  const buttonCancel = document.createElement('button');
+  buttonCancel.textContent = 'Cancelar';
+  buttonCancel.classList.add('btn');
+  // Contenido de la publicación -END-
 
-  const buttonLogout = document.createElement('button');
-  buttonLogout.classList.add('btn');
-  buttonLogout.addEventListener('click', () => navigateTo('/'));
-  buttonLogout.textContent = 'Cerrar sesión';
+  // btnContainer.append(buttonPublish, buttonCancel);
+  // postForm.append(containerNewPost, postInputMessage, btnContainer);
+  btnContainer.append(buttonPublish, buttonCancel);
+  postSection.append(postInputMessage, btnContainer);
+  header.append(welcomeTitle, buttonLogout);
+  homeContent.append(header, postSection);
 
-  homeSection.append(headerSection);
-  homeSection.append(postForm);
-  headerSection.append(welcomeTitle, buttonLogout);
-  btnContainerHome.append(buttonPublicar, buttonCancelar);
-  postForm.append(containerNewPost, postMessage, btnContainerHome);
-
-  return homeSection;
+  return homeContent;
 };
 
 export default Home;

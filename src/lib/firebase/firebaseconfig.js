@@ -2,12 +2,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import {
+  EmailAuthCredential,
+  EmailAuthProvider,
   GoogleAuthProvider, getAuth, signInWithPopup,
 } from 'firebase/auth';
 // Required for side-effects
 import {
-  getFirestore, addDoc, collection, onSnapshot, query, orderBy,
+  getFirestore, addDoc, collection, onSnapshot, doc, query, orderBy, getDocs,
 } from 'firebase/firestore';
+import { async } from 'regenerator-runtime';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -51,6 +54,14 @@ export const escribirDatosUsuarios = async ({ texto }) => {
   }
 };
 
+//Post en tiempo real 
+// const unsub = onSnapshot(doc(firestore, "publicaciones"), (doc) => {
+//   const source = doc.metadata.hasPendingWrites ? "Local" : "Server" ;
+//     console.log(source, "data", doc.data());
+//     console.log("Current data: ", doc.data());
+// });
+
+
 // Crear cada post//
 
 export const subscribeToDataChanges = (actualizarFeed) => (query(collection(firestore, 'publicaciones'), orderBy('createdAt', 'asc')), (snapshot) => {
@@ -61,5 +72,19 @@ export const subscribeToDataChanges = (actualizarFeed) => (query(collection(fire
       ...doc.data(),
     });
   });
+  console.log(data)
   actualizarFeed(data);
 });
+
+export const getPost = async () => {
+  const dataPost = [];
+  const q = query(collection(firestore, "publicaciones"));
+  const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  dataPost.push({...doc.data(), id: doc.id});
+}); 
+return dataPost
+}
+
+//Obtén el perfil de un usuario
