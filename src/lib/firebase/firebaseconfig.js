@@ -88,3 +88,5 @@ return dataPost
 }
 
 //Obtén el perfil de un usuario
+
+export const getCurrentUser = () => auth.currentUser;

@@ -3,7 +3,7 @@ import { googleLogin } from '../lib/firebase/firebaseconfig';
 
 const Login = (navigateTo) => {
   // Selección del body
-  const loginContent = document.querySelector('div');
+  const loginContent = document.createElement('div');
   loginContent.classList.add('flex');
   loginContent.id = 'login-content';
 

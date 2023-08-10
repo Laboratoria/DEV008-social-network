@@ -1,4 +1,4 @@
-import { escribirDatosUsuarios, subscribeToDataChanges, getPost } from '../lib/firebase/firebaseconfig';
+import { escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser } from '../lib/firebase/firebaseconfig';
 // import error from './Error';
 
 console.log(escribirDatosUsuarios);
@@ -56,7 +56,7 @@ const Home = (navigateTo) => {
     const newTextPostArea = postInputMessage.value;
     newTextPostArea.textContent = data;
     console.log(newTextPostArea);
-    newTextPostArea.id = `ta${data.id}`;
+    newTextPostArea.id = `ta${data.texto}`;
     newTextPostArea.disabled = true;
   };
 
@@ -71,15 +71,43 @@ const Home = (navigateTo) => {
     });
   };
   subscribeToDataChanges(actualizarFeed);
+  // getPost()
+  //   .then((result) => {
+  //     result.forEach((item) => {
+  //       console.log(item.texto);
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  const postContainerId = document.querySelector("#feedScrollContent")
   getPost()
-    .then((result) => {
-      result.forEach((item) => {
-        console.log(item.texto);
-      });
+  .then((texto) => {
+    texto.forEach((element) => {
+      // const data = doc.texto();
+      console.log(texto)
+      const user = getCurrentUser();
+      
+      // if (element.author === user.email) {
+        postContainerId.innerHTML += `
+        <div class = 'post'>
+        ${element.author} </div> 
+        <div class = post2>  
+        <p>${element.texto}<p>
+        </div>
+        `;
+    //  } else {
+        // containerNewPost.innerHTML += `
+        // <div class = 'post>
+        // // ${element.author} </div>
+
+        // <div class = 'post2'>
+        // <p>${element.texto}<p>
+        // </div>
+        // `;      
+      //}
     })
-    .catch((error) => {
-      console.log(error);
-    });
+  })
 
   const buttonCancel = document.createElement('button');
   buttonCancel.textContent = 'Cancelar';
@@ -87,11 +115,10 @@ const Home = (navigateTo) => {
   // Contenido de la publicación -END-
 
   // btnContainer.append(buttonPublish, buttonCancel);
-  // postForm.append(containerNewPost, postInputMessage, btnContainer);
   btnContainer.append(buttonPublish, buttonCancel);
   postSection.append(postInputMessage, btnContainer);
   header.append(welcomeTitle, buttonLogout);
-  homeContent.append(header, postSection);
+  homeContent.append(header, postSection, containerNewPost);
 
   return homeContent;
 };
