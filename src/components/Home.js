@@ -63,7 +63,9 @@ const Home = (navigateTo) => {
   const actualizarFeed = (data) => {
     const feedContainer = document.getElementById('feedScrollContent');
     feedContainer.innerHTML = data.forEach((item) => {
-      const postElement = renderNewPost({ publicacion: item, id: item.id });
+      
+      const postElement = renderNewPost({ texto: item, id: item.id, author: item.author });
+      
       // Verificar si el post tiene un "Me gusta" en el localStorage
       if (localStorage.getItem(`like_${item.id}`) === 'true') {
         postElement.querySelector('.material-symbols-like').classList.add('liked');

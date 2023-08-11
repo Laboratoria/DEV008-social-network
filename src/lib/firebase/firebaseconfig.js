@@ -38,21 +38,22 @@ export function googleLogin() {
 
 const firestore = getFirestore(app);
 
-export const escribirDatosUsuarios = async ({ texto }) => {
+export const escribirDatosUsuarios = async ( author, texto ) => {
   // Add a new document in collection "cities"
-  try {
+  // try {
   // const docRef =
     await addDoc(collection(firestore, 'publicaciones'), {
-      texto,
+      texto: texto,
       createdAt: Date.now(),
-      author: localStorage.getItem('username'), // Le asignamos el autor al post
+      author: author, // Le asignamos el autor al post
       likes: [],
     });
     console.log('Document successfully written!');
-  } catch (error) {
-    console.error('Error writing document: ', error);
-  }
+  // } catch (error) {
+  //   console.error('Error writing document: ', error);
+  // }
 };
+
 
 //Post en tiempo real 
 // const unsub = onSnapshot(doc(firestore, "publicaciones"), (doc) => {

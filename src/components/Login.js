@@ -49,9 +49,10 @@ const Login = (navigateTo) => {
     e.preventDefault();
     loginUser(inputEmail.value, inputPassword.value)
       .then((userCredential) => {
+        const user = userCredential.user;
+        localStorage.setItem('user', JSON.stringify(user));
         navigateTo('/Home');
         // Signed in
-        const user = userCredential.user;
         console.log(user);
         alert('Bienvenida  de regreso InstaPet');
       // ...
