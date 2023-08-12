@@ -40,11 +40,9 @@ window.onpopstate = () => {
 
 navigateTo(window.location.pathname || defaultRoute);
 
-document.getElementById('publishValue').addEventListener('click', async () => {
+document.getElementById('publishValue').addEventListener('click', () => {
   const textValue = document.getElementById('inputValue').value;
-  const email = JSON.stringify(localStorage.getItem('user')).email;
-      console.log(email);
   if (textValue.length !== 0) {
-    await escribirDatosUsuarios(  email, textValue );
+    escribirDatosUsuarios(textValue);
   }
 });

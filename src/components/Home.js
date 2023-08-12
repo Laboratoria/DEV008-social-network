@@ -1,7 +1,7 @@
-import { escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser } from '../lib/firebase/firebaseconfig';
+import {
+  escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser,
+} from '../lib/firebase/firebaseconfig';
 // import error from './Error';
-
-console.log(escribirDatosUsuarios);
 
 const Home = (navigateTo) => {
   // Creación del div contenedor
@@ -40,15 +40,7 @@ const Home = (navigateTo) => {
   const containerNewPost = document.createElement('section');
   containerNewPost.id = 'feedScrollContent';
 
-  // aqui debemos poner la funcion que guarde lo que se escribio y que se muestre en el texarea
-  // igualmente esta funcion debe hacer el boton cambie por el boton editar
-  // buttonPublish.addEventListener('click', () => {
-  // console.log('Aquí debe de ir el click');
-  // escribirDatosUsuarios();
-  // });
-
   // Función para crear cada post//
-
   const renderNewPost = (data) => {
     // const boxPost = document.createAttribute('textarea');
     const newDiv = document.createElement('div');
@@ -63,9 +55,8 @@ const Home = (navigateTo) => {
   const actualizarFeed = (data) => {
     const feedContainer = document.getElementById('feedScrollContent');
     feedContainer.innerHTML = data.forEach((item) => {
-      
       const postElement = renderNewPost({ texto: item, id: item.id, author: item.author });
-      
+
       // Verificar si el post tiene un "Me gusta" en el localStorage
       if (localStorage.getItem(`like_${item.id}`) === 'true') {
         postElement.querySelector('.material-symbols-like').classList.add('liked');
@@ -73,43 +64,6 @@ const Home = (navigateTo) => {
     });
   };
   subscribeToDataChanges(actualizarFeed);
-  // getPost()
-  //   .then((result) => {
-  //     result.forEach((item) => {
-  //       console.log(item.texto);
-  //     });
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  const postContainerId = document.querySelector("#feedScrollContent")
-  getPost()
-  .then((texto) => {
-    texto.forEach((element) => {
-      // const data = doc.texto();
-      console.log(texto)
-      const user = getCurrentUser();
-      
-      // if (element.author === user.email) {
-        postContainerId.innerHTML += `
-        <div class = 'post'>
-        ${element.author} </div> 
-        <div class = post2>  
-        <p>${element.texto}<p>
-        </div>
-        `;
-    //  } else {
-        // containerNewPost.innerHTML += `
-        // <div class = 'post>
-        // // ${element.author} </div>
-
-        // <div class = 'post2'>
-        // <p>${element.texto}<p>
-        // </div>
-        // `;      
-      //}
-    })
-  })
 
   const buttonCancel = document.createElement('button');
   buttonCancel.textContent = 'Cancelar';
@@ -121,6 +75,24 @@ const Home = (navigateTo) => {
   postSection.append(postInputMessage, btnContainer);
   header.append(welcomeTitle, buttonLogout);
   homeContent.append(header, postSection, containerNewPost);
+
+  const postContainerId = homeContent.querySelector('#feedScrollContent');
+  getPost()
+    .then((texto) => {
+      texto.forEach((element) => {
+      // const data = doc.texto();
+        console.log(texto);
+        const user = getCurrentUser();
+
+        postContainerId.innerHTML += `
+        <div class = 'post'>
+        ${element.email} </div> 
+        <div class = post2>  
+        <p>${element.texto}<p>
+        </div>
+        `;
+      });
+    });
 
   return homeContent;
 };
