@@ -41,16 +41,16 @@ const Home = (navigateTo) => {
   containerNewPost.id = 'feedScrollContent';
 
   // Función para crear cada post//
-  const renderNewPost = (data) => {
-    // const boxPost = document.createAttribute('textarea');
-    const newDiv = document.createElement('div');
-    newDiv.id = 'newPostFeed';
-    const newTextPostArea = postInputMessage.value;
-    newTextPostArea.textContent = data;
-    console.log(newTextPostArea);
-    newTextPostArea.id = `ta${data.texto}`;
-    newTextPostArea.disabled = true;
-  };
+  // const renderNewPost = (data) => {
+  //   const boxPost = document.createAttribute('textarea');
+  //   const newDiv = document.createElement('div');
+  //   newDiv.id = 'newPostFeed';
+  //   const newTextPostArea = postInputMessage.value;
+  //   newTextPostArea.textContent = data;
+  //   console.log(newTextPostArea);
+  //   newTextPostArea.id = `ta${data.texto}`;
+  //   newTextPostArea.disabled = true;
+  // };
 
   const actualizarFeed = (data) => {
     const feedContainer = document.getElementById('feedScrollContent');
@@ -58,9 +58,9 @@ const Home = (navigateTo) => {
       const postElement = renderNewPost({ texto: item, id: item.id, author: item.author });
 
       // Verificar si el post tiene un "Me gusta" en el localStorage
-      if (localStorage.getItem(`like_${item.id}`) === 'true') {
-        postElement.querySelector('.material-symbols-like').classList.add('liked');
-      }
+      // if (localStorage.getItem(`like_${item.id}`) === 'true') {
+      //   postElement.querySelector('.material-symbols-like').classList.add('liked');
+      // }
     });
   };
   subscribeToDataChanges(actualizarFeed);
