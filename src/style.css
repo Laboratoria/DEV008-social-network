@@ -221,27 +221,17 @@ p {
   }
 
   .post-input {
-<<<<<<< HEAD
-    width: max-content;
-    
-=======
     width: 32rem;
   }
 }
 
 @media only screen and (max-width: 720px) {
-  #home-content,
-  .textarea-container {
-    width: 18rem;
-  }
-
-  .logo-horizontal {
-    width: 10rem;
+  .input-container {
+    padding: 1rem;
   }
 
   .post-input {
-    width: 15rem;
->>>>>>> main
+    width: max-content;
   }
 }
 
