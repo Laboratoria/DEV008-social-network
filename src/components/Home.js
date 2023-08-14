@@ -12,14 +12,14 @@ const Home = (navigateTo) => {
   const header = document.createElement('header');
   header.classList.add('home-header', 'flex');
 
-  const welcomeTitle = document.createElement('h2');
-  welcomeTitle.classList.add('header-title');
-  welcomeTitle.textContent = 'Instapet';
+  const logo = document.createElement('img');
+  logo.setAttribute('src', './img/instapet-logo-horizontal.svg');
+  logo.classList.add('logo-horizontal');
 
-  const buttonLogout = document.createElement('button');
-  buttonLogout.classList.add('btn');
+  const buttonLogout = document.createElement('img');
+  buttonLogout.setAttribute('src', './img/right-to-bracket.svg');
+  buttonLogout.classList.add('icon-logout');
   buttonLogout.addEventListener('click', () => navigateTo('/'));
-  buttonLogout.textContent = 'Cerrar sesión';
   // Contenido del header (logo y bienvenida) -END-
 
   // Contenido de la publicación -START-
@@ -37,6 +37,9 @@ const Home = (navigateTo) => {
   buttonPublish.textContent = 'Publicar';
   buttonPublish.id = 'publishValue';
   buttonPublish.classList.add('btn');
+  const buttonCancel = document.createElement('button');
+  buttonCancel.textContent = 'Cancelar';
+  buttonCancel.classList.add('btn');
   const containerNewPost = document.createElement('section');
   containerNewPost.id = 'feedScrollContent';
 
@@ -65,30 +68,31 @@ const Home = (navigateTo) => {
   };
   subscribeToDataChanges(actualizarFeed);
 
-  const buttonCancel = document.createElement('button');
-  buttonCancel.textContent = 'Cancelar';
-  buttonCancel.classList.add('btn');
+  const buttonEdit = './img/pen-to-square.svg';
+  const buttonDelete = './img/trash-can.svg';
   // Contenido de la publicación -END-
 
-  // btnContainer.append(buttonPublish, buttonCancel);
   btnContainer.append(buttonPublish, buttonCancel);
   postSection.append(postInputMessage, btnContainer);
-  header.append(welcomeTitle, buttonLogout);
+  header.append(logo, buttonLogout);
   homeContent.append(header, postSection, containerNewPost);
 
   const postContainerId = homeContent.querySelector('#feedScrollContent');
   getPost()
     .then((texto) => {
       texto.forEach((element) => {
-      // const data = doc.texto();
         console.log(texto);
-        const user = getCurrentUser();
+        const author = JSON.parse(localStorage.getItem('user')).email;
 
         postContainerId.innerHTML += `
         <div class = 'post'>
-        ${element.email} </div> 
-        <div class = post2>  
-        <p>${element.texto}<p>
+          <div class = 'post-author'>
+          <p>${author}</p>
+          </div> 
+          <div class = 'post-text'>  
+          <p>${element.texto}<p>
+          </div>
+          <div class='post-btn-container flex'><img class='icons' src='${buttonEdit}' /><img class='icons' src='${buttonDelete}' /></div>
         </div>
         `;
       });

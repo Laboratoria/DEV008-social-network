@@ -21,7 +21,7 @@
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   background-color: var(--light-salmon);
   justify-content: center;
   align-items: center;
@@ -33,10 +33,12 @@ a {
 }
 
 #login-content,
-#register-content {
+#register-content,
+#home-content {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
 header {
@@ -45,6 +47,10 @@ header {
 
 .logo {
   height: 10rem;
+}
+
+.logo-horizontal {
+  width: 12rem;
 }
 
 .welcome-title,
@@ -138,15 +144,26 @@ p {
 
 .home-header {
   justify-content: space-between;
+  align-items: center;
+}
+
+.icon-logout {
+  height: 1.8rem;
+}
+
+.icon-logout:hover {
+  cursor: pointer;
 }
 
 .textarea-container {
-  /* display: flow-root; */
+  width: 42rem;
+  height: fit-content;
   justify-content:center;
   background-color: #ffffff;
   padding: 1.5rem;
   flex-flow: column;
   border-radius: 20px;
+  align-items: center;
 }
   
 .post-input {
@@ -163,15 +180,62 @@ p {
 }
 
 .btn-container {
+  width: inherit;
+  margin-top: 0.8rem;
   justify-content: space-evenly;
 }
 
-@media only screen and (max-width: 720px) {
-  .input-container {
-    padding: 1rem;
+.post {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.post-author {
+  color: var(--salmon);
+  font-weight: 600;
+}
+
+.post-text {
+  margin: 1rem;
+}
+
+.post-btn-container {
+  justify-content: flex-end;
+}
+
+.icons {
+  height: 1.4rem;
+  margin: 0 0.4rem;
+}
+
+.icons:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 980px) {
+  #home-content,
+  .textarea-container {
+    width: 36rem;
   }
 
   .post-input {
-    width: max-content;
+    width: 32rem;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #home-content,
+  .textarea-container {
+    width: 18rem;
+  }
+
+  .logo-horizontal {
+    width: 10rem;
+  }
+
+  .post-input {
+    width: 15rem;
   }
 }
