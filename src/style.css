@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+@font-face {
+  font-family: AnotherAmerica; 
+  src: url(Another\ America.ttf);
+}
+@font-face {
+  font-family: CaviarDreams;
+  src: url(CaviarDreams.ttf);
+}
+@media (max-width:600px) {
+  .container {
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  } 
+}
+  .container {
+    display: flex;
+    background-color: #eceaea;
+    width: 100%;
+    height: 100%;
+  }
+  .contenedorImagen {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+  }
+  .loginImagen {
+    width: 600px;
+    height: 600px;
+  }
+  .contenedorFormulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; 
+    width: 100vh;
+    height: 100vh;
+    padding: 3rem; 
+    font-size: 1.5rem;
+    font-family: CaviarDreams;
+    background: #eceaea
+  }
+  .headerLogo {
+    width: 30rem;
+    height: 8rem;
+    margin: 1rem 1rem 2rem 1rem;
+  }
+  .input {
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: CaviarDreams;
+    padding: 5px;
+    width: 3.4rem;
+    height: 3.2rem;
+    margin: 1%;
+    color: black;
+  }
+  .input::placeholder{
+    color: rgb(219, 113, 13);
+    font-weight: bold ;
+  }
+  .input:hover {
+    transform: scale(1.1);
+  }
+  .button {
+    border-radius: 1rem;
+    padding: .3rem .8rem;
+    color: white;
+    background-color:#bb2525;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-family: AnotherAmerica;
+    letter-spacing:.5rem;
+    margin: 1rem;
+    margin-left: 20px;
+  }
+  .button:hover {
+    transform: scale(1.1);
+  }
+  .buttonGoogle {
+    width: 3rem;
+    height: 3rem;
+    margin: .5rem;
+    cursor: pointer;
+  }
+  .buttonGoogle:hover {
+    transform: scale(1.1);
+  }
+
+/*---------------------------Estilo home-------------------*/
+
+  body {
+    background: #eceaea;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    width: 100%;
+    height:auto;
+  }
+  .contenedorHome{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .logoPrincipal{
+    height: 120px;
+    margin: 30px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
+  }
+  .sinopsis{
+  color: white;
+  font-size: larger;
+  background-color: black;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  font-family: CaviarDreams;
+}
+.contenedorBotonesHome{
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    margin: 20px;
+}
+.imagenAbajo{
+  width: 100%;
+  position: bottom;
+  justify-content: center;
+  align-items: center;
+}
+
+  /*======================= REGISTER ======================== */
+
+
+  .registerDiv {
+    display: flex;
+    background-color: #eceaea;
+    width: 100%;
+    height: 100%;
+  } 
+
+
+/* ===== Media Querys Pantallas desde 769 px de ancho ===== */
+
+@media (max-width:900px) 
+{
+  .loginImagen,.contenedorImagen{
+    width: 0;
+    height: 0;
+  }
+  .buttonGoogle{
+    width: auto;
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: center;
+    width: 10%;
+    height: 10%;
+  }
+  .registerDiv, .contenedorFormulario, .input, .button, .headerLogo {
+    width: auto;
+    display: flex;
+    flex-wrap:wrap ;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  } 
+}
+  @media (min-width:280px){
+    .registerDiv, .contenedorFormulario, .input, .button, .headerLogo {
+      width: 100%;
+      display: flex;
+      justify-content:center;
+      height: 100%;
+    }
+};
+
+/* Feed */
+
+.homeDiv{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.feedDiv {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.headerFeed {
+  justify-content: center;
+  display:inline-block;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color:#eceaea;
+}
+.containerLogo{
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+}
+.headerLogoFeed{
+  display: flex;
+  width: 200px;
+  height: auto;
+}
+.usuarioInfoHeader{
+  background-color:#282828;
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items:center;
+  justify-content: center;
+}
+.imagenUsuarioHeader{
+  display: flex;
+  width: auto;
+  height: 50px;
+  margin: 10px;
+  margin-top: 15px;
+  border-radius: 100%;
+  border-width: 3px;
+  border-style:outset;
+  border-color: black;
+}
+.nombreUsuarioHeader{
+  color: white;
+  display: flex;
+  width: auto;
+  height: auto;
+  display: flex;
+  font-family: CaviarDreams;
+  font-size: 20px;
+  margin: 10px;
+}
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url(fondofeed5.jpg);
+  background-size: auto;
+  padding: 2% 20%;
+  
+}
+/*crear solo un estilo para los containers de post que se acoplen al texto*/
+
+.buttonCerrarSesion{
+  border-radius: 1rem;
+  padding: .2rem .8rem;
+  color: white;
+  background-color:#bb2525;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-family: AnotherAmerica;
+  letter-spacing:.3rem;
+  margin: 10px;
+  margin-top: 15px;
+}
+.crearPostContainer{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #2828289d;
+  width: 115%;
+  height: 40%;
+  border-radius: 1rem;
+
+}
+.postFeedContainer{
+  position:relative;
+  display: flex;
+  align-items: center;
+  background-color: #2828289d;
+  width: 115%;
+  height: auto;
+  border-radius: 1rem;
+  padding: 5px;
+  margin-top: 20px;
+  justify-content: space-around;
+}
+.textContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: #EB6C36; 
+  width: 875px;
+  height: 200px;
+  border-radius: 2rem;
+  padding: 15px 15px 6px 15px;
+  margin: 20px;
+  border-width: 4px;
+  border-style:outset;
+  border-color: black;
+
+}
+.usuarioInfo{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1%;
+}
+.imagenUsuario {
+  width: 40px;
+  height: 40px;
+  margin-right: 1%;
+  border-radius: 100%;
+   border-width: 2px;
+  border-style:outset;
+  border-color: black;
+}
+.nombreUsuario{
+  font-size: large;
+  font-family: CaviarDreams;
+  font-weight:bold;
+  color: #eceaea;
+  font-weight:bold;
+  margin-left: 5px;
+}
+.publicarInput{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; 
+  width: 100%;
+  height: 55%;
+  border-radius: 1rem;
+  border-color: white;
+  padding: 10px;
+  border-width: 3px;
+  border-style:ridge;
+  border-color: black;
+}
+.buttonPublicar{
+  align-self: flex-end;
+  border-radius: 1rem;
+  padding: .3rem .8rem;
+  color: white;
+  background-color:black;
+  cursor: pointer;
+  font-size: small;
+  font-family: AnotherAmerica;
+  letter-spacing:.3rem;
+  margin-top: 10px;
+}
+.textContainerpost{
+  display: flex;
+  flex-direction: column;
+  background-color: #bb2525;  
+  width: 650px;
+  height: 210px;
+  border-radius: 2rem;
+  padding: 15px 15px 6px 15px;
+  margin: 20px;
+  border-width: 4px;
+  border-style:outset;
+  border-color: black;
+}
+.opcionesPostContenedor{
+  position: absolute;
+    display: flex;
+    align-items: center;
+    margin-top: 145px;
+    margin-left: 10px;
+  }
+.containerLike{
+  align-self: flex-end;
+  margin: 5px;
+  width: 60px;
+  height: 30px;
+  display: inline-flex;
+  background-color: black;
+  border-radius: 100px;
+  align-items: center;
+}
+.containerLike:hover{
+    transform: scale(1.1);
+}
+.likeFuego {
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  margin-left: 10px;
+}
+.contadorLikes{
+ background-position: right;
+ font-size:large;
+ font-family: CaviarDreams;
+ margin-top: 5px;
+ color: #EB6C36;
+ align-items: center;
+}
+.containerPostMenu {
+  background-color: black;
+  align-self: center;
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  background-color: black;
+  border-radius: 100px;
+  border-style:outset;
+  border-width: 2px;
+  border-color:#282828;
+}
+.eliminarPost {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+.editarPost {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.guardarPost {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+    border-radius: 200px;
+    margin-left: 15px;
+}
+
