@@ -4,7 +4,7 @@ import {
   GoogleAuthProvider, getAuth, signInWithPopup,
 } from 'firebase/auth';
 import {
-  getFirestore, addDoc, collection, query, orderBy, getDocs,
+  getFirestore, addDoc, collection, query, orderBy, getDocs, deleteDoc
 } from 'firebase/firestore';
 
 //Configuración de Firebase
@@ -68,3 +68,7 @@ export const getPost = async () => {
 // Obtén el perfil de un usuario
 
 export const getCurrentUser = () => auth.currentUser;
+
+//Eliminar post
+
+const deletePost = (id) => deleteDoc(doc(firestore, 'publicaciones', id));

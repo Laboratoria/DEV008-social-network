@@ -22,7 +22,7 @@ const Home = (navigateTo) => {
   buttonLogout.addEventListener('click', () => navigateTo('/'));
   // Contenido del header (logo y bienvenida) -END-
 
-  // Contenido de la publicación -START-
+  // Contenido de la publicación -
   const postSection = document.createElement('section');
   postSection.classList.add('textarea-container', 'flex');
 
@@ -55,7 +55,7 @@ const Home = (navigateTo) => {
   subscribeToDataChanges(actualizarFeed);
 
   const buttonEdit = './img/pen-to-square.svg';
-  const buttonDelete = './img/trash-can.svg';
+
   // Contenido de la publicación -END-
 
   btnContainer.append(buttonPublish, buttonCancel);
@@ -78,9 +78,20 @@ const Home = (navigateTo) => {
           <div class = 'post-text'>  
           <p>${element.texto}<p>
           </div>
-          <div class='post-btn-container flex'><img class='icons' src='${buttonEdit}' /><img class='icons' src='${buttonDelete}' /></div>
+          <div class='post-btn-container flex'><img class='icons' src='${buttonEdit}' /><img class='icons btn-delete' src='${buttonDelete}' id='${element.id}' /></div>
         </div>
         `;
+      });
+    });
+
+    const buttonDelete = './img/trash-can.svg';
+    const btnDelete= postContainerId.querySelectorAll('.btn-delete');
+    
+    btnDelete.forEach((btn) => {
+      btn.addEventListener('click', ({ target: {texto}}) => {
+        deletePost(texto.id).then(() => {
+          window.location.reload();
+        });
       });
     });
 
