@@ -1,13 +1,12 @@
-
 import { initializeApp } from 'firebase/app';
 import {
   GoogleAuthProvider, getAuth, signInWithPopup,
 } from 'firebase/auth';
 import {
-  getFirestore, addDoc, collection, query, orderBy, getDocs, deleteDoc
+  getFirestore, doc, addDoc, collection, query, orderBy, getDocs, deleteDoc,
 } from 'firebase/firestore';
 
-//Configuración de Firebase
+// Configuración de Firebase
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDvAiTov1h1P4refJwXUEuIuxAHwEiXJvU',
@@ -34,7 +33,7 @@ export const escribirDatosUsuarios = (texto) => {
   const email = JSON.parse(localStorage.getItem('user')).email;
   console.log(email);
   addDoc(collection(firestore, 'publicaciones'), {
-    texto: texto,
+    texto,
     user: email,
     createdAt: Date.now(),
     likes: [],
@@ -44,10 +43,10 @@ export const escribirDatosUsuarios = (texto) => {
 
 export const subscribeToDataChanges = (actualizarFeed) => (query(collection(firestore, 'publicaciones'), orderBy('createdAt', 'asc')), (snapshot) => {
   const data = [];
-  snapshot.forEach((doc) => {
+  snapshot.forEach((post) => {
     data.push({
-      id: doc.id,
-      ...doc.data(),
+      id: post.id,
+      ...post.data(),
     });
   });
   console.log(data);
@@ -58,9 +57,9 @@ export const getPost = async () => {
   const dataPost = [];
   const q = query(collection(firestore, 'publicaciones'));
   const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
+  querySnapshot.forEach((post) => {
   // doc.data() is never undefined for query doc snapshots
-    dataPost.push({ ...doc.data(), id: doc.id });
+    dataPost.push({ ...post.data(), id: post.id });
   });
   return dataPost;
 };
@@ -69,6 +68,6 @@ export const getPost = async () => {
 
 export const getCurrentUser = () => auth.currentUser;
 
-//Eliminar post
+// Eliminar post
 
-const deletePost = (id) => deleteDoc(doc(firestore, 'publicaciones', id));
+export const deletePost = (id) => deleteDoc(doc(firestore, 'publicaciones', id));

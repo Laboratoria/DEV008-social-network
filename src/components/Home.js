@@ -1,5 +1,5 @@
 import {
-  escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser,
+  escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser, deletePost,
 } from '../lib/firebase/firebaseconfig';
 // import error from './Error';
 
@@ -43,18 +43,16 @@ const Home = (navigateTo) => {
   const containerNewPost = document.createElement('section');
   containerNewPost.id = 'feedScrollContent';
 
-
   const actualizarFeed = (data) => {
     const feedContainer = document.getElementById('feedScrollContent');
     feedContainer.innerHTML = data.forEach((item) => {
       const postElement = renderNewPost({ texto: item, id: item.id, author: item.author });
-
-      
     });
   };
   subscribeToDataChanges(actualizarFeed);
 
   const buttonEdit = './img/pen-to-square.svg';
+  const buttonDelete = './img/trash-can.svg';
 
   // Contenido de la publicación -END-
 
@@ -81,17 +79,18 @@ const Home = (navigateTo) => {
           <div class='post-btn-container flex'><img class='icons' src='${buttonEdit}' /><img class='icons btn-delete' src='${buttonDelete}' id='${element.id}' /></div>
         </div>
         `;
-      });
-    });
 
-    const buttonDelete = './img/trash-can.svg';
-    const btnDelete= postContainerId.querySelectorAll('.btn-delete');
-    
-    btnDelete.forEach((btn) => {
-      btn.addEventListener('click', ({ target: {texto}}) => {
-        deletePost(texto.id).then(() => {
-          window.location.reload();
+        // ...
+        const btnDelete = postContainerId.querySelectorAll('.btn-delete');
+
+        btnDelete.forEach((btn) => {
+          btn.addEventListener('click', ({ target: { post } }) => {
+            deletePost(post.id).then(() => {
+              window.location.reload();
+            });
+          });
         });
+        // ...
       });
     });
 
