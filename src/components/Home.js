@@ -1,5 +1,6 @@
+import { signOut } from 'firebase/auth';
 import {
-  escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser, deletePost,
+  escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser, deletePost, auth
 } from '../lib/firebase/firebaseconfig';
 // import error from './Error';
 
@@ -19,7 +20,15 @@ const Home = (navigateTo) => {
   const buttonLogout = document.createElement('img');
   buttonLogout.setAttribute('src', './img/right-to-bracket.svg');
   buttonLogout.classList.add('icon-logout');
-  buttonLogout.addEventListener('click', () => navigateTo('/'));
+  buttonLogout.addEventListener('click', () => {   
+    signOut(auth)
+    .then(() => {
+      console.log('Se cerró la sesión');     
+      navigateTo('/');    
+    }).catch((error) => {
+      console.log('Ocurrió un error.'); 
+    });
+  });
   // Contenido del header (logo y bienvenida) -END-
 
   // Contenido de la publicación -
@@ -66,31 +75,42 @@ const Home = (navigateTo) => {
     .then((texto) => {
       texto.forEach((element) => {
         console.log(texto);
-        const author = JSON.parse(localStorage.getItem('user')).email;
+        // const author = JSON.parse(localStorage.getItem('user')).email;
 
         postContainerId.innerHTML += `
         <div class = 'post'>
           <div class = 'post-author'>
-          <p>${author}</p>
+          <p>${element.user}</p>
           </div> 
           <div class = 'post-text'>  
           <p>${element.texto}<p>
           </div>
-          <div class='post-btn-container flex'><img class='icons' src='${buttonEdit}' /><img class='icons btn-delete' src='${buttonDelete}' id='${element.id}' /></div>
+          <div class='post-btn-container flex'><img class='icons btn-edit' src='${buttonEdit}' /><img class='icons btn-delete' src='${buttonDelete}' id='${element.id}' /></div>
         </div>
         `;
 
         // ...
+        
         const btnDelete = postContainerId.querySelectorAll('.btn-delete');
-
         btnDelete.forEach((btn) => {
           btn.addEventListener('click', ({ target: { post } }) => {
-            deletePost(post.id).then(() => {
+            deletePost(element.id)
+            .then(() => { 
               window.location.reload();
             });
           });
         });
-        // ...
+        const btnEdit = postContainerId.querySelectorAll('.btn-edit');
+        btnEdit.forEach((btn)=> {
+          btn.addEventListener('click', ({ target: { post } }) => {
+            getPost(element.texto)
+            .then(() =>{
+              texto.value = element.texto;
+            
+            })
+          })
+        })
+
       });
     });
 

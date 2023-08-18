@@ -42,7 +42,9 @@ navigateTo(window.location.pathname || defaultRoute);
 
 document.getElementById('publishValue').addEventListener('click', () => {
   const textValue = document.getElementById('inputValue').value;
+  const email = JSON.parse(localStorage.getItem('user')).email;
   if (textValue.length !== 0) {
-    escribirDatosUsuarios(textValue);
+    escribirDatosUsuarios(textValue, email);
+
   }
 });

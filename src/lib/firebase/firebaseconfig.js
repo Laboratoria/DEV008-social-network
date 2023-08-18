@@ -29,8 +29,7 @@ export function googleLogin() {
 
 const firestore = getFirestore(app);
 
-export const escribirDatosUsuarios = (texto) => {
-  const email = JSON.parse(localStorage.getItem('user')).email;
+export const escribirDatosUsuarios = (texto, email) => {
   console.log(email);
   addDoc(collection(firestore, 'publicaciones'), {
     texto,
