@@ -93,8 +93,9 @@ const Home = (navigateTo) => {
         
         const btnDelete = postContainerId.querySelectorAll('.btn-delete');
         btnDelete.forEach((btn) => {
-          btn.addEventListener('click', ({ target: { post } }) => {
-            deletePost(element.id)
+          btn.addEventListener('click', ({ target  }) => {
+            console.log(target.id, "Aquí se elimina")
+            deletePost(target.id)
             .then(() => { 
               window.location.reload();
             });
@@ -102,7 +103,7 @@ const Home = (navigateTo) => {
         });
         const btnEdit = postContainerId.querySelectorAll('.btn-edit');
         btnEdit.forEach((btn)=> {
-          btn.addEventListener('click', ({ target: { post } }) => {
+          btn.addEventListener('click', ({ target }) => {
             getPost(element.texto)
             .then(() =>{
               texto.value = element.texto;
