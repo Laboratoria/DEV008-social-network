@@ -10,7 +10,7 @@ const Register = (navigateTo) => {
   const header = document.createElement('header');
 
   const logo = document.createElement('img');
-  logo.setAttribute('src', '../img/instapet-logo.svg');
+  logo.setAttribute('src', 'img/instapet-logo.svg');
   logo.classList.add('logo');
 
   const welcomeTitle = document.createElement('h2');
@@ -71,7 +71,7 @@ const Register = (navigateTo) => {
   para.textContent = 'O puedes registrate con:';
 
   const googleIcon = document.createElement('img');
-  googleIcon.setAttribute('src', './img/google.svg');
+  googleIcon.setAttribute('src', 'img/google.svg');
   googleIcon.classList.add('icon');
   googleIcon.id = 'google-logo';
 

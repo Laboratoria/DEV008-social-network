@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth';
 import {
-  escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser, deletePost, auth
+  escribirDatosUsuarios, subscribeToDataChanges, getPost, getCurrentUser, deletePost, auth,
 } from '../lib/firebase/firebaseconfig';
 // import error from './Error';
 
@@ -14,20 +14,20 @@ const Home = (navigateTo) => {
   header.classList.add('home-header', 'flex');
 
   const logo = document.createElement('img');
-  logo.setAttribute('src', './img/instapet-logo-horizontal.svg');
+  logo.setAttribute('src', 'img/instapet-logo-horizontal.svg');
   logo.classList.add('logo-horizontal');
 
   const buttonLogout = document.createElement('img');
-  buttonLogout.setAttribute('src', './img/right-to-bracket.svg');
+  buttonLogout.setAttribute('src', 'img/right-to-bracket.svg');
   buttonLogout.classList.add('icon-logout');
-  buttonLogout.addEventListener('click', () => {   
+  buttonLogout.addEventListener('click', () => {
     signOut(auth)
-    .then(() => {
-      console.log('Se cerró la sesión');     
-      navigateTo('/');    
-    }).catch((error) => {
-      console.log('Ocurrió un error.'); 
-    });
+      .then(() => {
+        console.log('Se cerró la sesión');
+        navigateTo('/');
+      }).catch((error) => {
+        console.log('Ocurrió un error.');
+      });
   });
   // Contenido del header (logo y bienvenida) -END-
 
@@ -60,8 +60,8 @@ const Home = (navigateTo) => {
   };
   subscribeToDataChanges(actualizarFeed);
 
-  const buttonEdit = './img/pen-to-square.svg';
-  const buttonDelete = './img/trash-can.svg';
+  const buttonEdit = 'img/pen-to-square.svg';
+  const buttonDelete = 'img/trash-can.svg';
 
   // Contenido de la publicación -END-
 
@@ -90,28 +90,26 @@ const Home = (navigateTo) => {
         `;
 
         // ...
-        
+
         const btnDelete = postContainerId.querySelectorAll('.btn-delete');
         btnDelete.forEach((btn) => {
-          btn.addEventListener('click', ({ target  }) => {
-            console.log(target.id, "Aquí se elimina")
+          btn.addEventListener('click', ({ target }) => {
+            console.log(target.id, 'Aquí se elimina');
             deletePost(target.id)
-            .then(() => { 
-              window.location.reload();
-            });
+              .then(() => {
+                window.location.reload();
+              });
           });
         });
         const btnEdit = postContainerId.querySelectorAll('.btn-edit');
-        btnEdit.forEach((btn)=> {
+        btnEdit.forEach((btn) => {
           btn.addEventListener('click', ({ target }) => {
             getPost(element.texto)
-            .then(() =>{
-              texto.value = element.texto;
-            
-            })
-          })
-        })
-
+              .then(() => {
+                texto.value = element.texto;
+              });
+          });
+        });
       });
     });
 

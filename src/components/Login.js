@@ -11,7 +11,7 @@ const Login = (navigateTo) => {
   const header = document.createElement('header');
 
   const logo = document.createElement('img');
-  logo.setAttribute('src', '../img/instapet-logo.svg');
+  logo.setAttribute('src', 'img/instapet-logo.svg');
   logo.classList.add('logo');
 
   const welcomeTitle = document.createElement('h2');
@@ -68,7 +68,7 @@ const Login = (navigateTo) => {
   para.textContent = 'O puedes iniciar sesión con:';
 
   const googleIcon = document.createElement('img');
-  googleIcon.setAttribute('src', './img/google.svg');
+  googleIcon.setAttribute('src', 'img/google.svg');
   googleIcon.classList.add('icon');
   googleIcon.id = 'google-logo';
 
