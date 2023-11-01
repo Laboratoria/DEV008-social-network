@@ -1,0 +1,243 @@
+*, *::before, 
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+:root {
+  --white: #ffffff;
+  --salmon: #e47c7c;
+  --light-salmon: #FED4CD;
+  --light-pink: #FFF1F1;
+  --dark-salmon: #C28B8B;
+  --dark-salmon-transparency: #c28b8bb5;
+  --orange: #F69F1C;
+}
+
+.flex, #google-btn {
+  display: flex;
+}
+
+body {
+  height: 100%;
+  background-color: var(--light-salmon);
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+#login-content,
+#register-content,
+#home-content {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+.logo {
+  height: 10rem;
+}
+
+.logo-horizontal {
+  width: 12rem;
+}
+
+.welcome-title,
+.header-title {
+  font-family: 'Patua One', cursive;
+  font-size: 2rem;
+  color: var(--dark-salmon);
+  font-weight: 400;
+}
+
+.welcome-title {
+  text-align: center;
+}
+
+.form-container{
+  width: 18rem;
+  height: 26rem;
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  image-rendering: auto;
+  flex-flow: column;
+  box-shadow: 0 0 15px var(--dark-salmon-transparency);
+}
+
+.form-title {
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.input-container {
+  flex-flow: column;
+  margin-bottom: 0.6rem;
+}
+
+input {
+  width: 14rem;
+  height: 2rem;
+  padding: 0.3rem 0.4rem;
+  margin: 0.4rem 0;
+  border: none;
+  background-color: var(--light-pink);
+}
+
+input::placeholder {
+  color: var(--dark-salmon);
+}
+
+.btn {
+  width: 6.4rem;
+  max-width: fit-content;
+  height: 2.4rem;
+  background: var(--salmon);
+  color: var(--white);
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  margin: 0.4rem 0;
+  padding: 0 0.8rem;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background: var(--white);
+  color: var(--salmon);
+  border: 1px solid var(--salmon);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+#login, #register {
+  margin-bottom: 1rem;
+}
+
+#google-logo {
+  height: 40px;
+  align-items: center;
+  margin: 0.8rem 0;
+}
+
+#google-logo:hover {
+  cursor: pointer;
+}
+
+.home-header {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-logout {
+  height: 1.8rem;
+}
+
+.icon-logout:hover {
+  cursor: pointer;
+}
+
+.textarea-container {
+  width: 42rem;
+  height: fit-content;
+  justify-content:center;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  flex-flow: column;
+  border-radius: 20px;
+  align-items: center;
+}
+  
+.post-input {
+  resize: none;
+  height: 8rem;
+  width: 36rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--light-salmon);
+  background-color: var(--light-pink);
+}
+
+.post-input::placeholder {
+  font-style: italic;
+}
+
+.btn-container {
+  width: inherit;
+  margin-top: 0.8rem;
+  justify-content: space-evenly;
+}
+
+.post {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.post-author {
+  color: var(--salmon);
+  font-weight: 600;
+}
+
+.post-text {
+  margin: 1rem;
+}
+
+.post-btn-container {
+  justify-content: flex-end;
+}
+
+.icons {
+  height: 1.4rem;
+  margin: 0 0.4rem;
+}
+
+.icons:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 980px) {
+  #home-content,
+  .textarea-container {
+    width: 36rem;
+  }
+
+  .post-input {
+    width: 32rem;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #home-content,
+  .textarea-container {
+    width: 18rem;
+  }
+
+  .logo-horizontal {
+    width: 10rem;
+  }
+
+  .post-input {
+    width: 15rem;
+  }
+}
+
+
